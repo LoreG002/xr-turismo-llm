@@ -26,7 +26,7 @@ const material = new THREE.MeshBasicMaterial({ map: texture });
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
-// 4. ANIMAZIONE (Render Loop)
+// animazione
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
@@ -34,30 +34,31 @@ function animate() {
 }
 animate();
 
-// Adattamento della finestra se l'utente la ridimensiona
+
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// 5. INTEGRAZIONE CON IL BACKEND PYTHON (LLM)
+// integrazione con backend
 const btnScopri = document.getElementById('btn-scopri');
 const uiPanel = document.getElementById('ui-panel');
 const testoGemini = document.getElementById('testo-gemini');
 
 btnScopri.addEventListener('click', async () => {
-    // Mostriamo il pannello con la scritta di caricamento
+    
     uiPanel.style.display = 'block';
     testoGemini.innerText = "Sto analizzando il luogo...";
 
     try {
-        // Facciamo la richiesta al tuo server Python locale!
-        // (Assicurati che il server Python sia acceso su un altro terminale)
+        // Richiesta sul server locale (Frontend)
+        // Per Jacopo e conch (aprite il terminale dentro backend e fate "python backend.py" 
+        // poi aprite il terminale dentro frontend e fate "npm run dev"
         const response = await fetch('http://localhost:8000/spiegazione/Colosseo');
         const data = await response.json();
         
-        // Inseriamo il testo generato da Gemini nel pannello
+       
         testoGemini.innerText = data.text;
     } catch (error) {
         console.error("Errore di connessione col backend:", error);
