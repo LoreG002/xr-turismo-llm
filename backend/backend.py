@@ -21,7 +21,7 @@ app.add_middleware(
 
 @app.get("/spiegazione/{luogo}")
 async def get_spiegazione(luogo: str):
-    prompt = f"Sei una guida turistica esperta in Mixed Reality. Descrivi in modo immersivo e breve (max 50 parole) il seguente luogo: {luogo}. Focalizzati su dettagli visivi interessanti."
+    prompt = f"Sei una guida turistica esperta della storia di Ancona. Descrivi in modo dettagliato e breve (max 50 parole) il seguente luogo: {luogo}. Spiega cos'è e la storia."
     
     response = client.models.generate_content(
         model='gemini-2.5-flash',

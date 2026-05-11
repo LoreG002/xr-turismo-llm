@@ -2,7 +2,7 @@
   "scene": {
     "scena1": {
       "nome": "Duomo di San Ciriaco",
-      "panorama": "/panorama.jpg",
+      "panorama": "/Duomo360.jpg",
       "luogo_id": "Duomo di San Ciriaco ad Ancona",
       "hotspot": [
         {
@@ -15,7 +15,7 @@
     },
     "scena2": {
       "nome": "Arco di Traiano",
-      "panorama": "/panorama2.jpg",
+      "panorama": "/Arco360.jpg",
       "luogo_id": "Arco di Traiano ad Ancona",
       "hotspot": [
         {
