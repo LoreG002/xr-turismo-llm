@@ -1,0 +1,10 @@
+# Ambienti virtuali Python
+venv/
+__pycache__/
+
+# File di configurazione e segreti (MAI caricare online)
+.env
+.DS_Store
+
+# Ignora anche la cartella di Node se sfugge a quello del frontend
+node_modules/
