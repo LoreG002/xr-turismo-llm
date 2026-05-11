@@ -1,0 +1,30 @@
+{
+  "scene": {
+    "scena1": {
+      "nome": "Duomo di San Ciriaco",
+      "panorama": "/panorama.jpg",
+      "luogo_id": "Duomo di San Ciriaco ad Ancona",
+      "hotspot": [
+        {
+          "id": "hs1",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "scena2",
+          "posizione": { "x": -8, "y": -1, "z": -10 }
+        }
+      ]
+    },
+    "scena2": {
+      "nome": "Arco di Traiano",
+      "panorama": "/panorama2.jpg",
+      "luogo_id": "Arco di Traiano ad Ancona",
+      "hotspot": [
+        {
+          "id": "hs2",
+          "label": "Torna al Duomo",
+          "destinazione": "scena1",
+          "posizione": { "x": 8, "y": -1, "z": -10 }
+        }
+      ]
+    }
+  }
+}
