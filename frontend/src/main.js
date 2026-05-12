@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-// --- SETUP SCENA ---
+// Setup scena
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -13,14 +13,14 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0, 0, 0.1);
 controls.update();
 
-// --- SFERA PANORAMICA ---
+// Sfera
 const geometry = new THREE.SphereGeometry(500, 60, 40);
 geometry.scale(-1, 1, 1);
 const material = new THREE.MeshBasicMaterial();
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
-// --- HOTSPOT GROUP ---
+// hotspot
 const hotspotGroup = new THREE.Group();
 scene.add(hotspotGroup);
 
@@ -36,7 +36,7 @@ overlay.style.cssText = `
 `;
 document.body.appendChild(overlay);
 
-// --- ELEMENTI UI ---
+// elementi
 const btnScopri = document.getElementById('btn-scopri');
 const btnChiudi = document.getElementById('btn-chiudi');
 const pannello = document.getElementById('ui-panel');
@@ -45,18 +45,16 @@ const testoEl = document.getElementById('testo-gemini');
 
 btnChiudi.addEventListener('click', () => pannello.style.display = 'none');
 
-// --- STATO ---
 let scenaCorrente = null;
 let tourData = null;
 
-// --- INIT ---
+// spawn
 async function inizializza() {
   const res = await fetch('/tour.json');
   tourData = await res.json();
   caricaScena('scena1');
 }
 
-// --- HOTSPOT ---
 function creaHotspot(dati) {
   const geo = new THREE.SphereGeometry(0.4, 16, 16);
   const colore = dati.tipo === 'info' ? 0xffaa00 : 0x00aaff;
@@ -65,7 +63,7 @@ function creaHotspot(dati) {
   mesh.position.set(dati.posizione.x, dati.posizione.y, dati.posizione.z);
   mesh.userData = dati;
 
-  // Label Canvas
+  // Label Info/nav
   const canvas = document.createElement('canvas');
   canvas.width = 1024; canvas.height = 256;
   const ctx = canvas.getContext('2d');
@@ -82,7 +80,7 @@ function creaHotspot(dati) {
   tex.minFilter = THREE.LinearFilter;
   tex.magFilter = THREE.LinearFilter;
 
-  // USO DI SPRITE PER LA LABEL (Sempre frontale)
+  // Sprite
   const labelMat = new THREE.SpriteMaterial({ map: tex, transparent: true });
   const labelSprite = new THREE.Sprite(labelMat);
   labelSprite.scale.set(4, 1, 1); // Aspect ratio 4:1
@@ -92,7 +90,6 @@ function creaHotspot(dati) {
   hotspotGroup.add(mesh);
 }
 
-// --- CARICA SCENA ---
 const textureLoader = new THREE.TextureLoader();
 
 function caricaScena(idScena) {
@@ -112,7 +109,7 @@ function caricaScena(idScena) {
   }, 500);
 }
 
-// --- FETCH LLM ---
+// chiamata LLM
 async function fetchDescrizione(luogo_id) {
   try {
     const res = await fetch(`http://localhost:8000/spiegazione/${encodeURIComponent(luogo_id)}`);
@@ -123,17 +120,6 @@ async function fetchDescrizione(luogo_id) {
   }
 }
 
-/* --- BOTTONE "Cosa sto guardando?" ---
-btnScopri.addEventListener('click', async () => {
-  if (!scenaCorrente) return;
-  pannello.style.display = 'block';
-  titoloEl.innerText = scenaCorrente.nome;
-  testoEl.innerText = "Sto analizzando il luogo...";
-  const testo = await fetchDescrizione(scenaCorrente.luogo_id);
-  testoEl.innerText = testo;
-});*/
-
-// --- CLICK HOTSPOT ---
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 
@@ -144,15 +130,6 @@ window.addEventListener('click', (e) => {
   pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
   raycaster.setFromCamera(pointer, camera);
   const hits = raycaster.intersectObjects(hotspotGroup.children, true);
-/*
-  if (hits.length > 0) {
-    let obj = hits[0].object;
-    while (obj.parent && !obj.userData.destinazione) obj = obj.parent;
-    if (obj.userData.destinazione) {
-      caricaScena(obj.userData.destinazione);
-    }
-  }
-});*/
 
 if (hits.length > 0) {
     let obj = hits[0].object;
@@ -179,14 +156,13 @@ if (hits.length > 0) {
 });
 
 
-// --- RESIZE ---
+// Resize
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// --- LOOP ---
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
@@ -196,20 +172,3 @@ animate();
 
 inizializza();
 
-// serve per trovare le coordinate del punto cliccato
-window.addEventListener('dblclick', (e) => {
-  // Calcola la posizione del mouse
-  const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-  const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-  
-  // Usa il raycaster
-  const tempRaycaster = new THREE.Raycaster();
-  tempRaycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
-  
-  // Calcola il punto esatto a una distanza comoda (es. 15 unità)
-  const distanza = 10;
-  const posizione = new THREE.Vector3().copy(tempRaycaster.ray.direction).multiplyScalar(distanza);
-  
-  // Stampa in console il testo già pronto per il tour.json!
-  console.log(`"posizione": { "x": ${posizione.x.toFixed(2)}, "y": ${posizione.y.toFixed(2)}, "z": ${posizione.z.toFixed(2)} }`);
-});

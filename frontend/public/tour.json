@@ -27,9 +27,17 @@
       "hotspot": [
         {
           "id": "hs2",
+          "tipo":"nav",
           "label": "Torna al Duomo",
           "destinazione": "scena1",
           "posizione": { "x": -9.15, "y": 3.27, "z": 2.37 }
+        },
+        {
+          "id": "nav_2_to_3",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "scena3",
+          "posizione": { "x": -0.04, "y": 0.10, "z": -10.00 }
         },
         {
           "id": "info2",
@@ -39,6 +47,34 @@
           "posizione": { "x": 11.5, "y": 5, "z": 4 }
         }
       ]
+    },
+    "scena3": {
+      "nome": "Mole Vanvitelliana",
+      "panorama": "/Mole1360.jpg",
+      "hotspot": [
+        {
+          "id": "nav_3_to_2",
+          "tipo": "nav",
+          "label": "Torna all'Arco",
+          "destinazione": "scena2",
+          "posizione": { "x": 9.70, "y": 0.64, "z": -2.33 }
+        },
+        {
+          "id": "nav_3_to_4",
+          "tipo": "nav",
+          "label": "Sali in Piazza del Plebiscito",
+          "destinazione": "scena4",
+          "posizione": { "x": 8.96, "y": 1.32, "z": 4.23 }
+        },
+        {
+          "id": "info_mole",
+          "tipo": "info",
+          "label": "L'Architettura della Mole",
+          "query": "La Mole Vanvitelliana di Ancona, il Lazzaretto pentagonale sul mare",
+          "posizione": { "x": 6.31, "y": -0.12, "z": -7.75 }
+        }
+      ]
     }
+    
   }
 }
