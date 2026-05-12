@@ -73,7 +73,7 @@ function creaHotspot(dati) {
   ctx.roundRect(0, 0, 1024, 256, 40);
   ctx.fill();
   ctx.fillStyle = 'white';
-  ctx.font = 'bold 72px sans-serif';
+  ctx.font = 'bold 85px sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(dati.label, 512, 128);
@@ -196,7 +196,7 @@ animate();
 
 inizializza();
 
-// --- TRUCCO PER TROVARE LE COORDINATE (Doppio click) ---
+// serve per trovare le coordinate del punto cliccato
 window.addEventListener('dblclick', (e) => {
   // Calcola la posizione del mouse
   const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -207,7 +207,7 @@ window.addEventListener('dblclick', (e) => {
   tempRaycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
   
   // Calcola il punto esatto a una distanza comoda (es. 15 unità)
-  const distanza = 15;
+  const distanza = 10;
   const posizione = new THREE.Vector3().copy(tempRaycaster.ray.direction).multiplyScalar(distanza);
   
   // Stampa in console il testo già pronto per il tour.json!

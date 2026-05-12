@@ -9,7 +9,7 @@
           "id": "hs1",
           "label": "Vai all'Arco di Traiano",
           "destinazione": "scena2",
-          "posizione": { "x": -8, "y": -1, "z": -10 }
+          "posizione": { "x": 7.28, "y": -0.87, "z": 6.80 }
         },
         {
           "id": "info1",
@@ -29,7 +29,7 @@
           "id": "hs2",
           "label": "Torna al Duomo",
           "destinazione": "scena1",
-          "posizione": { "x": -14.07, "y": 3.82, "z": 3.52 }
+          "posizione": { "x": -9.15, "y": 3.27, "z": 2.37 }
         },
         {
           "id": "info2",
