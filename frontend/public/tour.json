@@ -10,6 +10,13 @@
           "label": "Vai all'Arco di Traiano",
           "destinazione": "scena2",
           "posizione": { "x": -8, "y": -1, "z": -10 }
+        },
+        {
+          "id": "info1",
+          "tipo": "info",
+          "label": "Scopri la Facciata",
+          "query": "Facciata del Duomo di San Ciriaco ad Ancona con i suoi leoni",
+          "posizione": { "x": 0, "y": 3, "z": -10 }
         }
       ]
     },
@@ -23,6 +30,13 @@
           "label": "Torna al Duomo",
           "destinazione": "scena1",
           "posizione": { "x": 8, "y": -1, "z": -10 }
+        },
+        {
+          "id": "info2",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco di Traiano ad Ancona costruito da Apollodoro di Damasco",
+          "posizione": { "x": 10, "y": 10, "z": -10 }
         }
       ]
     }

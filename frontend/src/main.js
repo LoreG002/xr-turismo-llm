@@ -59,7 +59,12 @@ async function inizializza() {
 // --- HOTSPOT (solo navigazione) ---
 function creaHotspot(dati) {
   const geo = new THREE.SphereGeometry(0.4, 16, 16);
-  const mat = new THREE.MeshBasicMaterial({ color: 0x00aaff });
+
+  //qua diamo un colore al pallino se è di info o se è di spostamento
+  const colore = dati.tipo ==='info'? 0xffaa00 : 0x00aaff;
+
+  const mat = new THREE.MeshBasicMaterial({ color: colore});
+
   const mesh = new THREE.Mesh(geo, mat);
   mesh.position.set(dati.posizione.x, dati.posizione.y, dati.posizione.z);
   mesh.userData = dati;
@@ -118,7 +123,7 @@ async function fetchDescrizione(luogo_id) {
   }
 }
 
-// --- BOTTONE "Cosa sto guardando?" ---
+/* --- BOTTONE "Cosa sto guardando?" ---
 btnScopri.addEventListener('click', async () => {
   if (!scenaCorrente) return;
   pannello.style.display = 'block';
@@ -126,7 +131,7 @@ btnScopri.addEventListener('click', async () => {
   testoEl.innerText = "Sto analizzando il luogo...";
   const testo = await fetchDescrizione(scenaCorrente.luogo_id);
   testoEl.innerText = testo;
-});
+});*/
 
 // --- CLICK HOTSPOT ---
 const raycaster = new THREE.Raycaster();
@@ -139,7 +144,7 @@ window.addEventListener('click', (e) => {
   pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
   raycaster.setFromCamera(pointer, camera);
   const hits = raycaster.intersectObjects(hotspotGroup.children, true);
-
+/*
   if (hits.length > 0) {
     let obj = hits[0].object;
     while (obj.parent && !obj.userData.destinazione) obj = obj.parent;
@@ -147,7 +152,32 @@ window.addEventListener('click', (e) => {
       caricaScena(obj.userData.destinazione);
     }
   }
+});*/
+
+if (hits.length > 0) {
+    let obj = hits[0].object;
+    
+    // Risaliamo l'albero per assicurarci di leggere i userData del pallino principale
+    while (obj.parent && !obj.userData.id) obj = obj.parent;
+    
+    const dati = obj.userData;
+
+    if (dati.tipo === 'nav' || dati.destinazione) {
+      // Cambio Scena
+      caricaScena(dati.destinazione);
+    } else if (dati.tipo === 'info') {
+      // Chiamata LLM
+      pannello.style.display = 'block';
+      titoloEl.innerText = dati.label;
+      testoEl.innerText = "Sto interpellando la guida storica...";
+      
+      fetchDescrizione(dati.query).then(testo => {
+        testoEl.innerText = testo;
+      });
+    }
+  }
 });
+
 
 // --- RESIZE ---
 window.addEventListener('resize', () => {
