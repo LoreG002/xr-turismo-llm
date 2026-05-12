@@ -29,14 +29,14 @@
           "id": "hs2",
           "label": "Torna al Duomo",
           "destinazione": "scena1",
-          "posizione": { "x": 8, "y": -1, "z": -10 }
+          "posizione": { "x": -14.07, "y": 3.82, "z": 3.52 }
         },
         {
           "id": "info2",
           "tipo": "info",
           "label": "Storia dell'Arco",
           "query": "Arco di Traiano ad Ancona costruito da Apollodoro di Damasco",
-          "posizione": { "x": 10, "y": 10, "z": -10 }
+          "posizione": { "x": 11.5, "y": 5, "z": 4 }
         }
       ]
     }

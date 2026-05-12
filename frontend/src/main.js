@@ -195,3 +195,21 @@ function animate() {
 animate();
 
 inizializza();
+
+// --- TRUCCO PER TROVARE LE COORDINATE (Doppio click) ---
+window.addEventListener('dblclick', (e) => {
+  // Calcola la posizione del mouse
+  const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+  const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  
+  // Usa il raycaster
+  const tempRaycaster = new THREE.Raycaster();
+  tempRaycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
+  
+  // Calcola il punto esatto a una distanza comoda (es. 15 unità)
+  const distanza = 15;
+  const posizione = new THREE.Vector3().copy(tempRaycaster.ray.direction).multiplyScalar(distanza);
+  
+  // Stampa in console il testo già pronto per il tour.json!
+  console.log(`"posizione": { "x": ${posizione.x.toFixed(2)}, "y": ${posizione.y.toFixed(2)}, "z": ${posizione.z.toFixed(2)} }`);
+});
