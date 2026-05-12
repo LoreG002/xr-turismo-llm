@@ -56,20 +56,16 @@ async function inizializza() {
   caricaScena('scena1');
 }
 
-// --- HOTSPOT (solo navigazione) ---
+// --- HOTSPOT ---
 function creaHotspot(dati) {
   const geo = new THREE.SphereGeometry(0.4, 16, 16);
-
-  //qua diamo un colore al pallino se è di info o se è di spostamento
-  const colore = dati.tipo ==='info'? 0xffaa00 : 0x00aaff;
-
-  const mat = new THREE.MeshBasicMaterial({ color: colore});
-
+  const colore = dati.tipo === 'info' ? 0xffaa00 : 0x00aaff;
+  const mat = new THREE.MeshBasicMaterial({ color: colore });
   const mesh = new THREE.Mesh(geo, mat);
   mesh.position.set(dati.posizione.x, dati.posizione.y, dati.posizione.z);
   mesh.userData = dati;
 
-  // Label
+  // Label Canvas
   const canvas = document.createElement('canvas');
   canvas.width = 1024; canvas.height = 256;
   const ctx = canvas.getContext('2d');
@@ -81,14 +77,18 @@ function creaHotspot(dati) {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(dati.label, 512, 128);
+
   const tex = new THREE.CanvasTexture(canvas);
   tex.minFilter = THREE.LinearFilter;
   tex.magFilter = THREE.LinearFilter;
-  const labelMat = new THREE.MeshBasicMaterial({ map: tex, transparent: true });
-  const labelMesh = new THREE.Mesh(new THREE.PlaneGeometry(4, 1), labelMat);
-  labelMesh.position.set(0, 1.2, 0);
-  mesh.add(labelMesh);
 
+  // USO DI SPRITE PER LA LABEL (Sempre frontale)
+  const labelMat = new THREE.SpriteMaterial({ map: tex, transparent: true });
+  const labelSprite = new THREE.Sprite(labelMat);
+  labelSprite.scale.set(4, 1, 1); // Aspect ratio 4:1
+  labelSprite.position.set(0, 1.2, 0);
+  
+  mesh.add(labelSprite);
   hotspotGroup.add(mesh);
 }
 

@@ -16,7 +16,7 @@
           "tipo": "info",
           "label": "Scopri la Facciata",
           "query": "Facciata del Duomo di San Ciriaco ad Ancona con i suoi leoni",
-          "posizione": { "x": 0, "y": 3, "z": -10 }
+          "posizione": { "x": -2.72, "y": 4.55, "z": -10 }
         }
       ]
     },
