@@ -3,7 +3,7 @@
     "scena1": {
       "nome": "Duomo di San Ciriaco",
       "panorama": "/Duomo360.jpg",
-      "luogo_id": "Duomo di San Ciriaco ad Ancona",
+      "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
           "id": "hs1",
@@ -15,7 +15,7 @@
           "id": "info1",
           "tipo": "info",
           "label": "Scopri la Facciata",
-          "query": "Facciata del Duomo di San Ciriaco ad Ancona con i suoi leoni",
+          "query": "Duomo_di_San_Ciriaco",
           "posizione": { "x": -2.72, "y": 4.55, "z": -10 }
         }
       ]
@@ -23,11 +23,11 @@
     "scena2": {
       "nome": "Arco di Traiano",
       "panorama": "/Arco360.jpg",
-      "luogo_id": "Arco di Traiano ad Ancona",
+      "luogo_id": "Arco_di_Traiano",
       "hotspot": [
         {
           "id": "hs2",
-          "tipo":"nav",
+          "tipo": "nav",
           "label": "Torna al Duomo",
           "destinazione": "scena1",
           "posizione": { "x": -9.15, "y": 3.27, "z": 2.37 }
@@ -43,7 +43,7 @@
           "id": "info2",
           "tipo": "info",
           "label": "Storia dell'Arco",
-          "query": "Arco di Traiano ad Ancona costruito da Apollodoro di Damasco",
+          "query": "Arco_di_Traiano",
           "posizione": { "x": 11.5, "y": 5, "z": 4 }
         }
       ]
@@ -51,6 +51,7 @@
     "scena3": {
       "nome": "Mole Vanvitelliana",
       "panorama": "/Mole1360.jpg",
+      "luogo_id": "Mole_Vanvitelliana",
       "hotspot": [
         {
           "id": "nav_3_to_2",
@@ -70,15 +71,15 @@
           "id": "info_mole",
           "tipo": "info",
           "label": "L'Architettura della Mole",
-          "query": "La Mole Vanvitelliana di Ancona, il Lazzaretto pentagonale sul mare",
+          "query": "Mole_Vanvitelliana",
           "posizione": { "x": 6.31, "y": -0.12, "z": -7.75 }
         }
       ]
     },
-
     "scena4": {
       "nome": "Piazza del Plebiscito",
       "panorama": "/Pdp360.jpg",
+      "luogo_id": "Piazza_del_Plebiscito",
       "hotspot": [
         {
           "id": "nav_4_to_3",
@@ -98,14 +99,15 @@
           "id": "info_piazza",
           "tipo": "info",
           "label": "Piazza del Papa",
-          "query": "Piazza del Plebiscito ad Ancona, la chiesa di San Domenico e la statua del Papa",
-          "posizione":  { "x": 9.70, "y": -2.41, "z": 0.36 }
+          "query": "Piazza_del_Plebiscito",
+          "posizione": { "x": 9.70, "y": -2.41, "z": 0.36 }
         }
       ]
     },
     "scena5": {
       "nome": "Piazza Cavour",
       "panorama": "/Cavour360.jpg",
+      "luogo_id": "Piazza_Cavour",
       "hotspot": [
         {
           "id": "nav_5_to_4",
@@ -119,13 +121,13 @@
           "tipo": "nav",
           "label": "Raggiungi il Passetto",
           "destinazione": "scena6",
-          "posizione":  { "x": 9.88, "y": 1.10, "z": -1.05 }
+          "posizione": { "x": 9.88, "y": 1.10, "z": -1.05 }
         },
         {
           "id": "info_cavour",
           "tipo": "info",
           "label": "Statua di Cavour",
-          "query": "La statua di Camillo Benso Conte di Cavour nell'omonima piazza di Ancona",
+          "query": "Piazza_Cavour",
           "posizione": { "x": 9.71, "y": -2.03, "z": 1.29 }
         }
       ]
@@ -133,23 +135,23 @@
     "scena6": {
       "nome": "Il Passetto",
       "panorama": "/Passetto360.jpg",
+      "luogo_id": "Il_Passetto",
       "hotspot": [
         {
           "id": "nav_6_to_5",
           "tipo": "nav",
           "label": "Torna in Piazza Cavour",
           "destinazione": "scena5",
-          "posizione":  { "x": 7.57, "y": 3.32, "z": 5.63 }
+          "posizione": { "x": 7.57, "y": 3.32, "z": 5.63 }
         },
         {
           "id": "info_passetto",
           "tipo": "info",
           "label": "Monumento ai Caduti",
-          "query": "Il Monumento ai Caduti al Passetto di Ancona e la vista panoramica sul mare Adriatico",
+          "query": "Il_Passetto",
           "posizione": { "x": 9.97, "y": 0.21, "z": 0.79 }
         }
       ]
     }
-    
   }
 }

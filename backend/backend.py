@@ -1,10 +1,11 @@
-
 import os
 import json
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
+
+from rag import retrieve, format_contesto_per_prompt, get_model, _load_index
 
 load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
@@ -17,6 +18,18 @@ app.add_middleware(
 )
 
 MODEL = "llama-3.3-70b-versatile"
+
+# =====================================================
+# STARTUP: pre-carica modello e indice RAG
+# Così al primo click non c'è nessun ritardo
+# =====================================================
+@app.on_event("startup")
+async def startup_event():
+    print("[Startup] Pre-carico modello RAG e indice FAISS...")
+    get_model()
+    _load_index()
+    print("[Startup] Pronti. Nessun ritardo al primo click.")
+
 
 # =====================================================
 # SYSTEM PROMPT PERSISTENTE
@@ -35,7 +48,14 @@ Non usi mai elenchi puntati, titoli o formattazione markdown. Solo prosa scorrev
 # =====================================================
 @app.get("/spiegazione/{luogo}")
 async def get_spiegazione(luogo: str):
-    prompt = f"""Descrivi il luogo: {luogo}
+    # k=6: più chunk → più varietà di argomenti per gli approfondimenti
+    chunks = retrieve(query=luogo, luogo_id=luogo, k=6)
+    contesto_rag = format_contesto_per_prompt(chunks)
+    print(f"[/spiegazione] {luogo} → {len(chunks)} chunk recuperati")
+
+    prompt = f"""{contesto_rag}
+
+Descrivi il luogo: {luogo}
 
 Rispondi SOLO con un JSON valido in questo formato:
 {{
@@ -49,6 +69,9 @@ Rispondi SOLO con un JSON valido in questo formato:
 
 REGOLE per gli approfondimenti:
 - ESATTAMENTE 3 concetti chiave menzionati nella descrizione
+- I 3 approfondimenti devono coprire ARGOMENTI DISTINTI tra loro:
+  uno architettonico/artistico, uno storico/politico, uno su curiosità o aneddoti locali
+- Privilegia dettagli specifici e insoliti rispetto a quelli ovvi o generici
 - "label": breve e accattivante (max 3 parole), es. "Il portale romanico"
 - "argomento": il nome specifico del concetto, es. "portale romanico del Duomo di Ancona"
 - "contesto": una frase che spiega COSA c'è di interessante da approfondire,
@@ -64,12 +87,11 @@ non concetti generici. Nessun testo fuori dal JSON, nessun markdown."""
             {"role": "user", "content": prompt},
         ],
         max_tokens=3000,
-        temperature=0.7,
+        temperature=0.85,  # più alta → più varietà negli approfondimenti
         response_format={"type": "json_object"},
     )
     data = json.loads(response.choices[0].message.content)
 
-    # Trasforma in formato compatibile con il frontend esistente
     approfondimenti_ricchi = []
     for app in data.get("approfondimenti", []):
         label = app.get("label", "")
@@ -95,8 +117,6 @@ non concetti generici. Nessun testo fuori dal JSON, nessun markdown."""
 # =====================================================
 # ENDPOINT 2: APPROFONDIMENTO (con retry intelligente)
 # =====================================================
-
-# Few-shot examples: mostrano al modello COME deve essere lungo l'output (dimezzato)
 FEW_SHOT_APPROFONDIMENTO = [
     {
         "role": "user",
@@ -122,12 +142,22 @@ def costruisci_prompt_approfondimento(payload_str: str):
         contesto = payload.get("contesto", "")
         luogo = payload.get("luogo_origine", "")
     except (json.JSONDecodeError, TypeError):
-        # Fallback se la query è una stringa secca (retrocompatibilità)
         argomento = payload_str
         contesto = ""
         luogo = ""
 
-    prompt = f"""Scrivi un approfondimento culturale immersivo su questo argomento.
+    query_rag = f"{argomento}. {contesto}".strip()
+    chunks = retrieve(
+        query=query_rag,
+        luogo_id=luogo if luogo else None,
+        k=2,
+    )
+    contesto_rag = format_contesto_per_prompt(chunks)
+    print(f"[/approfondimento] '{argomento}' → {len(chunks)} chunk recuperati")
+
+    prompt = f"""{contesto_rag}
+
+Scrivi un approfondimento culturale immersivo su questo argomento.
 ARGOMENTO: {argomento}
 CONTESTO: {contesto if contesto else "approfondimento culturale generale"}
 LUOGO DI ORIGINE: {luogo if luogo else "Ancona, Marche"}
@@ -137,18 +167,16 @@ Lunghezza richiesta: circa 100 parole. Stile: prosa narrativa, immersiva, ricca 
 
 
 async def genera_approfondimento_con_retry(payload_str: str, tentativi_max: int = 2):
-    """Genera l'approfondimento e ritenta se troppo corto o eccessivamente lungo."""
+    """Genera l'approfondimento e ritenta se troppo corto."""
     prompt, argomento = costruisci_prompt_approfondimento(payload_str)
 
     for tentativo in range(tentativi_max):
-        # Costruzione messaggi con few-shot
         messages = [
             {"role": "system", "content": SYSTEM_GUIDA},
             *FEW_SHOT_APPROFONDIMENTO,
             {"role": "user", "content": prompt},
         ]
 
-        # Al secondo tentativo, alza la temperature e rafforza il prompt
         if tentativo > 0:
             messages[-1]["content"] += "\n\nIMPORTANTE: rispetta la lunghezza richiesta. Il testo deve essere di circa 100 parole: sufficientemente immersivo ma non eccessivamente lungo."
 
@@ -156,18 +184,16 @@ async def genera_approfondimento_con_retry(payload_str: str, tentativi_max: int 
             model=MODEL,
             messages=messages,
             max_tokens=1000,
-            temperature=0.65 + (tentativo * 0.1),  # alza temp ai retry
+            temperature=0.65 + (tentativo * 0.1),
         )
         testo = response.choices[0].message.content.strip()
 
-        # Conta le parole — se ha superato le 60 parole, restituisci
         n_parole = len(testo.split())
         print(f"[Tentativo {tentativo + 1}] Argomento: '{argomento}' — {n_parole} parole")
 
         if n_parole >= 60:
             return testo
 
-    # Se anche dopo i retry è corto, restituiamo comunque l'ultimo output
     return testo
 
 
@@ -181,6 +207,3 @@ async def get_approfondimento(argomento: str):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
-
-

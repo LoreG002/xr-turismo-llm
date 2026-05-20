@@ -1,10 +1,40 @@
-# Ambienti virtuali Python
-venv/
-__pycache__/
 
-# File di configurazione e segreti (MAI caricare online)
+# Ambiente virtuale
+venv/
+.venv/
+env/
+ENV/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# RAG index (compilato a runtime)
+backend/rag_index.faiss
+backend/rag_chunks.pkl
+
+# HuggingFace cache (modelli scaricati)
+.cache/
+~/.cache/huggingface/
+
+# Environment variables
 .env
+.env.local
+
+# Mac
 .DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Ignora anche la cartella di Node se sfugge a quello del frontend
 node_modules/
