@@ -17,7 +17,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = "llama-3.3-70b-versatile"
+MODEL = "llama-3.1-8b-instant"
+
+# =====================================================
+# FOTO DISPONIBILI PER GLI APPROFONDIMENTI
+# Aggiungi qui i nomi dei file man mano che li carichi in public/pic/
+# Convenzione: luogo_concetto.jpg (lowercase con underscore)
+# =====================================================
+FOTO_DISPONIBILI = [
+    "cavour_statua.jpg",
+    "duomo_leoni_stilofori.jpg",
+    "duomo_leoni.jpg",
+    "duomo_portale_romanico.jpg",
+    "duomo_veduta.jpg",
+    "plebiscito_statua_papa.jpg",
+    "plebiscito_veduta.jpg",
+]
+
+# Set per lookup O(1) in validazione
+_FOTO_SET = set(FOTO_DISPONIBILI)
+
 
 # =====================================================
 # STARTUP: pre-carica modello e indice RAG
@@ -125,11 +144,21 @@ ARGOMENTO: simbolismo dei leoni stilofori
 CONTESTO: i leoni di marmo rosso che reggono le colonne del protiro del Duomo di Ancona
 LUOGO DI ORIGINE: Duomo di San Ciriaco, Ancona
 
-Lunghezza richiesta: circa 80-100 parole. Stile: prosa narrativa, immersiva, ricca di dettagli storici e visivi."""
+FOTO DISPONIBILI: ["Leoni_Stilofori.jpg", "Portale_Duomo.jpg", "Interno_Duomo.jpg"]
+
+Lunghezza richiesta: circa 80-100 parole. Stile: prosa narrativa, immersiva, ricca di dettagli storici e visivi.
+
+Rispondi SOLO con un JSON valido in questo formato esatto:
+{"descrizione": "il testo dell'approfondimento", "immagine": "nome_file.jpg oppure null"}
+
+REGOLE per "immagine":
+- Scegli il file dalla LISTA "FOTO DISPONIBILI" che meglio illustra l'argomento.
+- Se nessuna foto è davvero pertinente, metti null.
+- NON inventare nomi di file: usa SOLO quelli presenti nella lista."""
     },
     {
         "role": "assistant",
-        "content": """I leoni stilofori in marmo rosso del Duomo di San Ciriaco non sono semplici decorazioni, ma antichi guardiani di pietra scolpiti nel XIII secolo. Nella simbologia medievale, il leone era ritenuto l'animale che dorme con gli occhi aperti, incarnando così il Cristo risorto e la Chiesa sempre vigile contro il male. Sotto le loro possenti zampe schiacciano altre creature, a perenne monito della vittoria sui peccatori. Quel marmo rosso veronese, scelto con cura per evocare il sangue dei martiri, ha visto scorrere secoli di pellegrini e crociati in partenza dal porto di Ancona."""
+        "content": """{"descrizione": "I leoni stilofori in marmo rosso del Duomo di San Ciriaco non sono semplici decorazioni, ma antichi guardiani di pietra scolpiti nel XIII secolo. Nella simbologia medievale, il leone era ritenuto l'animale che dorme con gli occhi aperti, incarnando così il Cristo risorto e la Chiesa sempre vigile contro il male. Sotto le loro possenti zampe schiacciano altre creature, a perenne monito della vittoria sui peccatori. Quel marmo rosso veronese, scelto con cura per evocare il sangue dei martiri, ha visto scorrere secoli di pellegrini e crociati in partenza dal porto di Ancona.", "immagine": "Leoni_Stilofori.jpg"}"""
     }
 ]
 
@@ -150,10 +179,12 @@ def costruisci_prompt_approfondimento(payload_str: str):
     chunks = retrieve(
         query=query_rag,
         luogo_id=luogo if luogo else None,
-        k=2,
+        k=1,
     )
     contesto_rag = format_contesto_per_prompt(chunks)
     print(f"[/approfondimento] '{argomento}' → {len(chunks)} chunk recuperati")
+
+    foto_lista_str = json.dumps(FOTO_DISPONIBILI, ensure_ascii=False)
 
     prompt = f"""{contesto_rag}
 
@@ -162,13 +193,28 @@ ARGOMENTO: {argomento}
 CONTESTO: {contesto if contesto else "approfondimento culturale generale"}
 LUOGO DI ORIGINE: {luogo if luogo else "Ancona, Marche"}
 
-Lunghezza richiesta: circa 100 parole. Stile: prosa narrativa, immersiva, ricca di dettagli storici e visivi."""
+FOTO DISPONIBILI: {foto_lista_str}
+
+Lunghezza richiesta: circa 100 parole. Stile: prosa narrativa, immersiva, ricca di dettagli storici e visivi.
+
+Rispondi SOLO con un JSON valido in questo formato esatto:
+{{"descrizione": "il testo dell'approfondimento", "immagine": "nome_file.jpg oppure null"}}
+
+REGOLE per "immagine":
+- Scegli il file dalla LISTA "FOTO DISPONIBILI" che meglio illustra l'argomento.
+- Se nessuna foto è davvero pertinente, metti null.
+- NON inventare nomi di file: usa SOLO quelli presenti nella lista."""
     return prompt, argomento
 
 
 async def genera_approfondimento_con_retry(payload_str: str, tentativi_max: int = 2):
-    """Genera l'approfondimento e ritenta se troppo corto."""
+    """Genera l'approfondimento e ritenta se troppo corto.
+    Restituisce una tupla (descrizione, immagine) dove immagine è il nome file
+    validato contro FOTO_DISPONIBILI, oppure None."""
     prompt, argomento = costruisci_prompt_approfondimento(payload_str)
+
+    testo = ""
+    immagine = None
 
     for tentativo in range(tentativi_max):
         messages = [
@@ -185,22 +231,74 @@ async def genera_approfondimento_con_retry(payload_str: str, tentativi_max: int 
             messages=messages,
             max_tokens=1000,
             temperature=0.65 + (tentativo * 0.1),
+            response_format={"type": "json_object"},
         )
-        testo = response.choices[0].message.content.strip()
+        raw = response.choices[0].message.content.strip()
+
+        # Parse JSON con fallback robusto
+        try:
+            data = json.loads(raw)
+            testo = (data.get("descrizione") or "").strip()
+            img_raw = data.get("immagine")
+        except (json.JSONDecodeError, TypeError):
+            # Fallback estremo: se il modello non rispetta il JSON,
+            # usiamo il raw come testo e nessuna immagine.
+            testo = raw
+            img_raw = None
+
+        # Validazione anti-hallucination dell'immagine
+        if isinstance(img_raw, str) and img_raw.strip() and img_raw.strip().lower() != "null":
+            nome = img_raw.strip()
+            if nome in _FOTO_SET:
+                immagine = nome
+            else:
+                print(f"[/approfondimento] ⚠ Foto inventata scartata: '{nome}'")
+                immagine = None
+        else:
+            immagine = None
 
         n_parole = len(testo.split())
-        print(f"[Tentativo {tentativo + 1}] Argomento: '{argomento}' — {n_parole} parole")
+        print(f"[Tentativo {tentativo + 1}] Argomento: '{argomento}' — {n_parole} parole — foto: {immagine}")
 
         if n_parole >= 60:
-            return testo
+            return testo, immagine
 
-    return testo
+    return testo, immagine
 
 
 @app.get("/approfondimento/{argomento}")
 async def get_approfondimento(argomento: str):
     print(f"PAYLOAD RICEVUTO: '{argomento[:100]}...'")
-    testo = await genera_approfondimento_con_retry(argomento)
+    testo, immagine = await genera_approfondimento_con_retry(argomento)
+    return {"descrizione": testo, "immagine": immagine}
+
+
+# =====================================================
+# ENDPOINT 3: INFO RAPIDA (hotspot secondari)
+# Nessun RAG, nessun JSON parsing, nessun few-shot lungo.
+# Solo Groq diretto con prompt secco. ~80 parole.
+# =====================================================
+@app.get("/info_rapida/{argomento}")
+async def get_info_rapida(argomento: str):
+    print(f"[/info_rapida] '{argomento[:100]}...'")
+
+    prompt = f"""Descrivi brevemente questo soggetto in circa 70-80 parole.
+SOGGETTO: {argomento}
+
+Stile: prosa narrativa, immersiva, con dettagli storici e visivi.
+Niente elenchi, niente markdown, niente titoli. Solo prosa scorrevole."""
+
+    response = client.chat.completions.create(
+        model=MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM_GUIDA},
+            {"role": "user", "content": prompt},
+        ],
+        max_tokens=400,
+        temperature=0.7,
+    )
+    testo = response.choices[0].message.content.strip()
+    print(f"[/info_rapida] {len(testo.split())} parole")
     return {"descrizione": testo}
 
 

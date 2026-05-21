@@ -98,9 +98,17 @@
         {
           "id": "info_piazza",
           "tipo": "info",
-          "label": "Piazza del Papa",
+          "label": "Piazza del Plebiscito",
           "query": "Piazza_del_Plebiscito",
-          "posizione": { "x": 9.70, "y": -2.41, "z": 0.36 }
+          "posizione": { "x": 0.70, "y": 3.41, "z": -7.36 },
+          "secondari": [
+            {
+              "id": "info_piazza_papa",
+              "label": "Statua di Papa Clemente XII",
+              "query": "Statua di Papa Clemente XII in Piazza del Plebiscito ad Ancona",
+              "posizione": { "x": 18.5, "y": 2.41, "z": 1.36 }
+            }
+          ]
         }
       ]
     },

@@ -59,15 +59,19 @@ document.body.appendChild(overlay);
 
 // Altezza dei modelli in metri (il GLB viene normalizzato a questo valore)
 const HOTSPOT_ALTEZZA_INFO = 0.8;
+const HOTSPOT_ALTEZZA_INFO_SEC = 0.6;  // hotspot secondari: più piccoli
 const HOTSPOT_ALTEZZA_NAV = 1.05;
 const HOTSPOT_ANELLO_INNER = 0.5;
 const HOTSPOT_ANELLO_OUTER = 0.65;
+const HOTSPOT_ANELLO_INNER_SEC = 0.38; // anello più stretto per i secondari
+const HOTSPOT_ANELLO_OUTER_SEC = 0.50;
 let scenaCorrente = null;
 let tourData = null;
 
 // Modelli GLB, caricati una volta sola
 const modelli = {
   infoSign: null,
+  infoSignSecondario: null, // versione arancione, più piccola
   mapPointer: null,
 };
 
@@ -86,6 +90,14 @@ const SCHEDA_H = 0.82;
 const SCHEDA_SPORGENZA = 0.62;
 const SCHEDA_SOVRAPP = 0.06;
 
+// =====================================================
+// PANNELLO FOTO — appare accanto al pannello testo
+// =====================================================
+const PANNELLO_FOTO_W = 4.4;     // larghezza piano foto (m) — tweakkabile
+const PANNELLO_FOTO_H = 4.4;     // altezza di partenza, viene adattata all'aspect ratio
+const PANNELLO_FOTO_GAP = 0.5;   // spazio tra pannello testo e pannello foto
+const FOTO_BASE_PATH = '/pic/';  // dove stanno le foto (public/pic/)
+
 const pannello3D = {
   group: null,
   pianoMesh: null,
@@ -95,6 +107,15 @@ const pannello3D = {
   chiudiMesh: null,
   bottoniGroup: null,
   altezzaPiano: 0,
+};
+
+const pannelloFoto = {
+  group: null,
+  pianoMesh: null,
+  cornice: null,
+  texture: null,
+  targetOpacity: 0,
+  fileCorrente: null,
 };
 
 function creaPannello3D() {
@@ -459,6 +480,208 @@ function mostraPannello() {
 function nascondiPannello() {
   pannello3D.group.visible = false;
   clearApprofondimenti(); // schede e pannello vanno insieme
+  nascondiFoto();
+}
+
+// =====================================================
+// PANNELLO FOTO — creazione, fade-in/out, posizionamento
+// =====================================================
+// Alpha-map per angoli arrotondati del pannello foto.
+// Stesso raggio del pannello testo (40px su 1024 = ~4% del lato).
+// Chiamata una volta sola, il risultato viene riusato su ogni foto.
+function creaAlphaMapArrotondato() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1024;
+  canvas.height = 1024;
+  const ctx = canvas.getContext('2d');
+  rettArrotondato(ctx, 0, 0, canvas.width, canvas.height, 40);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.minFilter = THREE.LinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  return tex;
+}
+
+function creaPannelloFoto() {
+  const group = new THREE.Group();
+
+  // Alpha-map arrotondata (creata una volta sola, riusata su ogni foto)
+  const alphaMap = creaAlphaMapArrotondato();
+
+  // Sfondo scuro con bordo viola — disegnato su canvas come il pannello testo
+  const bgCanvas = document.createElement('canvas');
+  bgCanvas.width = 1024;
+  bgCanvas.height = 1024;
+  const bgCtx = bgCanvas.getContext('2d');
+
+  function disegnaCorniceFoto(ctx, w, h) {
+    ctx.clearRect(0, 0, w, h);
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, 'rgba(40, 20, 70, 0.92)');
+    grad.addColorStop(1, 'rgba(20, 15, 40, 0.95)');
+    ctx.fillStyle = grad;
+    rettArrotondato(ctx, 0, 0, w, h, 40);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(192, 132, 252, 0.45)';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+  }
+
+  disegnaCorniceFoto(bgCtx, bgCanvas.width, bgCanvas.height);
+  const bgTex = new THREE.CanvasTexture(bgCanvas);
+  bgTex.minFilter = THREE.LinearFilter;
+  bgTex.magFilter = THREE.LinearFilter;
+
+  // Sfondo (piano leggermente indietro, con il gradiente viola scuro)
+  const sfondoGeo = new THREE.PlaneGeometry(PANNELLO_FOTO_W, PANNELLO_FOTO_H);
+  const sfondoMat = new THREE.MeshBasicMaterial({
+    map: bgTex,
+    transparent: true,
+    opacity: 0,
+    depthTest: false,
+    alphaMap,
+  });
+  const sfondoMesh = new THREE.Mesh(sfondoGeo, sfondoMat);
+  sfondoMesh.renderOrder = 10;
+  sfondoMesh.position.z = -0.002;
+  group.add(sfondoMesh);
+
+  // Piano foto (sopra lo sfondo, con angoli arrotondati tramite alphaMap)
+  const PAD = 0.15; // margine interno tra sfondo e foto
+  const pianoGeo = new THREE.PlaneGeometry(
+    PANNELLO_FOTO_W - PAD * 2,
+    PANNELLO_FOTO_H - PAD * 2,
+  );
+  const pianoMat = new THREE.MeshBasicMaterial({
+    color: 0x111111,
+    transparent: true,
+    opacity: 0,
+    depthTest: false,
+    alphaMap,
+  });
+  const pianoMesh = new THREE.Mesh(pianoGeo, pianoMat);
+  pianoMesh.renderOrder = 11;
+  group.add(pianoMesh);
+
+  group.visible = false;
+  scene.add(group);
+
+  pannelloFoto.group = group;
+  pannelloFoto.pianoMesh = pianoMesh;
+  pannelloFoto.sfondoMesh = sfondoMesh;
+  pannelloFoto.alphaMap = alphaMap;
+  pannelloFoto.bgCanvas = bgCanvas;
+  pannelloFoto.bgCtx = bgCtx;
+  pannelloFoto.disegnaCorniceFoto = disegnaCorniceFoto;
+}
+
+const fotoLoader = new THREE.TextureLoader();
+
+// Mostra una foto. Se nomeFile è null/undefined o la foto non esiste, nasconde.
+function mostraFoto(nomeFile) {
+  if (!pannelloFoto.group) return;
+
+  if (!nomeFile) {
+    nascondiFoto();
+    return;
+  }
+
+  // Stessa foto già visibile? Niente da fare.
+  if (pannelloFoto.fileCorrente === nomeFile && pannelloFoto.group.visible) {
+    return;
+  }
+
+  const url = FOTO_BASE_PATH + nomeFile;
+  fotoLoader.load(
+    url,
+    (tex) => {
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.colorSpace = THREE.SRGBColorSpace;
+
+      // Adatto l'aspect ratio della foto
+      const img = tex.image;
+      if (img && img.width && img.height) {
+        const ratio = img.height / img.width;
+        const h = PANNELLO_FOTO_W * ratio;
+        const PAD = 0;
+
+        const { pianoMesh, sfondoMesh, alphaMap,
+                bgCanvas, bgCtx, disegnaCorniceFoto } = pannelloFoto;
+
+        // Piano foto: dimensioni adattate al ratio, con margine interno
+        pianoMesh.geometry.dispose();
+        pianoMesh.geometry = new THREE.PlaneGeometry(
+          PANNELLO_FOTO_W - PAD * 2,
+          h - PAD * 2,
+        );
+
+        // Sfondo: segue le stesse dimensioni del piano foto
+        sfondoMesh.geometry.dispose();
+        sfondoMesh.geometry = new THREE.PlaneGeometry(PANNELLO_FOTO_W, h);
+
+        // Ridisegno la cornice sul canvas sfondo con le nuove proporzioni
+        disegnaCorniceFoto(bgCtx, bgCanvas.width, bgCanvas.height);
+        sfondoMesh.material.map.needsUpdate = true;
+      }
+
+      // Dispose della vecchia texture foto
+      if (pannelloFoto.texture) pannelloFoto.texture.dispose();
+      pannelloFoto.texture = tex;
+
+      const mat = pannelloFoto.pianoMesh.material;
+      mat.map = tex;
+      mat.color.set(0xffffff);
+      mat.needsUpdate = true;
+
+      pannelloFoto.fileCorrente = nomeFile;
+      pannelloFoto.group.visible = true;
+      pannelloFoto.targetOpacity = 1;
+      posizionaPannelloFotoAccantoAlTesto();
+    },
+    undefined,
+    (err) => {
+      console.warn(`[pannelloFoto] Impossibile caricare ${url}:`, err);
+      nascondiFoto();
+    },
+  );
+}
+
+function nascondiFoto() {
+  if (!pannelloFoto.group) return;
+  pannelloFoto.targetOpacity = 0;
+  pannelloFoto.fileCorrente = null;
+}
+
+// Posiziona il pannello foto a SINISTRA dello spettatore rispetto al pannello testo,
+// centrato verticalmente. La logica: prendo il vettore camera→pannello testo,
+// e ne ricavo la perpendicolare orizzontale (la "sinistra dello spettatore").
+function posizionaPannelloFotoAccantoAlTesto() {
+  if (!pannelloFoto.group || !pannello3D.group) return;
+
+  const pos = pannello3D.group.position.clone();
+
+  // Direzione camera → pannello testo, proiettata sul piano XZ
+  const dirCamToPanel = new THREE.Vector3(
+    pos.x - camera.position.x,
+    0,
+    pos.z - camera.position.z,
+  );
+  if (dirCamToPanel.lengthSq() < 0.0001) dirCamToPanel.set(0, 0, -1);
+  dirCamToPanel.normalize();
+
+  // "Sinistra dello spettatore" = dir ruotata di -90° su Y
+  const sinistra = new THREE.Vector3(-dirCamToPanel.z, 0, dirCamToPanel.x);
+
+  // Offset totale = mezza larghezza testo + gap + mezza larghezza foto
+  const offset = (PANNELLO_W / 2) + PANNELLO_FOTO_GAP + (PANNELLO_FOTO_W / 2);
+
+  pannelloFoto.group.position.set(
+    pos.x - sinistra.x * offset,  // destra dello spettatore
+    pos.y,
+    pos.z - sinistra.z * offset,
+  );
 }
 
 // =====================================================
@@ -493,6 +716,16 @@ async function caricaModelliGLB() {
       opacita: 0.82,
     });
 
+    // Hotspot secondario → arancione, clone separato per non condividere materiali
+    const infoSecRes = await loader.loadAsync('/models/highpoly_info_sign_3d_icon.glb');
+    modelli.infoSignSecondario = infoSecRes.scene;
+    ricoloraModello(modelli.infoSignSecondario, {
+      colore: 0xff8833,
+      emissivo: 0xff5500,
+      emissiveIntensity: 0.95,
+      opacita: 0.82,
+    });
+
     const navRes = await loader.loadAsync('/models/map_pointer_3d_icon.glb');
     modelli.mapPointer = navRes.scene;
     // Pointer → azzurro
@@ -509,6 +742,7 @@ async function caricaModelliGLB() {
 
 async function inizializza() {
   creaPannello3D();
+  creaPannelloFoto();
   await caricaModelliGLB();
   const res = await fetch('/tour.json');
   tourData = await res.json();
@@ -516,7 +750,7 @@ async function inizializza() {
 }
 
 // Label "pill" dell'hotspot
-function disegnaLabelHotspot(testo, isInfo) {
+function disegnaLabelHotspot(testo, isInfo, isInfoSec = false) {
   const canvas = document.createElement('canvas');
   canvas.width = 1024; canvas.height = 256;
   const ctx = canvas.getContext('2d');
@@ -531,14 +765,20 @@ function disegnaLabelHotspot(testo, isInfo) {
   rettArrotondato(ctx, 8, 8, W - 16, H - 16, R);
   ctx.fill();
 
-  ctx.strokeStyle = isInfo
-    ? 'rgba(255, 200, 120, 0.55)'
-    : 'rgba(130, 200, 255, 0.55)';
+  // Bordo: arancione per secondari, giallo per info principale, azzurro per nav
+  let bordo;
+  if (isInfoSec) bordo = 'rgba(255, 140, 80, 0.65)';
+  else if (isInfo) bordo = 'rgba(255, 200, 120, 0.55)';
+  else bordo = 'rgba(130, 200, 255, 0.55)';
+  ctx.strokeStyle = bordo;
   ctx.lineWidth = 5;
   ctx.stroke();
 
   // Pallino-accento a sinistra
-  const accento = isInfo ? '#ffb84d' : '#5ec6ff';
+  let accento;
+  if (isInfoSec) accento = '#ff8844';
+  else if (isInfo) accento = '#ffb84d';
+  else accento = '#5ec6ff';
   ctx.fillStyle = accento;
   ctx.beginPath();
   ctx.arc(110, H / 2, 26, 0, Math.PI * 2);
@@ -581,9 +821,25 @@ function disegnaLabelHotspot(testo, isInfo) {
 // HOTSPOT (info + navigazione)
 // =====================================================
 function creaHotspot(dati) {
-  const isInfo = dati.tipo === 'info';
-  const modello = isInfo ? modelli.infoSign : modelli.mapPointer;
-  const altezzaTarget = isInfo ? HOTSPOT_ALTEZZA_INFO : HOTSPOT_ALTEZZA_NAV;
+  const isInfoSec = dati.tipo === 'info_secondario';
+  const isInfo = dati.tipo === 'info' || isInfoSec;
+
+  // Scelta modello: principale (giallo), secondario (arancione), nav (pointer)
+  let modello;
+  if (isInfoSec) modello = modelli.infoSignSecondario;
+  else if (isInfo) modello = modelli.infoSign;
+  else modello = modelli.mapPointer;
+
+  let altezzaTarget;
+  if (isInfoSec) altezzaTarget = HOTSPOT_ALTEZZA_INFO_SEC;
+  else if (isInfo) altezzaTarget = HOTSPOT_ALTEZZA_INFO;
+  else altezzaTarget = HOTSPOT_ALTEZZA_NAV;
+
+  // Colori dell'anello e del fallback
+  let coloreAccento;
+  if (isInfoSec) coloreAccento = 0xff7722;
+  else if (isInfo) coloreAccento = 0xffaa00;
+  else coloreAccento = 0x00aaff;
 
   let group = new THREE.Group();
   let modelloClone = null;
@@ -610,8 +866,7 @@ function creaHotspot(dati) {
   } else {
     // Fallback se il GLB non carica
     const geo = new THREE.SphereGeometry(0.4, 16, 16);
-    const colore = isInfo ? 0xffaa00 : 0x00aaff;
-    const mat = new THREE.MeshBasicMaterial({ color: colore });
+    const mat = new THREE.MeshBasicMaterial({ color: coloreAccento });
     const mesh = new THREE.Mesh(geo, mat);
     mesh.userData.posBase = mesh.position.clone();
     group.add(mesh);
@@ -622,15 +877,18 @@ function creaHotspot(dati) {
   group.userData = {
     ...dati,
     isInfo,
+    isInfoSec,
     modello: modelloClone,
     centroY: dati.posizione.y,
     faseAnim: Math.random() * Math.PI * 2, // sfasamento del galleggiamento
   };
 
-  // Anello attorno all'hotspot
-  const anelloGeo = new THREE.RingGeometry(HOTSPOT_ANELLO_INNER, HOTSPOT_ANELLO_OUTER, 32);
+  // Anello attorno all'hotspot (più stretto per i secondari)
+  const anelloInner = isInfoSec ? HOTSPOT_ANELLO_INNER_SEC : HOTSPOT_ANELLO_INNER;
+  const anelloOuter = isInfoSec ? HOTSPOT_ANELLO_OUTER_SEC : HOTSPOT_ANELLO_OUTER;
+  const anelloGeo = new THREE.RingGeometry(anelloInner, anelloOuter, 32);
   const anelloMat = new THREE.MeshBasicMaterial({
-    color: isInfo ? 0xffaa00 : 0x00aaff,
+    color: coloreAccento,
     side: THREE.DoubleSide,
     transparent: true,
     opacity: 0.6,
@@ -641,12 +899,14 @@ function creaHotspot(dati) {
   anello.userData.isAnello = true;
   group.add(anello);
 
-  // Label
-  const tex = disegnaLabelHotspot(dati.label, isInfo);
+  // Label (passo isInfoSec per accentare in arancione)
+  const tex = disegnaLabelHotspot(dati.label, isInfo, isInfoSec);
   const labelMat = new THREE.SpriteMaterial({ map: tex, transparent: true });
   const labelSprite = new THREE.Sprite(labelMat);
-  labelSprite.scale.set(4, 1, 1);
-  labelSprite.position.set(0, 1.2, 0);
+  // Label più piccola per i secondari
+  const labelScale = isInfoSec ? 3.2 : 4;
+  labelSprite.scale.set(labelScale, labelScale / 4, 1);
+  labelSprite.position.set(0, isInfoSec ? 0.95 : 1.2, 0);
 
   group.add(labelSprite);
   hotspotGroup.add(group);
@@ -668,7 +928,15 @@ function caricaScena(idScena) {
       material.needsUpdate = true;
       hotspotGroup.clear();
       nascondiPannello();
-      scena.hotspot.forEach(h => creaHotspot(h));
+      scena.hotspot.forEach(h => {
+        creaHotspot(h);
+        // Espando i secondari annidati come hotspot autonomi nella scena
+        if (h.secondari && Array.isArray(h.secondari)) {
+          h.secondari.forEach(sec => {
+            creaHotspot({ ...sec, tipo: 'info_secondario' });
+          });
+        }
+      });
       overlay.style.opacity = 0;
     });
   }, 500);
@@ -689,6 +957,15 @@ async function fetchDescrizione(luogo_id) {
 async function fetchApprofondimento(argomento) {
   try {
     const res = await fetch(`http://localhost:8000/approfondimento/${encodeURIComponent(argomento)}`);
+    return await res.json();
+  } catch {
+    return { descrizione: "Errore di connessione." };
+  }
+}
+
+async function fetchInfoRapida(argomento) {
+  try {
+    const res = await fetch(`http://localhost:8000/info_rapida/${encodeURIComponent(argomento)}`);
     return await res.json();
   } catch {
     return { descrizione: "Errore di connessione." };
@@ -735,9 +1012,23 @@ window.addEventListener('click', async (e) => {
     return;
   }
 
+  // Hotspot info_secondario → solo descrizione breve, niente schede, niente foto
+  if (dati.tipo === 'info_secondario') {
+    clearApprofondimenti();
+    nascondiFoto();
+    posizionaPannelloAccantoA(obj.position);
+    disegnaPannello(dati.label, "Sto interpellando la guida...");
+    mostraPannello();
+
+    const risposta = await fetchInfoRapida(dati.query);
+    disegnaPannello(dati.label, risposta.descrizione);
+    return;
+  }
+
   // Hotspot info → descrizione + schede
   if (dati.tipo === 'info') {
     clearApprofondimenti();
+    nascondiFoto(); // nuovo hotspot = niente foto fino a un approfondimento mirato
     posizionaPannelloAccantoA(obj.position);
     disegnaPannello(dati.label, "Sto interpellando la guida storica...");
     mostraPannello();
@@ -761,10 +1052,12 @@ window.addEventListener('click', async (e) => {
     disegnaPannello(dati.label, "Approfondimento in corso...");
     // disegnaPannello ridisegna le schede, quindi riapplico la selezione
     selezionaScheda(obj);
+    nascondiFoto(); // la vecchia foto sparisce durante il loading
 
     const risposta = await fetchApprofondimento(dati.query);
     disegnaPannello(dati.label, risposta.descrizione);
     selezionaScheda(obj);
+    mostraFoto(risposta.immagine); // null → resta nascosta
     return;
   }
 });
@@ -796,6 +1089,32 @@ function animate() {
       pannello3D.group.position.y,
       camera.position.z
     );
+  }
+
+  // Pannello foto: segue il pannello testo, guarda l'utente, fade in/out
+  if (pannelloFoto.group) {
+    const matPiano = pannelloFoto.pianoMesh.material;
+    const matSfondo = pannelloFoto.sfondoMesh.material;
+    const target = pannelloFoto.targetOpacity;
+    matPiano.opacity += (target - matPiano.opacity) * 0.12;
+    matSfondo.opacity += (target - matSfondo.opacity) * 0.12;
+
+    if (target === 0 && matPiano.opacity < 0.02) {
+      matPiano.opacity = 0;
+      matSfondo.opacity = 0;
+      pannelloFoto.group.visible = false;
+    } else if (target > 0) {
+      pannelloFoto.group.visible = true;
+    }
+
+    if (pannelloFoto.group.visible) {
+      posizionaPannelloFotoAccantoAlTesto();
+      pannelloFoto.group.lookAt(
+        camera.position.x,
+        pannelloFoto.group.position.y,
+        camera.position.z,
+      );
+    }
   }
 
   // Animazioni hotspot
