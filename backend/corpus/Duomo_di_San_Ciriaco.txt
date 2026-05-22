@@ -1,3 +1,6 @@
+
+## Duomo di Ancona
+
 Il duomo di Ancona è dedicato a san Ciriaco ed è la cattedrale metropolitana dell'arcidiocesi di Ancona-Osimo. È una chiesa medioevale in cui lo stile romanico si fonde con quello bizantino, evidente nella pianta a croce greca e in molte opere d'arte conservate al suo interno. Sorge in scenografica posizione sulla sommità del Colle Guasco, già occupata dall'acropoli della città greco-dorica, da dove domina tutta la città di Ancona e il suo golfo.
 
 Nonostante mostri un aspetto fortemente unitario, all'esame attento il Duomo mostra le testimonianze della storia secolare della sua costruzione, che va dal VI secolo, in cui sorse come basilica paleocristiana, all'XI, quando diventò cattedrale, al XII, epoca in cui venne ampliato con pianta a croce greca, al XIII secolo, quando fu voltata la cupola e realizzato il portale principale e il monumentale protiro, con le sculture simboliche dei leoni stilofori, divenuti presto uno dei simboli della città.
@@ -7,13 +10,13 @@ Il 30 maggio 1999 si è festeggiato il millenario della dedica della cattedrale,
 
 All'interno del Duomo è custodito il quadro della Madonna Regina di tutti i Santi, oggetto di particolare devozione e oggetto di un evento che la tradizione cattolica reputa prodigioso, denominato "miracolo mariano di San Ciriaco".
 
-Storia
+## Storia
 
 L'edificio del Duomo ha una storia di più di 2000 anni, in cui si possono distinguere cinque eventi principali, elencati di seguito.
 
 Nelle sezioni seguenti si esaminano dettagliatamente le quattro fasi segnate da questi eventi e, infine, gli interventi minori successivi, dal XVII secolo al XXI, consistenti in sovrapposizioni decorative, adeguamenti liturgici e restauri.
 
-Il tempio di Afrodite
+### Il tempio di Afrodite
 
 (Giovenale, satira 4, 40)
 
@@ -25,7 +28,7 @@ In particolare, il carme 36 di Catullo, da cui è riportato il brano sopra, ci p
 
 Il passo di Giovenale, invece, ci informa sulla localizzazione del tempio, sulla sommità di una collina e dominante sul mare: in questo senso si deve intendere l'espressione quam dorica sustinet Ancon ("che la dorica Ancona innalza"). Il "rombo adriatico" di cui si parla nel testo è un pesce dell'ordine dei Pleuronectiformi o pesci piatti.
 
-La scoperta
+#### La scoperta
 
 Nel 1932, alcuni saggi eseguiti nei pressi dell'abside sinistra del duomo permisero di scoprire i resti di una muratura costituita da grandi blocchi di arenaria in filari pseudoisodomi; subito alcuni studiosi ipotizzarono che tale struttura appartenesse a un edificio templare, forse quello dedicato a Venere citato da Catullo e Giovenale. Che l'edificio cristiano fosse stato costruito sopra al tempio di Venere/Afrodite era già stato ipotizzato dalla storiografia, pur in mancanza di testimonianze archeologiche. I resti del tempio sono sono visibili dalla Cripta delle Lacrime. 
 
@@ -35,13 +38,13 @@ Il tempio fu subito identificato con quello citato da Catullo e Giovenale e rapp
 
 Mentre si procedeva agli scavi all'interno della chiesa, nel piazzale del Duomo, sconvolto dai bombardamenti della Seconda Guerra Mondiale, furono notate colonne di arenaria scanalate, allora interpretate come colonne del tempio greco.
 
-Le ipotesi ricostruttive del Tempio di Afrodite
+#### Le ipotesi ricostruttive del Tempio di Afrodite
 
 Dell'antico edificio furono rinvenute le fondazioni sotto al Duomo, esattamente in corrispondenza con la crociera e il braccio sinistro del transetto. Tali fondazioni sono costituite da blocchi di arenaria sovrapposti; quelle perimetrali compongono un rettangolo di metri 19 X 32, hanno una larghezza di metri 2,50 e sono conservate per un'altezza massima di circa due metri. Parallele ed interne a questo rettangolo, e con pianta a Π (pi greco), sono rimaste tracce della fondazione della cella. Non tutti i blocchi di arenaria delle fondazioni si sono ritrovati; dove essi mancano, sono comunque rimaste le trincee ove erano allocati, cosa che permette di ricostruire tutto il sistema fondante del tempio e di formulare ipotesi ricostruttive del suo aspetto originario. Importante, a tal proposito, è la presenza di trincee di collegamento tra le fondazioni esterne e quelle interne, che permette di risalire al numero delle colonne di ogni lato.
 
 Secondo le ipotesi comunemente accettate, l'edificio sacro era un periptero esastilo con l'ingresso rivolto verso sud-est, ossia verso la città e la strada di accesso all'acropoli; in discussione è l'ordine architettonico e l'epoca di realizzazione: esistono a riguardo tre ipotesi ricostruttive del tempio di Afrodite, esposte di seguito.
 
-La basilica di San Lorenzo
+### La basilica di San Lorenzo
 
 Il tempio di Afrodite, che con la romanizzazione della città aveva assunto il nome di Tempio di Venere, continuava a dominare l'antica acropoli, anche dopo l'introduzione del Cristianesimo in Ancona, che fu precoce. L'antica origine della prima comunità cristiana anconetana è testimoniata da sant'Agostino, che già nel IV secolo disse essere "antichissima", in quanto nata con l'arrivo in città di una reliquia di Santo Stefano protomartire e dunque risalente al I secolo. Tale reliquia, una pietra che colpì il martire durante la lapidazione, attualmente esposta nella Cripta delle Lacrime.
 
@@ -51,7 +54,7 @@ Al termine della Guerra greco-gotica, Ancona entrò a far parte dell'Impero biza
 
 In base alle testimonianze ritrovate, si possono ricostruire le caratteristiche salienti della basilica di San Lorenzo: essa aveva pianta basilicale a tre navate, corrispondente all'attuale transetto, con l'ingresso verso sud-est, dove attualmente è il braccio del Crocifisso e dove era situato anche il prospetto anteriore del tempio classico. Questo ingresso verosimilmente era il punto di arrivo dell'attuale Scalone Nappi.
 
-La basilica di San Lorenzo diventa cattedrale
+### La basilica di San Lorenzo diventa cattedrale
 
 Tra la fine del X secolo e l'inizio dell'XI, Ancona iniziò il suo cammino di repubblica marinara. Nel frattempo, l'antica cattedrale di Santo Stefano, situata fuori dalle mura, era stata danneggiata nel corso degli attacchi saraceni dell'841 e dell'850 e da tempo non era più ritenuta sicura. Inoltre, la rinascita commerciale e marittima della città aveva fatto emergere la volontà di avere una cattedrale nel posto più visibile dalla città e dal porto: il Colle Guasco.
 
@@ -59,7 +62,7 @@ Tutto ciò portò alla decisione di trasformare in cattedrale la basilica di San
 
 Ben presto, nel 1017, i corpi dei santi protettori San Marcellino e San Ciriaco vennero trasferiti nella cripta all'interno della basilica e per accoglierli fu costruita la Cripta dei Santi Protettori.
 
-Dalla pianta basilicale alla croce greca
+### Dalla pianta basilicale alla croce greca
 
 Alla fine del XII secolo, Ancona aveva da pochi anni superato vittoriosa il terribile assedio del 1173 e il legame con l'Impero d'Oriente e con il suo imperatore Manuele I Comneno era più saldo che mai. Ciò portò al consolidamento dei traffici marittimi della città e alla conseguente crescita demografica; con quest'onda di fiducia nel futuro, si decise di attuare importanti lavori di ampliamento della cattedrale, eseguiti tra la fine del XII e l'inizio del XIII secolo. Si scelse di aggiungere un corpo trasversale ortogonale al preesistente, trasformando la precedente pianta basilicale a tre navate in una croce greca, anch'essa a tre navate. Non deve sorprendere l'adozione di questa planimetria, rarissima in Europa occidentale e tipica bizantina, se si pensa agli intensi rapporti che legavano Ancona e l'Impero d'Oriente.
 
@@ -71,7 +74,7 @@ All'interno, il braccio di sinistra fu nel 1158 delimitato da plutei, quando era
 
 La pianta a croce greca, i capitelli e le due serie di plutei sono gli elementi di arte bizantina che improntano di sé tutta la cattedrale e sono prova degli intensi contatti che la città, ormai avviata repubblica marinara, aveva sviluppato con l'Impero d'Oriente e in genere con tutti i centri del Mediterraneo orientale.
 
-Costruzione della cupola e del protiro
+### Costruzione della cupola e del protiro
 
 Intorno alla metà del Duecento, venne realizzato il protiro, con i monumentali leoni stilofori, divenuti in breve uno dei simboli della città. Inoltre, sempre nello stesso periodo, la cupola eretta alla fine del XII secolo venne sostituita da una più alta e di stile gotico, a quarto di sesto acuto e divisa in dodici spicchi da possenti archi costolonati. Si tratta di una delle più antiche d'Italia, importante passo in avanti nella graduale riscoperta della perduta tecnica romana di elevazione delle cupole. Per non alterare l'armonia romanica dell'esterno dell'edificio, gli archi rampanti furono mascherati all'interno delle navate laterali, che dovettero per questo motivo essere sopraelevate. Si spiega così la presenza di finestre che si aprono tra la navata centrale e quelle laterali, altrimenti ingiustificata. La cupola, all'interno, si raccorda al quadrato della crociera mediante quattro pennacchi sferici, elementi tipici dell'architettura bizantina. Sui pennacchi si trovano angeli oranti con le mani alzate al cielo, che simbolicamente reggono la cupola; sono anch'essi di arte bizantina. Tutto ciò fa della cupola un riuscito connubio tra arte gotica e arte bizantina. Giorgio Vasari attribuisce la cupola a Margaritone d'Arezzo; quest'idea oggi non trova più seguito. 
 
@@ -79,7 +82,7 @@ Tra il XIII e il XIV secolo la basilica cambiò denominazione e venne dedicata a
 
 Nel 1391 fu edificata la cappella del coro, in prosecuzione del braccio longitudinale, opera dello scultore senese Giovanni di Stefano, grazie al lascito di Egidio Albornoz.
 
-Periodo rinascimentale
+### Periodo rinascimentale
 
 Nel XV secolo venne rinnovata la cappella del coro e costruite le due cappelle a sinistra e a destra di esso, in prosecuzione delle navate laterali del braccio longitudinale. La pianta della basilica assunse allora la forma che ancor oggi conserva. Nella cappella di sinistra (del Sacramento) lavorarono importanti artisti rinascimentali: nel 1450 Piero della Francesca, residente ad Ancona, affrescò sulla parete della cappella uno Sposalizio della Vergine e nel 1509 Giovanni Dalmata realizzò il monumento a Girolamo Ginelli.
 
@@ -89,11 +92,11 @@ Nel 1599 i plutei che facevano da transenne nel braccio sinistro vennero rimossi
 
 Sempre nel 1599 gli antichi portoni bronzei dell'ingresso principali vennero rimossi e fusi per finanziare il restauro del campanile e della sua cupola, che erano stati danneggiati da un incendio.
 
-Interventi seicenteschi
+### Interventi seicenteschi
 
 Nel 1646, il vescovo Gallo, volendo realizzare una nuova scala d'accesso al braccio destro della chiesa, centrale e più ampia delle due precedenti, laterali, fece smontare gli antichi plutei; gli otto che si trovavano nella navata centrale furono eliminati, mentre gli otto laterali furono riposizionati, probabilmente senza rispettare perfettamente la loro posizione originale; inoltre vennero rimossi i pilastrini e l'architrave sovrapposti alla serie di plutei. Alcuni di questi pilastrini vennero utilizzati per realizzare l'altare della cappella di San Lorenzo.
 
-Le opere di Vanvitelli e il nuovo coro
+### Le opere di Vanvitelli e il nuovo coro
 
 Dal 1727 al 1731, nominato da papa Clemente XII, fu vescovo di Ancona Prospero Lambertini, futuro papa Benedetto XIV. Grazie al suo interessamento, vennero effettuati importanti lavori in cattedrale. In particolare, si intervenne nella zona posta al termine della navata principale, in cui venne posto un nuovo, monumentale altar maggiore, che con gli slanciati candelabri d'argento sovrapposti aveva un'altezza tale da schermare parzialmente il coro cinquecentesco retrostante; in tal modo si ripristinò otticamente la percezione della pianta a croce greca, che era stata alterata nel periodo rinascimentale con il prolungamento del braccio longitudinale necessario a realizzare la cappella del coro. Probabilmente la progettazione dell'altare si deve al Vanvitelli. Il coro ligneo, assai rovinato, fu rinnovato e sulla parete di fondo fu sostituita la statua manierista del Tibaldi, rappresentante Cristo risorto, con l'attuale pala d'altare di Ercole Fava, dello stesso soggetto. Inoltre, sulla parete di fondo furono aperte due finestre ai lati della pala d'altare, poi murate agli inizi del Novecento, nel corso del restauro di Giuseppe Sacconi.
 
@@ -103,13 +106,13 @@ Nel 1748, ai lati del nuovo altar maggiore, in segno di riconoscenza nei confron
 
 Nel 1796, nell'imminenza dell'arrivo dell'esercito napoleonico, centinaia di fedeli furono testimoni del prodigio della Madonna del Duomo.
 
-Interventi della prima metà dell'Ottocento
+### Interventi della prima metà dell'Ottocento
 
 Nel 1834, per realizzare la scalinata centrale e rinnovare gli ingressi alla cripta, furono rimossi dal braccio sinistro del transetto i plutei del 1158, risalenti al tempo del vescovo Lamberto. Nello stesso anno, su disposizione del cardinale Nembrini, fu inaugurato il primo nucleo del Museo Diocesano, ove vennero raccolte tutte le pietre ornate e scritte, tutti i frammenti e i cimeli che avevano relazione con la Cattedrale, tra cui anche i plutei di Lamberto; la prima sede fu la Cripta delle Lacrime, sotto al braccio destro del transetto.
 
 Nel 1835 l'architetto Niccolò Matas restaurò il campanile e fece nuovamente ricoprire di rame la cupola, di cui rifece il lanternino.
 
-Il restauro di Giuseppe Sacconi
+### Il restauro di Giuseppe Sacconi
 
 Tra il 1883 e il 1901 la basilica fu restaurata da Giuseppe Sacconi; questo intervento fu davvero radicale, in quanto il duomo fu riportato all'originario, austero, aspetto medievale.
 
@@ -119,7 +122,7 @@ Oltre all'edicola del Vanvitelli, Sacconi rispettò anche le opere dovute a papa
 
 Come si vede, Sacconi non portò il ripristino delle antiche forme all'eccesso, ma compì scelte diverse caso per caso, rispettando le opere che, pur non originarie, avevano maggior valore artistico e non compromettevano la spazialità medievale, oppure la cui demolizione avrebbe costretto ad un ripristino arbitrario.
 
-XX secolo
+### XX secolo
 
 Nel giorno d'inizio della Prima guerra mondiale, il 24 maggio 1915, il bombardamento navale operato dalla flotta austro-ungarica inflisse gravi danni alla Cappella del Sacramento, che venne restaurata e in parte ricostruita nel 1920; in quell'occasione forse andarono perduti gli affreschi di Piero della Francesca, che già nell'Ottocento erano stati coperti da intonaco. Nel bombardamento venne distrutto il lanternino della cupola; fu pesantemente danneggiato inoltre l'organo del XVIII secolo, opera del celebre organaro Gaetano Callido, e venne colpito il monumento sepolcrale quattrocentesco del beato Girolamo Ginelli. Nel 1919, a guerra finita, la cappella fu ricostruita e le opere danneggiate furono restaurate, anche grazie ai solleciti della “Brigata degli amici dell'arte - Accolta dei Trenta”. Il monumento del beato Girolamo Ginelli fu ricostruito utilizzando i frammenti in cui era stato ridotto, e fu posto al termine della navata sinistra, appena fuori dalla cappella in cui si trovava originariamente.
 
@@ -131,7 +134,7 @@ Il terremoto del 1972 provocò danni di piccola entità, a causa dei quali, tutt
 
 Nel 1979 fu effettuata la ricognizione del corpo di San Ciriaco, eseguita da un medico e alla presenza di uno storico della chiesa e di un esperto latinista, che provò la verità dell'antica tradizione relativa al martirio con ingestione di piombo fuso.
 
-XXI secolo
+### XXI secolo
 
 Tra il 1999 e il 2000 fu celebrato il millenario del duomo di Ancona; tale anniversario non era riferito alla data di costruzione dell'edificio sacro, il cui primo nucleo risale al VI secolo, ma al momento in cui esso diventò cattedrale. Le celebrazioni culminarono con la visita nel capoluogo dorico di papa Giovanni Paolo II che celebrò messa all'interno della cattedrale e allo stadio del Conero. Nell'occasione l'arcidiocesi di Ancona e il comune dorico organizzarono le mostre Ancona e la sua cattedrale, rappresentazioni grafiche nel tempo e Libri di pietra. Mille anni della cattedrale di Ancona tra Oriente e Occidente; quest'ultima, tenutasi al Lazzaretto, ha celebrato gli intensi contatti tra l'arte medievale anconitana e quella dei paesi del Mediterraneo orientale.
 
@@ -145,7 +148,7 @@ Sempre nel 2022, nella Cripta delle Lacrime furono collocate importati reliquie 
 
 Esse sono descritte nella sezione Cripta delle Lacrime.
 
-Descrizione
+## Descrizione
 
 Il duomo costituisce uno dei più importanti esempi di arte romanica in Italia, in cui si fondono elementi bizantini, lombardi e gotici.
 
@@ -157,19 +160,19 @@ Caratteristiche geografiche di Ancona molto note sono la possibilità di vedere 
 
 (Sismondi, Histoire des républiques italiennes du Moyen âge)
 
-Facciata
+### Facciata
 
 La facciata, tripartita, è preceduta da un'ampia scalinata, al di sopra della quale si alza il duecentesco protiro, sovrastato da un rosone con cornice romanico-lombarda e affiancato da due monofore. Sopra al rosone si trova un bassorilievo che raffigura il Redentore, con la scritta In principium erat verbum. Sotto al protiro si apre il portale principale della chiesa, profondamente strombato. Il coronamento della facciata è caratterizzato da un doppio filare di denti di sega e da archetti ciechi di stile lombardo.
 
 Il nome dell'artista che progettò protiro e portale è ignoto; avrebbe potuto rivelarlo un'iscrizione che era presente sulla lunetta, ma essa fu rimossa nel XVI secolo. In mancanza di informazioni precise, il protiro e il portale sono attribuiti da Giorgio Vasari a Margaritone d'Arezzo, da Giuseppe Sacconi a Giorgio da Como e da Arthur Kingsley Porter a Mastro Filippo. Lo storico dell'arte Pietro Zampetti ha dimostrato che nessuna di queste attribuzioni è plausibile; egli sostiene però che, anche se le fonti non consentono di conoscere il nome dell'artista che li ha realizzati, è invece possibile capirne lo spirito e la grandezza, che l'osservazione del protiro e del portale rende evidenti, più di qualsiasi altra documentazione: egli prese dallo stile romanico e da quello gotico ciò che ritenne utile, "senza lasciarsi dominare, ma piuttosto dominando l'uno e l'altro, senza alcuna soggezione stilistica". Ciò rende la facciata del Duomo un'opera originale, senza possibilità di riscontro, che ha lo scopo di abbracciare i fedeli di terra e di mare e di convogliare i loro sguardi verso l'ingresso della chiesa, come detto poco sopra.
 
-Portale
+#### Portale
 
 Il portale, costruito in pietra bianca del Conero e marmo rosso di Verona, è composto da cinque archi che diventano progressivamente più a sesto acuto dal più esterno al più interno. Esso presenta una profonda strombatura caratterizzata da piedritti ove sono addossate colonne lisce e una tortile, reggenti cinque archi ogivali su cui sono posti rilievi in marmo greco o proconnesio con immagini simboliche. Tra i cinque archi si dispongono quattro costoloni retti da altrettante colonne; ciò fa sì che sia a destra, sia a sinistra dell'accesso ci siano nove colonne. Si elencano di seguito le sculture sui cinque archi, a partire dal più interno.
 
 L'interpretazione del programma iconografico simbolico dei cinque archi era all'epoca della costruzione facilmente ricavabile da qualunque fedele, a cui comunicava il difficile percorso verso il raggiungimento della salvezza, rappresentata dalle figure poste al centro dei vari archi e dalla gloria celeste raffigurata nell'arco più esterno. Il percorso verso queste alte mete viene mostrato come un'evoluzione personale, fatta di varie fasi, rappresentate dalle varie figure simboliche.
 
-Protiro
+#### Protiro
 
 Il protiro, di ampiezza molto maggiore del portale, è caratterizzato da un arco a tutto sesto, sorretto da quattro colonne. Quelle anteriori, a sezione ottagonale, poggiano su leoni stilofori di marmo rosso di Verona, accovacciati e con lo sguardo rivolto verso chi sta per entrare nella chiesa; i due leoni spiccano per un realismo raro nella scultura medievale, e in ciò si avvicinano all'arte classica. Le colonne posteriori, aggiunte nel Settecento dal Vanvitelli, poggiano su basamento.
 
@@ -177,7 +180,7 @@ Il leone di sinistra affonda i suoi artigli su un ariete, mentre quello di destr
 
 L'ampia volta a tutto sesto del protiro è in marmo rosso di Verona ed è sostenuta da architravi che poggiano su due telamoni in marmo bianco e che terminano verso l'esterno con due draghi affrontati e con i colli intrecciati; sul culmine della volta è presente una protome di leone che ruggisce, rivolto verso il basso. Nel sottarco sono quattro rilievi rappresentanti i simboli degli Evangelisti, che come è usuale sono mutuati dalla visione veterotestamentaria del profeta Ezechiele, riproposta nella descrizione neotestamentaria dei "quattro esseri viventi" contenuta nell'Apocalisse di Giovanni e infine ripresa e interpretata da san Girolamo.
 
-Prospetti laterali
+###Prospetti laterali
 
 Tutt'intorno, l'edificio si presenta come una poderosa e luminosa massa in pietra bianca del Conero e, nella facciata principale, in marmo greco, movimentata dalle absidi sporgenti dai transetti e dall'alzarsi del piano della navata mediana; il tutto è incentrato sullo slancio della cupola nella crociera. Una fine decorazione ad archetti pensili di gusto lombardo profila tutte le superfici e crea bei giochi di chiaroscuri.
 
@@ -185,7 +188,7 @@ L'abside del braccio sinistro ha un cornicione con archetti pensili le cui colon
 
 Sul fianco destro del braccio longitudinale si aprono due portali laterali; è stato ipotizzato che il più vicino all'ingresso, con un piccolo protiro, sia stato originariamente posto sulla facciata principale, prima della costruzione del protiro attuale. Questo portale presenta sculture simboliche simili a quelle del portale principale, tra cui due basilischi; ciascuno di essi si volta indietro atterrito perché ghermito da due grifoni. La stessa scena si ripete con due arpie, anch'esse messe in fuga da basilischi.
 
-Campanile
+### Campanile
 
 Isolato dalla chiesa, sorge il campanile di cui si hanno notizie fin dal 1314; esso è stato realizzato utilizzando una torre di guardia duecentesca.
 
@@ -195,13 +198,13 @@ Le campane del Duomo sono quattro, descritte di seguito.
 
 Riccardo Bacchelli, nell'Italia per terra e per mare (1953) consiglia il lettore di recarsi a San Ciriaco verso l'ora del tramonto nel momento in cui si sciolgono le campane.
 
-Cupola
+### Cupola
 
 San Ciriaco ha una delle più antiche cupole medievali d'Italia. Di forma ogivale con tamburo dodecagonale poggiante su un basamento a pianta quadrata decorato ad archi, venne alzata nell'incrocio dei bracci nel XIII secolo; è a quarto di sesto acuto, ossia il centro di curvatura è collocato ad una distanza pari ad 1/4 della corda dal punto d'imposta. Rappresenta uno degli sporadici esempi nell'architettura del periodo in cui si vede una cupola posta a coronamento di una chiesa, e non di un battistero; altri esempi sono le cupole della basilica di Sant'Antonio di Padova  (1235) e quelle della basilica di San Marco a Venezia (1094, ricostruite nel XIII secolo). Da alcuni viene attribuita a Margaritone d'Arezzo (1270).
 
 Nel XVI secolo venne realizzata la copertura in rame che ancor oggi la caratterizza nel panorama cittadino.
 
-Interno
+### Interno
 
 L'interno è a croce greca a tre navate, con tre campate in ogni braccio. Come in tutte le cattedrali romaniche, l'interno è dominato da giochi di luci e di ombre, in cui l'ombra non è l'inverso della luce, ma serve a metterla in risalto; i raggi del sole, che entrano dai rosoni e dalle monofore, sono il simbolo della presenza di Dio, mettono in risalto le architetture e invitano i fedeli al raccoglimento.
 
@@ -215,7 +218,7 @@ Le navate centrali sono coperte da pregiate volte lignee a carena di nave rovesc
 
 Nella pavimentazione sono segnati i lati dell'antico Tempio di Afrodite, con fasce di pietra rossa; una lastra di vetro, in corrispondenza di una colonna, permette di vedere un piccolo tratto delle fondazioni del tempio.
 
-Braccio longitudinale
+#### Braccio longitudinale
 
 Il braccio longitudinale termina con il presbiterio, dietro al quale si trova la cappella del coro, realizzata nel XIV secolo per volere testamentario del cardinale-guerriero Egidio Albornoz, il cui stemma infatti si trova sull'arco trionfale; la costruzione di questa cappella, prolungando il corpo longitudinale, alterò la percezione della planimetria a croce greca. Nel 1464 vennero tumulati dietro all'altare i precordi di papa Pio II, morto ad Ancona in procinto di imbarcarsi alla guida di una spedizione militare volta a contrastare i turchi ottomani, che dopo aver conquistato Costantinopoli stavano per prendere possesso di tutto l'Impero bizantino. Nel Settecento, il vescovo Prospero Lambertini, futuro papa Benedetto XIV, rinnovò la cappella del coro e fece realizzare un nuovo, monumentale altare maggiore, che schermava e metteva in ombra la cappella retrostante, ristabilendo otticamente l'armonia della croce greca; lo smembramento di questo altare, avvenuto nel 2022, e il nuovo impianto di illuminazione hanno annullato questa correzione ottica rendendo il coro completamente visibile, cosa che ha suscitato vibranti proteste. Si è ipotizzato che anche questo braccio, come i due laterali, terminasse in origine con un'abside, demolita durante i lavori di costruzione del  coro. L'iscrizione che corre lungo il fregio della cappella del coro ricorda il committente della sua costruzione:
 
@@ -225,7 +228,7 @@ A sinistra e a destra del coro si aprono rispettivamente la cappella del Sacrame
 
 Si segnalano i seguenti monumenti sepolcrali rinascimentali collocati nel braccio longitudinale. 
 
-Braccio destro
+#### Braccio destro
 
 I bracci laterali terminano con presbiteri sopraelevati su cripte e terminanti con absidi. Il braccio destro è dedicato al Crocifisso, e prende nome dal crocifisso ligneo che si erge dietro all'altare. Quello attualmente presente, del XVIII secolo, proviene dalla Chiesa del Gesù e sostituisce quello distrutto a causa dei bombardamenti della Seconda guerra mondiale, che era un dipinto su tavola del XIII secolo di arte bizantina, attribuito a Giunta Pisano e proveniente dalla chiesa di San Francesco ad Alto. Nel braccio destro è posto l'organo, del 1955, che sostituisce quello originario del XVII secolo, di Gaetano Callido, distrutto dai bombardamenti. 
 
@@ -241,7 +244,7 @@ La cripta delle Lacrime si trova sotto il braccio del Crocifisso ed è stata cos
 
 All'interno della cripta sono esposte due importanti reliquie:
 
-Braccio sinistro
+#### Braccio sinistro
 
 Il braccio sinistro, anch'esso terminante con un'abside, è dedicato alla Madonna, in quanto accoglie una sfarzosa edicola marmorea del 1739, opera dell'architetto Vanvitelli caratteristica per la pianta ellittica. Essa ospita la venerata immagine della "Regina di tutti i Santi", sino a quel momento esposta nella cripta dei Protettori. Questa immagine venne donata alla chiesa nel 1615 dal mercante veneziano Bortolo, come ex-voto per aver ottenuto la salvezza del figlio, che era caduto in mare al largo della città e che le onde avevano riportato sull'imbarcazione. Il dipinto è stato al centro del miracolo mariano di San Ciriaco. L'edicola aveva anche lo scopo di permettere l'esposizione delle reliquie conservate nella chiesa.
 
@@ -249,7 +252,7 @@ Ogni castello di Ancona (Agugliano, Camerano, Camerata Picena, Castel d'Emilio, 
 
 Alla destra dell'edicola si trova una croce astile devozionale, opera moderna di Valeriano Trubbiani, realizzata in occasione del millenario della cattedrale. Dietro all'edicola, invece, sono visibili sul muro dell'abside le tracce della cattedra marmorea della precedente chiesa di San Lorenzo.
 
-Cripta dei Protettori
+#### Cripta dei Protettori
 
 La cripta dei Santi Protettori si trova sotto il braccio della Madonna Regina di tutti i Santi; si trova sullo stesso piano del tempio greco e fu costruita intorno all'anno Mille, quando la basilica di San Lorenzo ebbe il titolo di cattedrale, con lo scopo precipuo di accogliere le spoglie dei santi protettori della città e in particolare il sarcofago del patrono principale, San Ciriaco, di bizantino, in marmo imezio, che precedentemente, sin dall'arrivo del corpo ad Ancona nel 433-435, era custodito nella prima cattedrale cittadina, la basilica di Santo Stefano.
 
@@ -259,7 +262,7 @@ Nel mese di maggio, in cui ricorre la festa di San Ciriaco, il pannello mobile f
 
 Nella cripta si aprono quattro cappelle laterali, erette tra il 1766 e il 1782, descritte di seguito, nell'ordine in cui si incontrano scenendo dalla scala d'accesso più vicina all'ingresso principale della chiesa e percorrendo la cripta in senso orario.
 
-Le pitture
+### Le pitture
 
 La Cattedrale ha pochi dipinti al suo interno; la maggior parte di questi si trova nelle cappelle con cui termina il braccio del presbiterio, eccezion fatta per il quadro della Madonna Regina di tutti i Santi, collocato nell'edicola vanvitelliana, nel braccio sinistro, e per la tavola cinquecentesca di Luca d'Ancona Madonna col Bambino e i santi Ciriaco e Primiano, posta sopra alla porta che conduce alla sagrestia.
 
@@ -273,7 +276,7 @@ Nella cappella del Santissimo Sacramento, a sinistra dell'altare, è collocata l
 
 Sopra all'altare di San Giuseppe, nella cappella del SS. Sacramento, era presente anche un affresco di Piero della Francesca, uno Sposalizio della Vergine, coperto di intonaco nel 1821.
 
-Prodigio della Madonna del Duomo
+### Prodigio della Madonna del Duomo
 
 Il quadro della Madonna Regina di tutti i Santi, chiamata dagli anconetani Madonna del Duomo, fu donato alla Cattedrale di Ancona nel 1615 da un marinaio veneziano di nome Bortolo, come ringraziamento per aver salvato suo figlio dal mare in tempesta. Da allora il quadro della Vergine è oggetto di profonda devozione da parte di molti fedeli anconetani.
 
@@ -285,7 +288,7 @@ L'11 gennaio 1797 Napoleone Bonaparte, arrivato ad Ancona, decise di non confisc
 
 Il 13 maggio 1814 papa Pio VII, durante un breve soggiorno ad Ancona, incoronò il venerato quadro.
 
-L'immagine del Duomo nell'arte
+### L'immagine del Duomo nell'arte
 
 La cattedrale di San Ciriaco è da sempre il simbolo religioso della città di Ancona, come l'Arco di Traiano ne è il simbolo laico; infatti, entrambi per la loro posizione affacciata sul mare rappresentano i primi punti di riferimento ragguardevoli della città che il navigatore nota avvicinandosi al porto. Dal 1789, quando per volontà di papa Pio VI venne aperta la strada litoranea, nuovo accesso urbano da nord (oggi Via Marconi e via XXIX Settembre), anche a chi arriva da terra la città si presenta attraverso il panorama sul colle Guasco e sul Duomo.
 
@@ -305,7 +308,7 @@ Nella Galleria delle Carte Geografiche dei Palazzi Vaticani, Antonio Danti, oltr
 
 Oltre ai dipinti citati, i più noti per l'importanza degli autori, il Duomo di Ancona è stato raffigurato innumerevoli volte da artisti locali e nelle guide illustrate della città.
 
-Eventi bellici
+### Eventi bellici
 
 A causa della vicinanza al porto e per il suo ruolo di simbolo della città il Duomo fu oggetto di bombardamenti durante i due conflitti mondiali.
 
@@ -319,14 +322,11 @@ I danni subiti dalla cattedrale di San Ciriaco vennero evidenziati in un francob
 
 Ancora oggi sul lato sinistro del duomo di Ancona si possono vedere alcune lesioni belliche apparentemente riferibili a danni da schegge da bombardamento, che potrebbero risalire al periodo relativo al secondo conflitto mondiale.
 
-Il Duomo nel film Ossessione
+### Il Duomo nel film Ossessione
 
 Nel film Ossessione, capolavoro di Luchino Visconti (1943), considerato il primo film neorealista, una delle sequenze centrali è stata girata sul piazzale del duomo. Il protagonista Gino (Massimo Girotti) e il suo amico "lo spagnolo" (Elio Marcuzzo) si siedono con le gambe a penzoloni sul muretto del belvedere del piazzale del Duomo. Lo sguardo sognante di Gino è perso a scrutare l’orizzonte lontano alla ricerca di uno spazio interiore nel quale rifugiarsi e porre fine alla sua esistenza vagabonda. Nello sfondo dell'inquadratura si nota sul colmo del tetto della cattedrale un personaggio vestito di chiaro, in compagnia di alcuni operai: si tratta dell'allora trentacinquenne Riccardo Pacini, soprintendente ai monumenti che proprio nel 1942 fu richiamato ad Ancona per guidare le attività a protezione e salvaguardia degli edifici dorici dal rischio dei bombardamenti. Del Duomo venne "imballato" il protiro principale, ed "evidenziato" il tetto del braccio sopra il coro con un rettangolo orlato di giallo con all'interno due campi bianco e nero suddivisi da diagonale (simbologia per segnalare agli aerei da bombardamento gli edifici monumentali). La macchina da presa scorre poi in panoramica sulle banchine del porto ingombro di navi, su cui Gino sogna di imbarcarsi per iniziare una nuova vita. La sequenza del film continua e riprende il campanile del duomo e l’edificio che gli stava accanto (oggi non più esistente) incluso negli antichi annessi di servizio alla cattedrale.
 
-
-
-
-Leoni Stilofori
+### Leoni Stilofori
 
 Ogni bambino di Ancona, prima o poi, infila le mani in bocca a un leone.
 Non per gioco. Per sapere se è buono.

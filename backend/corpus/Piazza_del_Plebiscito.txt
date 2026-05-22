@@ -1,8 +1,11 @@
+
+## Piazza del Plebiscito o Piazza del Papa
+
 Piazza del Plebiscito, chiamata comunemente piazza del Papa, è una delle quattro piazze principali di Ancona (le altre sono piazza della Repubblica, o del Teatro, piazza Roma e piazza Cavour). Di esse è la più antica: fu aperta nel XV secolo; sino all'espansione cittadina seguita all'unità italiana fu la piazza centrale della città, la "piazza grande" in cui si incontravano i confini dei tre terzieri: Porto, Capodimonte e San Pietro. Oggi è il centro di quest'ultimo rione.
 
 La sua forma è singolare: è rettangolare e molto allungata; inoltre particolare è anche il fatto che comprenda vari livelli, collegati da due rampe e da scalinate. Su di essa si affacciano alcuni tra i più importanti monumenti cittadini: il Palazzo del Governo, con la sua torre, la chiesa di San Domenico e, svettante sul ripiano al centro della piazza, la statua di Clemente XII, il papa che, novello Traiano, fu responsabile della rinascita del porto nel Settecento.
 
-Storia
+### Storia
 
 La prima sistemazione della piazza risale al 1418 quando venne demolita la chiesa di Sant'Egidio e venne intrapresa la costruzione del nuovo Palazzo del Governo, ora Prefettura. Questa prima organizzazione dello spazio, terminata fra il 1446 e il 1492, si limitava alla sola zona pianeggiante, allora delimitata sul lato orientale dal vecchio Ospedale di San Tommaso di Canterbury. Col miracolo del quadro delle Vergine Incoronata, nel 1470 venne eretta una chiesa omonima subito a monte dell'ospedale, ove oggi si erge San Domenico.
 
@@ -12,21 +15,28 @@ Nel 1762 si intraprese la demolizione del complesso dell'ospedale e dell'annessa
 
 Nel 1818 l'architetto Piero Zara del Comune di Ancona realizzò la sistemazione attuale e unì, infine, la piazza Grande, pianeggiante, con il sagrato davanti alla chiesa già realizzato dal Marchionni.
 
-Denominazione
+#### Denominazione
 
 Inizialmente l'area era chiamata Piazza Nuova, poi Piazza Grande, fino alla conquista dei Francesi con l'armistizio di Bologna del 23 giugno 1796, quando prese il nome di Piazza Napoleone. Alla restaurazione dello Stato Pontificio assunse il nome di Piazza San Domenico, come la chiesa che vi si affaccia. Nel 1870 prese il nome attuale, in onore del plebiscito, tenutosi il 4 e 5 novembre 1860, che confermava l'annessione delle Marche nel Regno d'Italia. Tuttavia, sin dalla fine del 1700, è chiamata dagli anconetani Piazza del Papa, a causa dell'imponente statua marmorea di papa Clemente XII presente nella parte alta della piazza.
 
 Sino al 1822 la piazza era considerata l'unico centro della città; in quell'anno la realizzazione del Teatro delle Muse con l'antistante piazza omonima cambiò la situazione e nel periodo post-unitario l'apertura di piazza Roma e di piazza Cavour trasformarono definitivamente Ancona in una città policentrica. Ogni centro ha però la sua funzione, e piazza del Plebiscito svolge quella di punto nevralgico dei rioni più antichi ed è oggi uno dei principali centri della vita sociale e notturna nella città.
 
-Eventi storici avvenuti nella piazza
+#### Eventi storici avvenuti nella piazza
 
-Chiesa di San Domenico
+Qui, il 25 febbraio 1443, venne giustiziato il Podestà Pietro Grifoli per tentato tradimento.
+Nel 1534 vennero gettati sul selciato della piazza, in corrispondenza del luogo ove oggi sorge la fontana, i corpi decapitati di tre giovani che avevano cercato di reagire contro il colpo di mano che due anni prima (1532) aveva portato alla fine della Repubblica di Ancona e al suo passaggio nel dominio diretto dello Stato della Chiesa; secondo la tradizione le teste scolpite nella fontana rappresenterebbero proprio i giovani eroi uccisi per ordine del legato pontificio; la fontana è infatti detta anche fonte dei decapitati.
+Nel 1831 venne fondata, a palazzo Schelini, la sede della Giovine Italia.
+Nel 1863 viene tolto alla piazza l'uso del mercato delle erbe.
+Alla chiusura del Teatro della Fenice, uno dei progetti prevedeva la costruzione del nuovo Teatro delle Muse in questa piazza, con ubicazione prevista tra la chiesa di San Domenico e l'ex Ospedale di San Tommaso di Canterbury, allora adibito a pescheria.
+Alla fine degli anni settanta, dopo secoli, l'amministrazione decise di trasferire altrove la Fiera di San Ciriaco.
+
+### Chiesa di San Domenico
 
 La Chiesa di San Domenico domina la piazza dalla sommità di una scalinata. Fu progettata da Carlo Marchionni nel 1763, la prima pietra fu posta nel 1771. Per la sua costruzione viene demolita la preesistente chiesa omonima, del XIII secolo, che sorgeva più a sinistra rispetto all'attuale facciata. Con l'occupazione francese e l'avvento della Repubblica Anconitana, la chiesa, di cui non era stata ancora completata la facciata, venne nel 1778 adibita a caserma; la parte superiore del prospetto principale rimase perciò incompiuta. Fu riaperta al culto nel 1816, con la Restaurazione.
 
 Nel suo vasto interno sono conservate importanti opere d'arte, come la Crocifissione di Tiziano, l'Annunciazione del Guercino e numerose statue di Gioacchino Varlè.
 
-Palazzo del Governo e Torre civica
+### Palazzo del Governo e Torre civica
 
 Alla realizzazione del Palazzo del Governo partecipò Francesco di Giorgio Martini nel 1484. Fu dal Trecento sino al 1532 sede del governo della Repubblica di Ancona, al posto del precedente Palazzo degli Anziani. Con l'incorporazione di Ancona nello Stato pontificio, il palazzo fu sede del legato pontificio. Dal 1861, quando la città entrò nel Regno d'Italia, il palazzo divenne sede della Prefettura.
 
@@ -34,7 +44,7 @@ Il Palazzo del Governo sin dall'inizio e dunque dal XIV secolo, aveva a fianco u
 
 Nel 1806 la suoneria venne dotata di un carillon (detto popolarmente gariglió) dal maestro orologiaio Antonio Podrini da Sant'Angelo in Vado, che ne ha anche composto la melodia, suonata, alcuni secondi dopo il dodicesimo rintocco, a mezzogiorno e, originariamente, anche a mezzanotte. Dopo la Seconda guerra mondiale il carillon rimase inattivo sino a che non se ne interessò il sindaco Guido Monina, anche se il meccanismo fu predisposto solo per suonare solo a mezzogiorno. Il quadrante dell'orologio, di dodici ore con una sola lancetta, è in pietra di paragone.
 
-Statua di Clemente XII
+### Statua di Clemente XII
 
 Il monumento per eccellenza della piazza, in quanto da esso prende il suo nome usuale di "piazza del Papa", è la statua di Clemente XII, simbolo della gratitudine degli anconetani nei confronti del pontefice settecentesco responsabile della rinascita economica e culturale di Ancona: infatti egli aveva concesso alla città il porto franco ed aveva inviato il famoso architetto Luigi Vanvitelli per ampliare e attrezzare modernamente il porto.
 
@@ -46,35 +56,25 @@ La statua fu danneggiata dai giacobini durante il periodo dell'occupazione franc
 
 La scultura fu poi nuovamente danneggiata, nel corso della Seconda guerra mondiale; fu restaurata nel corso di diciassette mesi di paziente lavoro dallo scultore anconetano Vittorio Morelli; egli ricompose i numerosi frammenti e scolpì di nuovo le parti irrimediabilmente distrutte.
 
-Fontane
+### Fontane
 
 Risale al XV secolo, qualche anno dopo il 1446. Deriva il suo nome dalle figure scolpite sul soprastante fregio rinascimentale: otto ritratti, tra i quali la tradizione identifica quelli dei cinque giovani anconitani che avevano lottato per ripristinare la libertà comunale perduta dopo il colpo di stato del 1532, ordito da papa Clemente VII. I giovani furono fatti decapitare dal cardinale Benedetto Accolti e i corpi di tre di essi furono gettati nella stessa piazza, per siglare la fine di ogni speranza di far risorgere la Repubblica di Ancona. La tradizione dice che, non potendo altrimenti ricordare i giovani martiri, i cittadini vollero che i loro volti fossero effigiati occultandoli nella decorazione scultorea della fontana. La tenace tradizione non è testimoniata da fonti coeve.
 
 Fu inaugurata il 2 settembre 1817 nell'ambito della nuova sistemazione della piazza, opera dell'architetto Pietro Zara. L'acqua sgorga da tre clipei bronzei che recano in bassorilievo i simboli dello stemma della città: il cavaliere e i gigli angioini. Sopra ai bocchettoni, corre un'epigrafe con testo in latino, il cui testo fu composto dall'archeologo e filologo Filippo Schiassi. La fontana si trova alla base della scalinata che conduce al livello superiore della piazza. Per la sua forma, è detta anche Fontana Emiciclica.
 
-Palazzi nobiliari
+### Palazzi nobiliari
 
 Su piazza del Papa si affacciano altri edifici importanti per le caratteristiche storiche o artistiche.
+Palazzo Mengoni-Ferretti. Ospita la biblioteca comunale Luciano Benincasa, con interessanti affreschi di Giuseppe Pallavicini risalenti al restauro del 1700, tra cui si ricordano quelli della sala del Carnevale.
+Palazzo Nembrini-Gonzaga, costruito nel XVIII secolo su progetto di Carlo Marchionni, inglobando architetture preesistenti del XV secolo[5]
+Palazzo Schelini, del XVIII secolo, dove ebbe sede la sezione della Giovine Italia, come ricorda una targa, sia pure incompleta nell'elenco dei nomi dei fondatori
+Palazzo Bernabei, con facciata del 1787, come riportato sul portale, opera di Francesco Maria Ciaraffoni[6].
 
-Museo della città
+### Museo della città
 
 Lungo la scalinata si trova l'ingresso al Museo della Città, che illustra la storia urbanistica di Ancona. Si estende, in parte, nei locali dell'ex Ospedale San Tommaso di Canterbury, aperto nel 1394. Nel 1470 in quest'ospedale avvenne il miracolo del quadro della Vergine Incoronata (distrutto con il bombardamento di San Domenico nella Seconda guerra mondiale). Per ordine di Sisto V in questo luogo era stata poi costruita la chiesa omonima, distrutta poi per far posto all'attuale chiesa di San Domenico.
 
-Viabilità
+### Viabilità
 
 Le vie di accesso sono molteplici: via Gramsci, via Pizzecolli, via Pescheria, via Beccheria, via Matteotti, via degli Aranci, via Bonda e via Orefici. La piazza non è transitabile alle auto, escluso che per il carico e lo scarico a determinati orari, e la sosta è consentita solo alle auto di servizio della attigua Prefettura. Per impedire l'accesso e la sosta delle auto private, si è provveduto alla installazione di due dissuasori mobili, uno presso l'accesso di via Matteotti e l'altro presso l'accesso di via Pizzecolli.
-
-Galleria d'immagini
-
-Note
-
-Bibliografia
-
-Voci correlate
-
-Altri progetti
-
-Altri progetti
-
-Collegamenti esterni
 

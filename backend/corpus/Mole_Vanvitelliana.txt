@@ -1,10 +1,12 @@
+## Mole Vanvitelliana o Lazzaretto di Ancona
+
 Il Lazzaretto di Ancona, detto anche Mole Vanvitelliana, è un complesso monumentale del XVIII secolo, progettato dall'architetto Luigi Vanvitelli nel porto di Ancona. Sorge su di un'isola artificiale pentagonale appositamente realizzata nel settore meridionale del bacino portuale; il pentagono regolare è anzi la forma che impronta tutta la struttura, dalle mura di cinta agli edifici e alla piazza centrale.
 
 All'origine completamente isolato dalla terraferma, nel corso dei due secoli successivi alla costruzione è stato collegato alla riva con tre ponti. Con una superficie di 20.000 m², è nato come struttura polivalente sanitaria e militare e dal 1909 è monumento nazionale. Oggi è un polo culturale, sede del Museo Tattile Omero, di un auditorium, di eventi culturali e di mostre d'arte.
 
 Il canale che lo divide dalla terraferma è detto Mandracchio ed accoglie la flotta peschereccia della città.
 
-Caratteristiche e architettura
+## Caratteristiche e architettura
 
 Il Lazzaretto è costruito su un'isola artificiale avente la forma di un pentagono regolare e tutti i suoi edifici, strade e piazze, di seguito descritti, si attengono a questa figura geometrica, ricca di valori simbolici.
 
@@ -20,13 +22,13 @@ Fin dalla sua origine l'opera fu progettata come una struttura polifunzionale: l
 
 La costruzione del Lazzaretto è commemorata da una medaglia papale del 1734, in cui è riprodotto, sul retro, il monumento visto dall'alto e sullo sfondo il colle Astagno e la Cittadella; l'iscrizione è: "publicae incolumitatis praesidio - doricae urbis laemocomium 1734". Sul dritto è presente invece l'effigie di papa Clemente XII
 
-Gli edifici
+### Gli edifici
 
 L'edificio principale è costituito da due corpi di fabbrica pentagonali entrambi originari del Vanvitelli; i due corpi di fabbrica sono adiacenti, uno interno all'altro, condividendo un muro perimetrale. L'edificio che occupa il rivellino è invece opera dei primi decenni del Novecento. 
 
-Portali d'ingresso
+###Portali d'ingresso
 
-Portale principale
+#### Portale principale
 
 Il portale principale è completamente realizzato in pietra d'Istria ed è situato sul lato che si affaccia verso Porta Pia. Originariamente, esso si affacciava direttamente sul mare. Quando, nel XIX secolo, di fronte ad esso fu realizzato il ponte che collega il Lazzaretto alla terraferma, parte del basamento venne interrato per sopperire alla differenza d'altezza tra la banchina e il Lazzaretto, più basso. Oggi, infatti, i conci dei due stipiti in bugnato sono sei per lato, mentre originariamente erano sette; similmente, le lesene che inquadrano il portale erano otto, mentre ora sono sette. La costruzione del ponte rese quindi il portale meno slanciato di quanto non fosse all'origine.
 
@@ -40,13 +42,13 @@ Il testo dell'iscrizione e l'aspetto dello stemma erano i seguenti.
 
 La traduzione dell'iscrizione è: «Clemente XII, pontefice massimo, per allontanare la minaccia della peste, costruì il Lazzaretto per accogliere merci e naviganti, sotto la cura di Carlo Maria Sacripante, tesoriere pontificio e prefetto per le opere marittime, nell'anno 1734».
 
-Porta ad acqua
+#### Porta ad acqua
 
 Un secondo portale, di forme più semplici e in muratura, si affaccia ancor oggi sul mare, sul lato del Mandracchio, ed è perciò detto "Porta ad acqua". La porta è rimasta chiusa per decenni e si apre su una breve banchina che per molti anni ha ospitato le nasse dei pescatori di vongole; in occasione del 250º anniversario dalla morte del Vanvitelli, quest’ingresso è stato riaperto il 7 maggio del 2023 e la sua banchina è ora di libero accesso da parte dei visitatori. Il portone ligneo è stato restaurato da un esperto ebanista.
 
 Come nella porta principale, in epoca napoleonica furono scalpellati i segni del governo pontificio, in questo caso gli stemmi a destra e a sinistra dell'accesso e l'iscrizione.
 
-Tempietto di San Rocco
+### Tempietto di San Rocco
 
 Il Tempietto, situato al centro della corte, è una piccolo edificio sacro di forma pentagonale di ordine dorico, costruito in pietra d'Istria. L'architetto Luigi Vanvitelli lo disegnò in forme di transizione tra il Barocco e il Neoclassicismo. È interessante notare che nel tempietto Vanvitelli coniuga le strutture pentagonali con quelle circolari: sia il tamburo della cupola, sia il basamento sono infatti a pianta circolare, mentre i cinque pilastri che sorreggono l'edificio formano un pentagono.
 
@@ -62,9 +64,9 @@ Al centro del pavimento è posto il coperchio della grande cisterna di acqua pot
 
 I lati del Tempietto sono aperti, affinché le persone in quarantena potessero assistere alla messa dalle proprie stanze, al fine di evitare possibili contagi, seguendo dunque dettami molto moderni all'epoca, di stampo illuministico. La pianta del Tempietto, inoltre, attraverso la sua conformazione a pentagono, rappresenta la geniale sintesi della ricerca cinquecentesca e seicentesca sull'edificio di culto a pianta centrale: non è più una planimetria che gioca sul tema del quadrato e del cerchio, ma la protagonista assoluta, capace di muoversi in più che quattro direzioni, conquistando l'ambiente che circonda l'edificio.
 
-La storia del monumento
+## La storia del monumento
 
-Antefatti
+### Antefatti
 
 Come tutte le città portuali, Ancona è sempre stata soggetta al problema delle malattie contagiose portate da navi provenienti da paesi in cui erano in corso epidemie. Per questo motivo ripetutamente la peste arrivò in città. Nel 1348 la peste nera uccise i nove decimi della popolazione e fu all'origine della costruzione della chiesa della Misericordia, eretta come ex voto; altre epidemie ci furono nel 1399-1400, nel 1456 e nel 1498-1499. Durante quest'ultimo evento, il governo della Repubblica di Ancona decise la costruzione del primo lazzaretto di cui ci è rimasta testimonianza scritta, di ubicazione ignota.
 
@@ -72,7 +74,7 @@ Nel 1570 l'architetto Francesco Paciotto progettò due nuovi lazzaretti in zone 
 
 Quando Vanvitelli giunse in città, dunque, erano ancora presenti queste due strutture, ma la loro precarietà era evidente e ormai considerata inaccettabile.
 
-Origine
+### Origine
 
 Papa Clemente XII, nel quadro della sua politica illuminata, volta a favorire il benessere dei suoi sudditi tramite la promozione dell'economia, decise di dare nuova vita al porto di Ancona, che era allora in un periodo di profonda crisi, dovuta alla trascuratezza dei precedenti pontefici. Per raggiungere tale scopo, nel 1732 concesse alla città lo status di porto franco e affidò all'architetto Luigi Vanvitelli il compito di riprogettare lo scalo dorico.
 
@@ -84,7 +86,7 @@ A tal proposito è stato notato che nelle opere anconitane di Luigi Vanvitelli �
 
 I lavori iniziarono il 27 luglio 1733 e l'anno seguente il pontefice fece realizzare una derivazione della Via Flaminia per collegare il rinnovato porto di Ancona con Roma; la nuova via prese il nome di Strada Clementina. Questo era l'ultimo tassello mancante: grazie alla nuova strada, alla concessione del porto franco e alle opere realizzate dal Vanvitelli, le attività del porto tornarono floride e Ancona visse un momento di rinnovato splendore economico e sociale.
 
-Valori simbolici del pentagono del Lazzaretto
+#### Valori simbolici del pentagono del Lazzaretto
 
 Il fascino del Lazzaretto di Ancona è dovuto anche alla sua forma geometrica, ricca di significati simbolici. Fin dagli anni settanta del Novecento, con la riscoperta del valore artistico del monumento, si mise in luce il valore simbolico della figura pentagonale: in numerologia, il numero cinque, ricordando la mano, indica il potere dell'uomo di modificare la realtà circostante. In questo, il Lazzaretto segue la tradizione rinascimentale delle città ideali con pianta a stella pentagonale e delle fortezze aventi la stessa forma.
 
@@ -94,7 +96,7 @@ Non è un caso, dunque, che il pentalfa, segno di benessere e di salute, sia raf
 
 La figura del pentalfa, però, non caratterizza solo il tempietto, ma l'intera isola del Lazzaretto. Per comprendere ciò si deve ricordare che collegando le punte dei raggi di un pentalfa si ottiene un pentagono e che prolungando i lati di questo pentagono si ottiene a sua volta un altro pentalfa più grande, e così via; compiendo queste operazioni a partire dal pentalfa raffigurato al centro della cupola, si possono ottenere sia il pentagono del tempio, sia quello della cisterna d'acqua posta sotto la corte, sia il pentagono della stessa corte, sia, infine, l'isola artificiale pentagonale su cui sorge il monumento. Le proporzioni e le forme del Lazzaretto di Ancona sono dunque determinate e collegate tra loro da una relazione geometrica simbolica (si veda l'immagine Lazzaretto di Ancona - forme geometriche generatrici).
 
-Relazione simbolica con la Cittadella
+#### Relazione simbolica con la Cittadella
 
 Dal punto di vista simbolico, il Lazzaretto si pone in relazione con la sovrastante Cittadella, con pianta stellare a cinque bastioni, e dunque anch'essa avente una forma basata sul numero cinque, anche se geometricamente irregolare per adattarsi all'orografia della collina su cui sorge la fortezza. Questo legame tra i due monumenti, costruiti a due secoli esatti di distanza l'uno dall'altro, è rafforzato dalla scelta vanvitelliana di allineare il rivellino del Lazzaretto con il Bastione della Campana della Cittadella; entrambe le opere avevano la funzione di difendere il porto.
 
@@ -102,7 +104,7 @@ Se la Cittadella sovrastante, anche etimologicamente, era una "piccola città" i
 
 Come già ricordato sopra, all'interno della cupola del tempietto è raffigurata una stella a cinque punte disegnata prolungando i lati di un pentagono regolare. Questa forma è al centro della cupola, del tempietto, della piazza e dell'intera isola vanvitelliana. Ciò rende quasi esplicita la simbologia adottata e il rapporto tra il Lazzaretto (il pentagono) e la Cittadella (la stella). Da notare che il Bastione della Campana della Cittadella è visibile dall'interno del tempietto.
 
-In epoca napoleonica e risorgimentale
+### In epoca napoleonica e risorgimentale
 
 Durante il periodo in cui la città era sotto occupazione francese (1795-1815), fu scalpellato lo stemma di papa Clemente XII posto sopra all'ingresso principale, gli stemmi della Porta ad acqua e le iscrizioni in entrambi questi ingressi. Durante l'assedio del 1799, durante il quale le forze austro-russo-turche circondavano la città occupata dai francesi, il monumento, in quanto fortificazione, giocò un ruolo strategico importante e fu coinvolto negli scontri. 
 
@@ -110,7 +112,7 @@ Il Lazzaretto è stato anche il luogo dove il 25 ottobre 1853 gli austro-pontifi
 
 Nel 1865, in seguito all'epidemia di colera che aveva colpito la città, divenne evidente che le emergenze sanitarie dell'Ottocento non potevano essere affrontate come quelle del secolo precedente e il Lazzaretto fu definitivamente interdetto all'uso originario. Assunse così un'esclusiva funzione militare e venne adibito a fortezza, caserma e ad ospedale per le truppe. Nel 1871 il monumento accolse i magazzini generali doganali del porto.
 
-Raffineria degli zuccheri
+### Raffineria degli zuccheri
 
 Nel 1884 il Lazzaretto terminò la sua funzione militare e vi venne impiantata una raffineria degli zuccheri; ciò obbligò alla costruzione di due ciminiere nella piazza centrale, di un ponte ferroviario nel lato meridionale (ancora esistente) e di binari lungo le strade perimetrali, con piattaforme girevoli agli angoli, per favorire il carico e lo scarico della merce.
 
@@ -118,7 +120,7 @@ Venendo a mancare la necessità di isolamento sanitario, la separazione del Lazz
 
 La soprintendenza ai monumenti diede disposizioni per salvaguardare almeno il tempio di San Rocco e il portale principale, ossia gli elementi con più spiccato valore monumentale.
 
-Base dei MAS della Regia Marina
+### Base dei MAS della Regia Marina
 
 Durante le due guerre mondiali il Lazzaretto ritornò ad essere una cittadella militare.
 
@@ -145,7 +147,7 @@ iv novembre mcmxxvii - anno vi-e.f.»
 
 La targa e il bassorilievo sono di Mentore Maltoni, come testimoniato dalla firma posta sotto all'iscrizione.
 
-Deposito tabacchi
+### Deposito tabacchi
 
 Nel 1922 il Comune affittò il Lazzaretto all'Amministrazione delle Privative, che lo adibì a deposito di tabacchi greggi. Nel 1924 venne costruito un terzo ponte di collegamento alla terraferma, a destra di quello dell'ingresso principale; la nuova struttura venne realizzata in ferro. Negli stessi anni venne costruito un edificio nell'area del rivellino, addossato all'angolo del bastione; si seguì uno stile che si armonizzava con i corpi di fabbrica vanvitelliani, sia come stile, sia come materiali. La società di Educazione Fisica Stamura e l'Istituto Nautico ottennero come sede del gruppo dei canottieri l'uso di alcuni locali dell'edificio del rivellino, per attività sportive e didattiche pratiche.
 
@@ -157,15 +159,15 @@ Nel corso della Seconda guerra mondiale gli alleati abbatterono il ponte in ferr
 
 Nel 1955/1957 fu restaurato il portale principale.
 
-La rinascita
+### La rinascita
 
-Premesse
+#### Premesse
 
 Negli anni settanta del Novecento si diffuse in città una nuova sensibilità riguardo al Lazzaretto. Il mondo associativo cittadino e le amministrazioni comunale, provinciale e regionale, sostenuti dalla Soprintendenza ai Monumenti, iniziarono a sostenere l'ipotesi di utilizzare il monumento del Vanvitelli come centro culturale, sottraendolo agli usi impropri che ne stavano alterando l'aspetto e mortificando la bellezza. Nello stesso tempo, però, continuavano ad essere realizzati interventi irrispettosi, per adeguare il monumento alla funzione di deposito tabacchi: vennero costruiti dei solai in cemento armato all'interno di alcuni edifici e venne abbassato il livello della piazza, alterando le armoniche proporzioni vanvitelliane e costringendo a costruire rampe per raggiungere i portali di accesso.
 
 Segni di questa nuova temperie culturale furono il "Convegno vanvitelliano" del 1974 e il testo di Mazzetti, Bucciarelli e Pugnaloni, edito nel 1978, dal significativo titolo Il Lazzaretto di Ancona, un’opera dimenticata; questo testo contribuì significativamente alla rinascita del monumento, presentandone un approfondito studio storico, architettonico e simbolico, pubblicando tavole del primo rilievo architettonico, proponendone il recupero integrale e denunciandone le manomissioni subite dagli usi impropri. Nel 1980, in Pinacoteca si tenne inoltre la mostra "Il Lazzaretto di Vanvitelli"; anch'essa contribuì a far percepire come inaccettabile la destinazione a deposito tabacchi del monumento e a sostenere il suo utilizzo come centro culturale.
 
-Il comune di Ancona acquisisce e restaura il Lazzaretto
+#### Il comune di Ancona acquisisce e restaura il Lazzaretto
 
 Tutto ciò portò al passo fondamentale per la rinascita del monumento: nel 1985 il comune di Ancona acquisì la proprietà del Lazzaretto ed iniziò un restauro che sta ridonando al monumento il suo armonico aspetto originario, senza però cancellare completamente le modifiche più significative subite nel corso dei secoli. Si decise così di demolire i corpi di fabbrica e i magazzini costruiti nel sedime della piazza centrale, che ne alteravano la forma pentagonale, e parimenti vennero abbattuti quasi tutti i bassi edifici addossati alle mura di cinta. Inoltre la piazza centrale fu riportata al livello originario, recuperando la percezione spaziale prevista dal Vanvitelli.
 
@@ -175,7 +177,7 @@ Nel 1987, alla XVII Triennale di Milano vengono presentati progetti immaginari e
 
 Nel 2023, in concomitanza con le celebrazioni per i 250 anni dalla morte di Luigi Vanvitelli, è stata riaperta, dopo cinquant'anni, la Porta d'acqua, ossia l'accesso all'isola rimasto come all'origine affacciato su una banchina e dunque raggiungibile dall'esterno solo attraverso imbarcazioni. Nel 2025 rimane da restaurare solo il lato del pentagono rivolto verso via Marconi e le sale "Mercanti" e "Tabacchi", in cui i lavori sono già in atto.
 
-Il Lazzaretto diventa un polo culturale
+### Il Lazzaretto diventa un polo culturale
 
 Completato il primo lotto di restauri, finalmente il Lazzaretto diventò ciò che le associazioni e le amministrazioni da decenni chiedevano: un importante centro culturale. Si cominciarono ad utilizzare i suoi spazi per ospitare mostre d'arte di livello nazionale ed altri eventi culturali; nella piazza si susseguirono rassegne cinematografiche e festival.
 
@@ -195,29 +197,15 @@ Tra le mostre più notevoli tenute al Lazzaretto si ricordano le seguenti.
 
 Nel 2017 furono stabilmente installate al Lazzaretto due sculture di artisti contemporanei: sul marciaronda il Cavallo di Mimmo Paladino e all'interno della corte centrale Sbarco,  di Velasco Vitali.
 
-Attività sportive e ricreative
+### Attività sportive e ricreative
 
 Il rivellino continua ad ospitare la sede nautica della società sportiva SEF Stamura e la base nautica dell'Istituto Nautico Elia, ora parte dell'Istituto di Istruzione Superiore "Volterra-Elia"; sempre al rivellino ha sede il centro nautico dell'Università di Ancona e il centro subacqueo Komaros. Nei locali del rivellino si trova anche il ristorante Vanvitelli.
 
 Al Lazzaretto sono presenti due bar; il Lazzabaretto, situato sulla banchina settentrionale, durante l'estate è sede di manifestazioni culturali e centro di aggregazione giovanile; il bar The Mole è posto all'ingresso dell'auditorium Tamburi.
 
-I segni di bombardamenti sulle mura del Lazzaretto
+### I segni di bombardamenti sulle mura del Lazzaretto
 
 Il Lazzaretto è stato interessato da vari eventi bellici: nel 1799 durante il periodo di occupazione francese di Ancona, nel 1849 durante la Repubblica romana e nel 1860 durante l’assedio della città da parte delle truppe sarde. In quest'occasione il Lazzaretto fu conquistato con un colpo di mano da parte dei bersaglieri del XVI battaglione del IV Corpo d’armata della Regia Armata Sarda e quindi bombardato dalla soprastante Cittadella, dal Molo, dalla vicina Porta Pia e dal Forte della Lanterna (ne rimane il basamento, nelle vicinanze della lanterna rossa del porto). Anche queste strutture, come il Lazzaretto, furono colpite dal fuoco delle artiglierie e sono ancora presenti diversi segni lasciati dai proiettili del tempo.
 
 Nelle mura esterne del Lazzaretto, nella parte in pietra bianca tra il ponte e il rivellino, è ancora possibile rilevare diverse lesioni di forma circolare e incavata originate da palle di cannone che colpivano quella zona del forte dal mare, anche se la datazione di tali lesioni belliche non può essere effettuata con certezza. Altre numerose lesioni causate da proiettili ottocenteschi sono ben visibili sul tratto di mura in mattoni sul lato con ingresso dal mare, di fronte al mercato del pesce. Anche in altri tratti di mura del pentagono è possibile vedere un minore numero di lesioni di cannoni di calibro medio-piccolo, come a sinistra dell'ingresso principale di fronte a Porta Pia, mentre sempre lato Porta Pia, sul muro esterno e nella parte alta di quello interno sono presenti molti segni lasciati da proiettili di fucileria, presumibilmente sparati dai soldati pontifici quando il Lazzaretto fu occupato dai bersaglieri.
-
-Galleria d'immagini
-
-Note
-
-Bibliografia
-
-Voci correlate
-
-Altri progetti
-
-Altri progetti
-
-Collegamenti esterni
 
