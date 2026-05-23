@@ -176,7 +176,7 @@ Sono elencate qui le librerie effettivamente usate dal progetto. Il `requirement
 ### 1. Clonare il repository
 
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/LoreG002/xr-turismo-llm.git
 cd xr-turismo-llm
 ```
 
