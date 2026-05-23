@@ -17,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = "llama-3.1-8b-instant"
+MODEL = "llama-3.3-70b-versatile"
 
 # =====================================================
 # FOTO DISPONIBILI PER GLI APPROFONDIMENTI
