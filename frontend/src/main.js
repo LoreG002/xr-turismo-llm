@@ -1278,3 +1278,18 @@ function animate() {
 animate();
 
 inizializza();
+
+// serve per trovare le coordinate del punto cliccato
+window.addEventListener('dblclick', (e) => {
+  // Calcola la posizione del mouse
+  const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+  const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  
+  const tempRaycaster = new THREE.Raycaster();
+  tempRaycaster.setFromCamera(new THREE.Vector2(mouseX, mouseY), camera);
+  
+  const distanza = 10;
+  const posizione = new THREE.Vector3().copy(tempRaycaster.ray.direction).multiplyScalar(distanza);
+  
+  console.log(`"posizione": { "x": ${posizione.x.toFixed(2)}, "y": ${posizione.y.toFixed(2)}, "z": ${posizione.z.toFixed(2)} }`);
+});
