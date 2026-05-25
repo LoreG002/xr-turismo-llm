@@ -2,7 +2,7 @@
   "scene": {
     "scena1_facciata": {
       "nome": "Duomo di San Ciriaco - Sagrato",
-      "panorama": "/Duomo1a360.jpg",
+      "panorama": "/pic360/Duomo1a360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
@@ -37,7 +37,7 @@
     },
     "scena1_portale": {
       "nome": "Duomo di San Ciriaco - Portale",
-      "panorama": "/Duomo1b360.jpg",
+      "panorama": "/pic360/Duomo1b360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
@@ -73,7 +73,7 @@
     },
     "scena1_abside": {
       "nome": "Duomo di San Ciriaco - Abside",
-      "panorama": "/Duomo1c360.jpg",
+      "panorama": "/pic360/Duomo1c360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
@@ -108,7 +108,7 @@
     },
     "scena1_vicolo": {
       "nome": "Duomo di San Ciriaco - Vicolo del Campanile",
-      "panorama": "/Duomo1d360.jpg",
+      "panorama": "/pic360/Duomo1d360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
@@ -143,7 +143,7 @@
     },
     "scena1_campanile": {
       "nome": "Duomo di San Ciriaco - Campanile",
-      "panorama": "/Duomo1e360.jpg",
+      "panorama": "/pic360/Duomo1e360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
@@ -179,7 +179,7 @@
     },
     "scena2": {
       "nome": "Arco di Traiano",
-      "panorama": "/Arco360.jpg",
+      "panorama": "/pic360/Arco360.jpg",
       "luogo_id": "Arco_di_Traiano",
       "hotspot": [
         {
@@ -207,7 +207,7 @@
     },
     "scena3": {
       "nome": "Mole Vanvitelliana",
-      "panorama": "/Mole1360.jpg",
+      "panorama": "/pic360/Mole1360.jpg",
       "luogo_id": "Mole_Vanvitelliana",
       "hotspot": [
         {
@@ -235,7 +235,7 @@
     },
     "scena4": {
       "nome": "Piazza del Plebiscito",
-      "panorama": "/Pdp360.jpg",
+      "panorama": "/pic360/Pdp360.jpg",
       "luogo_id": "Piazza_del_Plebiscito",
       "hotspot": [
         {
@@ -271,7 +271,7 @@
     },
     "scena5": {
       "nome": "Piazza Cavour",
-      "panorama": "/Cavour360.jpg",
+      "panorama": "/pic360/Cavour360.jpg",
       "luogo_id": "Piazza_Cavour",
       "hotspot": [
         {
@@ -299,7 +299,7 @@
     },
     "scena6": {
       "nome": "Il Passetto",
-      "panorama": "/Passetto360.jpg",
+      "panorama": "/pic360/Passetto360.jpg",
       "luogo_id": "Il_Passetto",
       "hotspot": [
         {
