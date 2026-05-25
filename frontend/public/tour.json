@@ -1,22 +1,179 @@
 {
   "scene": {
-    "scena1": {
-      "nome": "Duomo di San Ciriaco",
-      "panorama": "/Duomo360.jpg",
+    "scena1_facciata": {
+      "nome": "Duomo di San Ciriaco - Sagrato",
+      "panorama": "/Duomo1a360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
-          "id": "hs1",
-          "label": "Vai all'Arco di Traiano",
-          "destinazione": "scena2",
-          "posizione": { "x": 7.28, "y": -0.87, "z": 6.80 }
+          "id": "info_duomo_facciata",
+          "tipo": "info",
+          "label": "Scopri il Duomo",
+          "query": "Duomo_di_San_Ciriaco",
+          "posizione": { "x": 0, "y": 4, "z": -10 }
         },
         {
-          "id": "info1",
+          "id": "hs1",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "scena2",
+          "posizione": { "x": -8, "y": -1, "z": 6 }
+        },
+        {
+          "id": "nav_fac_to_portale",
+          "tipo": "nav_locale",
+          "label": "Avvicinati al Portale",
+          "destinazione": "scena1_portale",
+          "posizione": { "x": 0, "y": -3.5, "z": -7 }
+        },
+        {
+          "id": "nav_fac_to_abside",
+          "tipo": "nav_locale",
+          "label": "Vai verso l'Abside",
+          "destinazione": "scena1_abside",
+          "posizione": { "x": 7, "y": -3.5, "z": -3 }
+        }
+      ]
+    },
+    "scena1_portale": {
+      "nome": "Duomo di San Ciriaco - Portale",
+      "panorama": "/Duomo1b360.jpg",
+      "luogo_id": "Duomo_di_San_Ciriaco",
+      "hotspot": [
+        {
+          "id": "info_duomo_portale",
           "tipo": "info",
-          "label": "Scopri la Facciata",
+          "label": "Il Portale Romanico",
           "query": "Duomo_di_San_Ciriaco",
-          "posizione": { "x": -2.72, "y": 4.55, "z": -10 }
+          "posizione": { "x": -7, "y": 3, "z": -6 },
+          "secondari": [
+            {
+              "id": "info_leone_stiloforo",
+              "label": "Il Leone Stiloforo",
+              "query": "leoni stilofori del protiro romanico del Duomo di San Ciriaco ad Ancona",
+              "posizione": { "x": -2, "y": -1, "z": -4 }
+            }
+          ]
+        },
+        {
+          "id": "nav_portale_to_fac",
+          "tipo": "nav_locale",
+          "label": "Torna sul Sagrato",
+          "destinazione": "scena1_facciata",
+          "posizione": { "x": 7, "y": -3.5, "z": 3 }
+        },
+        {
+          "id": "nav_portale_to_arco",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "scena2",
+          "posizione": { "x": 9, "y": 1, "z": 4 }
+        }
+      ]
+    },
+    "scena1_abside": {
+      "nome": "Duomo di San Ciriaco - Abside",
+      "panorama": "/Duomo1c360.jpg",
+      "luogo_id": "Duomo_di_San_Ciriaco",
+      "hotspot": [
+        {
+          "id": "info_duomo_abside",
+          "tipo": "info",
+          "label": "L'Abside e la Cupola",
+          "query": "Duomo_di_San_Ciriaco",
+          "posizione": { "x": -8, "y": 3, "z": -4 }
+        },
+        {
+          "id": "nav_abside_to_fac",
+          "tipo": "nav_locale",
+          "label": "Torna sul Sagrato",
+          "destinazione": "scena1_facciata",
+          "posizione": { "x": -7, "y": -3.5, "z": 4 }
+        },
+        {
+          "id": "nav_abside_to_vicolo",
+          "tipo": "nav_locale",
+          "label": "Esplora il Vicolo",
+          "destinazione": "scena1_vicolo",
+          "posizione": { "x": 7, "y": -3.5, "z": -3 }
+        },
+        {
+          "id": "nav_abside_to_arco",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "scena2",
+          "posizione": { "x": 5, "y": 2, "z": 8 }
+        }
+      ]
+    },
+    "scena1_vicolo": {
+      "nome": "Duomo di San Ciriaco - Vicolo del Campanile",
+      "panorama": "/Duomo1d360.jpg",
+      "luogo_id": "Duomo_di_San_Ciriaco",
+      "hotspot": [
+        {
+          "id": "info_duomo_vicolo",
+          "tipo": "info",
+          "label": "Scopri il Duomo",
+          "query": "Duomo_di_San_Ciriaco",
+          "posizione": { "x": 8, "y": 2, "z": -4 }
+        },
+        {
+          "id": "nav_vicolo_to_abside",
+          "tipo": "nav_locale",
+          "label": "Torna verso l'Abside",
+          "destinazione": "scena1_abside",
+          "posizione": { "x": -7, "y": -3.5, "z": 4 }
+        },
+        {
+          "id": "nav_vicolo_to_campanile",
+          "tipo": "nav_locale",
+          "label": "Vai al Campanile",
+          "destinazione": "scena1_campanile",
+          "posizione": { "x": 0, "y": -3.5, "z": -8 }
+        },
+        {
+          "id": "nav_vicolo_to_arco",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "scena2",
+          "posizione": { "x": 8, "y": 2, "z": 5 }
+        }
+      ]
+    },
+    "scena1_campanile": {
+      "nome": "Duomo di San Ciriaco - Campanile",
+      "panorama": "/Duomo1e360.jpg",
+      "luogo_id": "Duomo_di_San_Ciriaco",
+      "hotspot": [
+        {
+          "id": "info_duomo_campanile",
+          "tipo": "info",
+          "label": "Scopri il Duomo",
+          "query": "Duomo_di_San_Ciriaco",
+          "posizione": { "x": -4, "y": 4, "z": -8 },
+          "secondari": [
+            {
+              "id": "info_campanile_dettaglio",
+              "label": "Il Campanile",
+              "query": "campanile romanico isolato del Duomo di San Ciriaco ad Ancona",
+              "posizione": { "x": 1, "y": 5, "z": -7 }
+            }
+          ]
+        },
+        {
+          "id": "nav_campanile_to_vicolo",
+          "tipo": "nav_locale",
+          "label": "Torna verso il Duomo",
+          "destinazione": "scena1_vicolo",
+          "posizione": { "x": 8, "y": -3.5, "z": 0 }
+        },
+        {
+          "id": "nav_campanile_to_arco",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "scena2",
+          "posizione": { "x": 6, "y": 2, "z": 7 }
         }
       ]
     },
@@ -29,7 +186,7 @@
           "id": "hs2",
           "tipo": "nav",
           "label": "Torna al Duomo",
-          "destinazione": "scena1",
+          "destinazione": "scena1_facciata",
           "posizione": { "x": -9.15, "y": 3.27, "z": 2.37 }
         },
         {

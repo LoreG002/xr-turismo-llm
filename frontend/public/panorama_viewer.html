@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Panorama Viewer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; overflow: hidden; font-family: sans-serif; color: #fff; }
+        #canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+        #canvas:active { cursor: grabbing; }
+        #ui {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        select {
+            background: #222;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        select:hover { border-color: #888; }
+        #hint {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="ui">
+        <select id="select"></select>
+    </div>
+    <div id="hint">Trascina per ruotare · Rotella per zoom</div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // Lista panorami: deve essere servita da /public/
+        const PANORAMI = [
+            { file: '/Duomo1a360.jpg', label: 'Duomo - Facciata' },
+            { file: '/Duomo1b360.jpg', label: 'Duomo - Portale' },
+            { file: '/Duomo1c360.jpg', label: 'Duomo - Abside' },
+            { file: '/Duomo1d360.jpg', label: 'Duomo - Vicolo' },
+            { file: '/Duomo1e360.jpg', label: 'Duomo - Campanile' },
+            { file: '/Arco1360.jpg', label: 'Arco 1' },
+            { file: '/Arco2360.jpg', label: 'Arco 2' },
+            { file: '/Arco3360.jpg', label: 'Arco 3' },
+            { file: '/Arco4360.jpg', label: 'Arco 4' },
+            { file: '/Arco5360.jpg', label: 'Arco 5' },
+            { file: '/Arco6360.jpg', label: 'Arco 6' },
+            { file: '/Arco7360.jpg', label: 'Arco 7' },
+            { file: '/Mole1360.jpg', label: 'Mole 1' },
+            { file: '/Mole2360.jpg', label: 'Mole 2' },
+            { file: '/Mole3360.jpg', label: 'Mole 3' },
+            { file: '/Mole4360.jpg', label: 'Mole 4' },
+            { file: '/Pdp1360.jpg', label: 'Piazza del Papa 1' },
+            { file: '/Pdp2360.jpg', label: 'Piazza del Papa 2' },
+            { file: '/Pdp3360.jpg', label: 'Piazza del Papa 3' },
+            { file: '/Pdp4360.jpg', label: 'Piazza del Papa 4' },
+            { file: '/Pdp5360.jpg', label: 'Piazza del Papa 5' },
+        ];
+
+        // --- Setup scena ---
+        const canvas = document.getElementById('canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Sfera invertita per panorama
+        const geom = new THREE.SphereGeometry(500, 64, 32);
+        geom.scale(-1, 1, 1);
+        const mat = new THREE.MeshBasicMaterial({ color: 0x111111 });
+        const sphere = new THREE.Mesh(geom, mat);
+        scene.add(sphere);
+
+        // --- Controlli camera con yaw/pitch (semplici, stabili) ---
+        // L'utente è al centro della sfera e ruota la testa.
+        let yaw = 0;       // rotazione orizzontale
+        let pitch = 0;     // rotazione verticale
+        let isDragging = false;
+        let lastX = 0, lastY = 0;
+
+        canvas.addEventListener('mousedown', e => {
+            isDragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        window.addEventListener('mousemove', e => {
+            if (!isDragging) return;
+            const dx = e.clientX - lastX;
+            const dy = e.clientY - lastY;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            // Velocità contenuta + segno "naturale" (trascini a destra → ruoti verso destra)
+            yaw -= dx * 0.003;
+            pitch -= dy * 0.003;
+            // Limite verticale per non capovolgersi
+            pitch = Math.max(-Math.PI / 2 + 0.01, Math.min(Math.PI / 2 - 0.01, pitch));
+        });
+
+        // Touch support
+        canvas.addEventListener('touchstart', e => {
+            if (e.touches.length === 1) {
+                isDragging = true;
+                lastX = e.touches[0].clientX;
+                lastY = e.touches[0].clientY;
+            }
+        }, { passive: true });
+        canvas.addEventListener('touchend', () => { isDragging = false; });
+        canvas.addEventListener('touchmove', e => {
+            if (!isDragging || e.touches.length !== 1) return;
+            const dx = e.touches[0].clientX - lastX;
+            const dy = e.touches[0].clientY - lastY;
+            lastX = e.touches[0].clientX;
+            lastY = e.touches[0].clientY;
+            yaw -= dx * 0.003;
+            pitch -= dy * 0.003;
+            pitch = Math.max(-Math.PI / 2 + 0.01, Math.min(Math.PI / 2 - 0.01, pitch));
+        }, { passive: true });
+
+        // Zoom con rotella → FOV
+        canvas.addEventListener('wheel', e => {
+            e.preventDefault();
+            camera.fov *= e.deltaY > 0 ? 1.05 : 0.95;
+            camera.fov = Math.max(20, Math.min(110, camera.fov));
+            camera.updateProjectionMatrix();
+        }, { passive: false });
+
+        // --- Caricamento panorama ---
+        const loader = new THREE.TextureLoader();
+        function carica(file) {
+            loader.load(
+                file,
+                tex => {
+                    tex.colorSpace = THREE.SRGBColorSpace;
+                    if (sphere.material.map) sphere.material.map.dispose();
+                    sphere.material.map = tex;
+                    sphere.material.color.set(0xffffff);
+                    sphere.material.needsUpdate = true;
+                },
+                undefined,
+                err => {
+                    console.warn('Errore caricamento ' + file, err);
+                    sphere.material.map = null;
+                    sphere.material.color.set(0x331111);
+                    sphere.material.needsUpdate = true;
+                }
+            );
+        }
+
+        // --- Dropdown ---
+        const select = document.getElementById('select');
+        PANORAMI.forEach((p, i) => {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = p.label;
+            select.appendChild(opt);
+        });
+        select.addEventListener('change', e => {
+            carica(PANORAMI[parseInt(e.target.value)].file);
+        });
+
+        // --- Resize ---
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Loop ---
+        function animate() {
+            requestAnimationFrame(animate);
+            // Applico yaw/pitch alla camera
+            camera.rotation.order = 'YXZ';
+            camera.rotation.y = yaw;
+            camera.rotation.x = pitch;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        carica(PANORAMI[0].file);
+    </script>
+</body>
+</html>

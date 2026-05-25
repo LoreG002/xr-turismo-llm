@@ -746,7 +746,7 @@ async function inizializza() {
   await caricaModelliGLB();
   const res = await fetch('/tour.json');
   tourData = await res.json();
-  caricaScena('scena1');
+  caricaScena('scena1_facciata');
 }
 
 // Label "pill" dell'hotspot
@@ -817,10 +817,137 @@ function disegnaLabelHotspot(testo, isInfo, isInfoSec = false) {
   return tex;
 }
 
+// Label discreta per le chevron nav_locale: pillola scura sottile, font medium,
+// testo bianco, nessun pallino-accento. Pensata per stare poco sopra la freccia.
+function disegnaLabelChevron(testo) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1024;
+  canvas.height = 192;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+
+  const PAD_X = 60;
+  const FONT_SIZE = 64;
+
+  ctx.font = `500 ${FONT_SIZE}px sans-serif`;
+  const larghezzaTestoEffettiva = ctx.measureText(testo).width;
+  const larghezzaPillola = Math.min(W - 40, larghezzaTestoEffettiva + PAD_X * 2);
+  const altezzaPillola = 110;
+
+  const xPillola = (W - larghezzaPillola) / 2;
+  const yPillola = (H - altezzaPillola) / 2;
+  const raggio = altezzaPillola / 2;
+
+  // Pillola nera semitrasparente, niente bordo
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.42)';
+  rettArrotondato(ctx, xPillola, yPillola, larghezzaPillola, altezzaPillola, raggio);
+  ctx.fill();
+
+  // Testo bianco centrato
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `500 ${FONT_SIZE}px sans-serif`;
+  ctx.fillText(testo, W / 2, H / 2);
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.minFilter = THREE.LinearFilter;
+  tex.magFilter = THREE.LinearFilter;
+  return tex;
+}
+
+// =====================================================
+// CHEVRON NAVIGAZIONE LOCALE (intra-monumento, stile streetview)
+// =====================================================
+const CHEVRON_DIM = 0.9;        // semilato della freccia (m)
+const CHEVRON_SPESSORE = 0.32;  // "punta interna" della chevron
+
+// Costruisce una mesh chevron piatta, bianca semitrasparente.
+// È una ShapeGeometry → niente texture, niente asset esterni.
+function creaChevronMesh(opacityBase) {
+  const s = CHEVRON_DIM;
+  const k = CHEVRON_SPESSORE;
+  // Forma "freccia rivolta a destra" (verso +X locale del gruppo)
+  const shape = new THREE.Shape();
+  shape.moveTo(-s, -s);
+  shape.lineTo(0, -s);
+  shape.lineTo(s, 0);
+  shape.lineTo(0, s);
+  shape.lineTo(-s, s);
+  shape.lineTo(-s + k, 0);
+  shape.lineTo(-s, -s);
+  const geo = new THREE.ShapeGeometry(shape);
+  const mat = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: opacityBase,
+    side: THREE.DoubleSide,
+    depthTest: false,
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.renderOrder = 8;
+  return mesh;
+}
+
 // =====================================================
 // HOTSPOT (info + navigazione)
 // =====================================================
 function creaHotspot(dati) {
+  // --- Hotspot di navigazione locale: chevron piatta semitrasparente,
+  //     ruota verso la destinazione, con label discreta sopra. ---
+  if (dati.tipo === 'nav_locale') {
+    const group = new THREE.Group();
+
+    // Sotto-gruppo per le chevron: orientato e inclinato a terra.
+    // Tenendolo separato dal group principale, la label sopra resta dritta.
+    const gruppoChevrons = new THREE.Group();
+    const chevPrim = creaChevronMesh(0.85);
+    const chevEco = creaChevronMesh(0.45);
+    chevEco.position.x = 0.55;        // si sovrappone alla primaria sull'asse di puntamento
+    chevEco.scale.setScalar(0.85);
+    gruppoChevrons.add(chevPrim);
+    gruppoChevrons.add(chevEco);
+
+    // La chevron locale punta dal centro scena verso fuori (verso la destinazione)
+    const yaw = Math.atan2(dati.posizione.x, -dati.posizione.z);
+    gruppoChevrons.rotation.y = yaw;
+    // Inclinazione "a terra" stile street view
+    gruppoChevrons.rotation.x = -Math.PI / 2.4;
+    group.add(gruppoChevrons);
+
+    // Label discreta sopra la chevron (sprite → sempre billboard).
+    // Visibile solo se dati.label è stato fornito.
+    let labelSprite = null;
+    if (dati.label) {
+      const tex = disegnaLabelChevron(dati.label);
+      const mat = new THREE.SpriteMaterial({
+        map: tex,
+        transparent: true,
+        depthTest: false,
+      });
+      labelSprite = new THREE.Sprite(mat);
+      // Scala ridotta rispetto agli hotspot info: la label è discreta
+      labelSprite.scale.set(2.6, 0.49, 1);
+      labelSprite.position.set(0, 1.4, 0);
+      labelSprite.renderOrder = 9;
+      group.add(labelSprite);
+    }
+
+    group.position.set(dati.posizione.x, dati.posizione.y, dati.posizione.z);
+    group.userData = {
+      ...dati,
+      isNavLocale: true,
+      chevronPrim: chevPrim,
+      chevronEco: chevEco,
+      labelSprite: labelSprite,
+      faseAnim: Math.random() * Math.PI * 2,
+    };
+
+    hotspotGroup.add(group);
+    return;
+  }
+
   const isInfoSec = dati.tipo === 'info_secondario';
   const isInfo = dati.tipo === 'info' || isInfoSec;
 
@@ -1120,6 +1247,16 @@ function animate() {
   // Animazioni hotspot
   hotspotGroup.children.forEach(group => {
     const ud = group.userData;
+
+    // Nav locale: niente billboard (l'orientamento è fisso e direzionale).
+    // Solo pulsazione di opacità per attirare lo sguardo.
+    if (ud.isNavLocale) {
+      const pulse = 0.5 + 0.5 * Math.sin(t * 2.0 + ud.faseAnim);
+      ud.chevronPrim.material.opacity = 0.55 + 0.35 * pulse;
+      ud.chevronEco.material.opacity = 0.20 + 0.30 * pulse;
+      return;
+    }
+
     if (!ud.modello) return;
 
     // Billboard: il gruppo guarda l'utente (label e anello sempre leggibili)
