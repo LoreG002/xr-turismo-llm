@@ -1040,7 +1040,7 @@ function creaHotspot(dati) {
 }
 
 // =====================================================
-// CARICAMENTO SCENA
+// CARICAMENTO SCENA (Con Reset Assoluto degli OrbitControls)
 // =====================================================
 const textureLoader = new THREE.TextureLoader();
 
@@ -1053,11 +1053,37 @@ function caricaScena(idScena) {
     textureLoader.load(scena.panorama, (texture) => {
       material.map = texture;
       material.needsUpdate = true;
+      
+      // ====================================================================
+      // 🔄 SOLUZIONE 1 COMPLETA: RESET STATO ED ORIENTAMENTO DELLO SPAWN POINT
+      // ====================================================================
+      // 1. Estrae il valore radianti dal JSON (default a 0.0 se non presente)
+      const rotazioneY = scena.rotazioneInizialeY || 0;
+      
+      // 2. AZZERAMENTO DELLA MEMORIA: Sbianca qualsiasi rotazione residua forzando 
+      //    il target dei controlli sul vettore neutro neutro frontale (asse Z negativo)
+      controls.target.set(0, 0, -1);
+      
+      // 3. TRIGONOMETRIA ASSOLUTA: Calcola le nuove coordinate direzionali sferiche
+      const targetX = Math.sin(rotazioneY);
+      const targetZ = -Math.cos(rotazioneY);
+      
+      // 4. SET CONTROLLI: Imposta il punto di focus direzionale definitivo
+      controls.target.set(targetX, 0, targetZ);
+      
+      // 5. CENTRATURA TELECAMERA: Blocca la camera al centro esatto (0,0) con l'offset
+      //    di 0.1 su Y/Z necessario agli OrbitControls per riallineare la matrice orbita
+      camera.position.set(0, 0, 0.1);
+      
+      // 6. AGGIORNAMENTO MATRICE: Costringe gli OrbitControls a rigenerare la vista
+      controls.update();
+      // ====================================================================
+
       hotspotGroup.clear();
       nascondiPannello();
+      
       scena.hotspot.forEach(h => {
         creaHotspot(h);
-        // Espando i secondari annidati come hotspot autonomi nella scena
         if (h.secondari && Array.isArray(h.secondari)) {
           h.secondari.forEach(sec => {
             creaHotspot({ ...sec, tipo: 'info_secondario' });
@@ -1292,4 +1318,25 @@ window.addEventListener('dblclick', (e) => {
   const posizione = new THREE.Vector3().copy(tempRaycaster.ray.direction).multiplyScalar(distanza);
   
   console.log(`"posizione": { "x": ${posizione.x.toFixed(2)}, "y": ${posizione.y.toFixed(2)}, "z": ${posizione.z.toFixed(2)} }`);
+});
+
+// =====================================================
+// DEV TOOL: CATTURA ROTAZIONE REALE DELLA TELECAMERA 
+// =====================================================
+window.addEventListener('keydown', (e) => {
+  // Se l'utente preme il tasto 'r' o 'R'
+  if (e.key === 'r' || e.key === 'R') {
+    if (!controls) return;
+
+    // 1. Calcoliamo la direzione in cui la telecamera sta guardando in questo preciso istante
+    const direzione = new THREE.Vector3();
+    camera.getWorldDirection(direzione);
+
+    // 2. Usiamo l'arcotangente per ricavare l'angolo esatto sull'asse Y (orizzontale)
+    let angoloRadianti = Math.atan2(direzione.x, -direzione.z);
+
+    // 3. Spacchiamo il risultato in console già pronto da copiare nel JSON
+    console.log(`%c[DEV TOOL] Inquadratura perfetta trovata!`, "color: #a78bfa; font-weight: bold;");
+    console.log(`"rotazioneInizialeY": ${angoloRadianti.toFixed(2)}`);
+  }
 });
