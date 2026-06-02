@@ -1044,7 +1044,7 @@ function creaHotspot(dati) {
 // =====================================================
 const textureLoader = new THREE.TextureLoader();
 
-function caricaScena(idScena) {
+function caricaScena(idScena, isRitorno = false) {
   const scena = tourData.scene[idScena];
   scenaCorrente = scena;
   overlay.style.opacity = 1;
@@ -1055,27 +1055,31 @@ function caricaScena(idScena) {
       material.needsUpdate = true;
       
       // ====================================================================
-      // 🔄 SOLUZIONE 1 COMPLETA: RESET STATO ED ORIENTAMENTO DELLO SPAWN POINT
+      // 🔄 SOLUZIONE 2 UNIVERZALE: LOGICA DI SPAWN AUTOMATICA ANDATA/RITORNO
       // ====================================================================
-      // 1. Estrae il valore radianti dal JSON (default a 0.0 se non presente)
-      const rotazioneY = scena.rotazioneInizialeY || 0;
+      // 1. Estrae il valore radianti base dal JSON (default a 0.0)
+      let rotazioneY = scena.rotazioneInizialeY || 0;
       
-      // 2. AZZERAMENTO DELLA MEMORIA: Sbianca qualsiasi rotazione residua forzando 
-      //    il target dei controlli sul vettore neutro neutro frontale (asse Z negativo)
+      // 2. Se l'utente sta camminando al contrario nel grafo (ritorno):
+      // Sommiamo Math.PI (180 gradi esatti) per girare lo sguardo verso l'uscita
+      if (isRitorno) {
+        rotazioneY += Math.PI;
+      }
+      
+      // 3. AZZERAMENTO DELLA MEMORIA: Sbianca qualsiasi rotazione residua dei controlli
       controls.target.set(0, 0, -1);
       
-      // 3. TRIGONOMETRIA ASSOLUTA: Calcola le nuove coordinate direzionali sferiche
+      // 4. TRIGONOMETRIA ASSOLUTA: Calcola il nuovo vettore direzionale
       const targetX = Math.sin(rotazioneY);
       const targetZ = -Math.cos(rotazioneY);
       
-      // 4. SET CONTROLLI: Imposta il punto di focus direzionale definitivo
+      // 5. SET CONTROLLI: Imposta il punto di focus direzionale definitivo
       controls.target.set(targetX, 0, targetZ);
       
-      // 5. CENTRATURA TELECAMERA: Blocca la camera al centro esatto (0,0) con l'offset
-      //    di 0.1 su Y/Z necessario agli OrbitControls per riallineare la matrice orbita
+      // 6. CENTRATURA TELECAMERA: Blocca la camera al centro (0,0)
       camera.position.set(0, 0, 0.1);
       
-      // 6. AGGIORNAMENTO MATRICE: Costringe gli OrbitControls a rigenerare la vista
+      // 7. AGGIORNAMENTO MATRICE: Forza OrbitControls a rigenerare la vista
       controls.update();
       // ====================================================================
 
@@ -1161,9 +1165,13 @@ window.addEventListener('click', async (e) => {
 
   // Cambio scena
   if (dati.tipo === 'nav' || dati.destinazione) {
-    caricaScena(dati.destinazione);
-    return;
-  }
+  // Se nel JSON c'è scritto "direzione": "indietro", l'interruttore diventa true
+  const isRitorno = (dati.direzione === 'indietro');
+  
+  // Passiamo il risultato alla funzione caricaScena
+  caricaScena(dati.destinazione, isRitorno);
+  return;
+ }
 
   // Hotspot info_secondario → solo descrizione breve, niente schede, niente foto
   if (dati.tipo === 'info_secondario') {

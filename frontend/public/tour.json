@@ -178,10 +178,10 @@
       ]
     },
     "Arco360": {
-      "nome": "Arco di Traiano - Vista dalla Strada",
+      "nome": "Arco di Traiano - Vista dalla Strada [0]",
       "panorama": "/pic360/Arco360.jpg",
       "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 1.57,
+      "rotazioneInizialeY": 1.51,
       "hotspot": [
         {
           "id": "nav_arco_to_duomo",
@@ -191,11 +191,18 @@
           "posizione": { "x": -9.15, "y": 3.27, "z": 2.37 }
         },
         {
-          "id": "nav_arco0_to_arco1",
-          "tipo": "nav",
-          "label": "Avvicinati all'Arco",
-          "destinazione": "Arco1360",
-          "posizione": { "x": 1.0, "y": 0.0, "z": -10.0 }
+          "id": "nav_0_to_2",
+          "tipo": "nav_locale",
+          "label": "0 -> 2",
+          "destinazione": "Arco2360",
+          "posizione": { "x": 9.12, "y": -0.14, "z": 4.11 }
+        },
+        {
+          "id": "nav_0_to_3",
+          "tipo": "nav_locale",
+          "label": "0 -> 3",
+          "destinazione": "Arco3360",
+          "posizione": { "x": 4.41, "y": -0.75, "z": 8.95 }
         },
         {
           "id": "info_arco_main",
@@ -206,98 +213,64 @@
         }
       ]
     },
-    "Arco1360": {
-      "nome": "Arco di Traiano - Ingresso Piazza",
-      "panorama": "/pic360/Arco1360.jpg",
-      "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 0.0,
-      "hotspot": [
-        {
-          "id": "nav_arco1_to_arco0",
-          "tipo": "nav",
-          "label": "Torna alla strada",
-          "destinazione": "Arco360",
-          "posizione": { "x": -1.0, "y": 0.0, "z": 10.0 }
-        },
-        {
-          "id": "nav_arco1_to_arco2",
-          "tipo": "nav",
-          "label": "Avanza nella piazza",
-          "destinazione": "Arco2360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
-        }
-      ]
-    },
     "Arco2360": {
-      "nome": "Arco di Traiano - Piazza Superiore",
+      "nome": "Arco di Traiano - Piazza Superiore [2]",
       "panorama": "/pic360/Arco2360.jpg",
       "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 0.0,
+      "rotazioneInizialeY": -1.58,
       "hotspot": [
         {
-          "id": "nav_arco2_to_arco1",
-          "tipo": "nav",
-          "label": "Torna indietro",
-          "destinazione": "Arco1360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_2_to_0",
+          "tipo": "nav_locale",
+          "label": "2 -> 0",
+          "destinazione": "Arco360",
+          "direzione": "indietro",
+          "posizione": { "x": 8.92, "y": -0.24, "z": 4.52 }
         },
         {
-          "id": "nav_arco2_to_arco4",
-          "tipo": "nav",
-          "label": "Guarda i Cannoni",
+          "id": "nav_2_to_4",
+          "tipo": "nav_locale",
+          "label": "2 -> 4",
           "destinazione": "Arco4360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": 0.0 }
+          "posizione": { "x": -9.91, "y": 1.28, "z": -0.27 }
         },
         {
-          "id": "nav_arco2_to_arco3",
-          "tipo": "nav",
-          "label": "Passa dietro l'Arco",
+          "id": "nav_2_to_3",
+          "tipo": "nav_locale",
+          "label": "2 -> 3",
           "destinazione": "Arco3360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
-        }
-      ]
-    },
-    "Arco4360": {
-      "nome": "Arco di Traiano - I Cannoni della Mole",
-      "panorama": "/pic360/Arco4360.jpg",
-      "luogo_id": "I Cannoni",
-      "rotazioneInizialeY": 0.0,
-      "hotspot": [
-        {
-          "id": "nav_arco4_to_arco2",
-          "tipo": "nav",
-          "label": "Torna alla piazza",
-          "destinazione": "Arco2360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 0.0 }
-        },
-        {
-          "id": "nav_arco4_to_arco1",
-          "tipo": "nav",
-          "label": "Torna all'ingresso",
-          "destinazione": "Arco1360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
+          "posizione": { "x": 5.0, "y": 0.0, "z": 0.0 }
         }
       ]
     },
     "Arco3360": {
-      "nome": "Arco di Traiano - Vista Posteriore",
+      "nome": "Arco di Traiano - Vista Posteriore [3]",
       "panorama": "/pic360/Arco3360.jpg",
       "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 0.0,
+      "rotazioneInizialeY": -2.57,
       "hotspot": [
         {
-          "id": "nav_arco3_to_arco2",
-          "tipo": "nav",
-          "label": "Torna davanti all'Arco",
-          "destinazione": "Arco2360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_3_to_0",
+          "tipo": "nav_locale",
+          "label": "3 -> 0",
+          "destinazione": "Arco360",
+          "direzione": "indietro",
+          "posizione": { "x": -7.98, "y": -0.67, "z": -5.99 }
         },
         {
-          "id": "nav_arco3_to_arco5",
-          "tipo": "nav",
-          "label": "Sali sul Bastione",
-          "destinazione": "Arco5360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
+          "id": "nav_3_to_6",
+          "tipo": "nav_locale",
+          "label": "3 -> 6",
+          "destinazione": "Arco6360",
+          "posizione": { "x": -5.12, "y": 4.60, "z": 7.25 }
+        },
+        {
+          "id": "nav_3_to_2",
+          "tipo": "nav_locale",
+          "label": "3 -> 2",
+          "direzione": "indietro",
+          "destinazione": "Arco2360",
+          "posizione": { "x": 5.0, "y": 0.0, "z": 0.0 }
         },
         {
           "id": "nav_arco3_to_mole",
@@ -308,76 +281,96 @@
         }
       ]
     },
-    "Arco5360": {
-      "nome": "Arco di Traiano - Sul Bastione",
-      "panorama": "/pic360/Arco5360.jpg",
-      "luogo_id": "Il Bastione",
-      "rotazioneInizialeY": 0.0,
+    "Arco4360": {
+      "nome": "Arco di Traiano - I Cannoni della Mole [4]",
+      "panorama": "/pic360/Arco4360.jpg",
+      "luogo_id": "I Cannoni",
+      "rotazioneInizialeY": -2.66,
       "hotspot": [
         {
-          "id": "nav_arco5_to_arco3",
-          "tipo": "nav",
-          "label": "Scendi dal Bastione",
-          "destinazione": "Arco3360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_4_to_2",
+          "tipo": "nav_locale",
+          "label": "4 -> 2",
+          "direzione": "indietro",
+          "destinazione": "Arco2360",
+          "posizione": { "x": 8.44, "y": -1.02, "z": -5.26 }
         },
         {
-          "id": "nav_arco5_to_arco6",
-          "tipo": "nav",
-          "label": "Vista Panoramica",
+          "id": "nav_4_to_6",
+          "tipo": "nav_locale",
+          "label": "4 -> 6",
           "destinazione": "Arco6360",
-          "posizione": { "x": 0.0, "y": 0.0, "z": -10.0 }
+          "posizione": { "x": -9.84, "y": -0.73, "z": -1.61 }
         },
         {
-          "id": "nav_arco5_to_arco7",
-          "tipo": "nav",
-          "label": "Rovine del Bastione",
+          "id": "nav_4_to_5",
+          "tipo": "nav_locale",
+          "label": "4 -> 5",
+          "destinazione": "Arco5360",
+          "posizione": { "x": -5.13, "y": -0.53, "z": 8.57 }
+        }
+      ]
+    },
+    "Arco5360": {
+      "nome": "Arco di Traiano - Sul Bastione [5]",
+      "panorama": "/pic360/Arco5360.jpg",
+      "luogo_id": "Il Bastione",
+      "rotazioneInizialeY": -1.77,
+      "hotspot": [
+        {
+          "id": "nav_5_to_4",
+          "tipo": "nav_locale",
+          "label": "5 -> 4",
+          "direzione": "indietro",
+          "destinazione": "Arco4360",
+          "posizione": { "x": 9.99, "y": 0.03, "z": -0.45 }
+        },
+        {
+          "id": "nav_5_to_7",
+          "tipo": "nav_locale",
+          "label": "5 -> 7",
           "destinazione": "Arco7360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": 0.0 }
+          "posizione": { "x": -9.77, "y": -0.31, "z": 2.09 }
         }
       ]
     },
     "Arco6360": {
-      "nome": "Arco di Traiano - Panoramica dal Bastione",
+      "nome": "Arco di Traiano - Panoramica dal Bastione [6]",
       "panorama": "/pic360/Arco6360.jpg",
       "luogo_id": "Il Bastione",
-      "rotazioneInizialeY": 0.0,
+      "rotazioneInizialeY": 1.82,
       "hotspot": [
         {
-          "id": "nav_arco6_to_arco5",
-          "tipo": "nav",
-          "label": "Torna indietro",
-          "destinazione": "Arco5360",
-          "posizione": { "x": 0.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_6_to_3",
+          "tipo": "nav_locale",
+          "label": "6 -> 3",
+          "direzione": "indietro",
+          "destinazione": "Arco3360",
+          "posizione": { "x": 0.87, "y": -6.39, "z": 7.64 }
         },
         {
-          "id": "nav_arco6_to_arco7",
-          "tipo": "nav",
-          "label": "Spostati alle Rovine",
-          "destinazione": "Arco7360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
+          "id": "nav_6_to_4",
+          "tipo": "nav_locale",
+          "label": "6 -> 4",
+          "direzione": "indietro",
+          "destinazione": "Arco4360",
+          "posizione": { "x": -7.84, "y": -0.78, "z": -6.16 }
         }
       ]
     },
     "Arco7360": {
-      "nome": "Arco di Traiano - Rovine sul Bastione",
+      "nome": "Arco di Traiano - Rovine sul Bastione [7]",
       "panorama": "/pic360/Arco7360.jpg",
       "luogo_id": "Rovine del Bastione",
-      "rotazioneInizialeY": 0.0,
+      "rotazioneInizialeY": -2.21,
       "hotspot": [
         {
-          "id": "nav_arco7_to_arco5",
-          "tipo": "nav",
-          "label": "Torna al centro del Bastione",
+          "id": "nav_7_to_5",
+          "tipo": "nav_locale",
+          "label": "7 -> 5",
+          "direzione": "indietro",
           "destinazione": "Arco5360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 0.0 }
-        },
-        {
-          "id": "nav_arco7_to_arco6",
-          "tipo": "nav",
-          "label": "Guarda la Vista Panoramica",
-          "destinazione": "Arco6360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "posizione": { "x": 9.28, "y": 0.20, "z": -3.72 }
         }
       ]
     },
