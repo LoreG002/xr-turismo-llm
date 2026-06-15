@@ -1,498 +1,1657 @@
 {
   "scene": {
-    "scena1_facciata": {
+    "Duomo1": {
       "nome": "Duomo di San Ciriaco - Sagrato",
-      "panorama": "/pic360/Duomo1a360.jpg",
+      "panorama": "/pic360/Duomo1360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
-          "id": "info_duomo_facciata",
+          "id": "nav_Duomo1_to_Duomo2",
+          "tipo": "nav_locale",
+          "label": "Avvicinati al Portale",
+          "destinazione": "Duomo2",
+          "posizione": {
+            "x": 2.8,
+            "y": -3.8,
+            "z": -9.6
+          },
+          "rotazione": {
+            "x": -1.43,
+            "y": -0.29,
+            "z": 0.34
+          },
+          "yawArrivo": -2.5511
+        },
+        {
+          "id": "nav_Duomo1_to_Duomo5",
+          "tipo": "nav_locale",
+          "label": "Vai a Largo Giovanni Paolo II",
+          "destinazione": "Duomo5",
+          "posizione": {
+            "x": 5.7,
+            "y": -2.3,
+            "z": 4
+          },
+          "rotazione": {
+            "x": -1.15,
+            "y": -2.5,
+            "z": 0.14
+          },
+          "yawArrivo": 1.0419
+        },
+        {
+          "id": "nav_Duomo1_to_Arco0",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -12.1,
+            "y": -1.7,
+            "z": 3.8
+          }
+        },
+        {
+          "id": "nav_Duomo1_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -9.8,
+            "y": -0.8,
+            "z": 10.5
+          }
+        },
+        {
+          "id": "info_Duomo1",
           "tipo": "info",
           "label": "Scopri il Duomo",
           "query": "Duomo_di_San_Ciriaco",
-          "posizione": { "x": 0, "y": 4, "z": -10 }
-        },
-        {
-          "id": "hs1",
-          "tipo": "nav",
-          "label": "Vai all'Arco di Traiano",
-          "destinazione": "Arco360",
-          "posizione": { "x": -8, "y": -1, "z": 6 }
-        },
-        {
-          "id": "nav_fac_to_portale",
-          "tipo": "nav_locale",
-          "label": "Avvicinati al Portale",
-          "destinazione": "scena1_portale",
-          "posizione": { "x": 0, "y": -3.5, "z": -7 }
-        },
-        {
-          "id": "nav_fac_to_abside",
-          "tipo": "nav_locale",
-          "label": "Vai verso l'Abside",
-          "destinazione": "scena1_abside",
-          "posizione": { "x": 7, "y": -3.5, "z": -3 }
+          "posizione": {
+            "x": 10.1,
+            "y": 7.4,
+            "z": -4.9
+          }
         }
-      ]
+      ],
+      "rotazioneInizialeY": 0.8552
     },
-    "scena1_portale": {
+    "Duomo2": {
       "nome": "Duomo di San Ciriaco - Portale",
-      "panorama": "/pic360/Duomo1b360.jpg",
+      "panorama": "/pic360/Duomo2360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
-          "id": "info_duomo_portale",
+          "id": "nav_Duomo2_to_Duomo1",
+          "tipo": "nav_locale",
+          "label": "Torna sul Sagrato",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": -2.1,
+            "y": -3.79,
+            "z": -9.67
+          },
+          "rotazione": {
+            "x": -1.57,
+            "y": -0.1,
+            "z": 1.91
+          }
+        },
+        {
+          "id": "nav_Duomo2_to_Duomo3",
+          "tipo": "nav_locale",
+          "label": "Vai verso l'Abside",
+          "destinazione": "Duomo3",
+          "posizione": {
+            "x": 10,
+            "y": -5.1,
+            "z": -0.1
+          },
+          "rotazione": {
+            "x": -1.27,
+            "y": -2.08,
+            "z": 0
+          }
+        },
+        {
+          "id": "nav_Duomo2_to_Duomo4",
+          "tipo": "nav_locale",
+          "label": "Vai al Campanile",
+          "destinazione": "Duomo4",
+          "posizione": {
+            "x": -6.5,
+            "y": -3.4,
+            "z": -6.2
+          },
+          "rotazione": {
+            "x": 1.64,
+            "y": 3.15,
+            "z": -0.43
+          }
+        },
+        {
+          "id": "nav_Duomo2_to_Arco0",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -7.5,
+            "y": -1.3,
+            "z": -14.9
+          }
+        },
+        {
+          "id": "nav_Duomo2_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -13.2,
+            "y": -0.5,
+            "z": -13.5
+          }
+        },
+        {
+          "id": "info_Duomo2",
           "tipo": "info",
           "label": "Il Portale Romanico",
           "query": "Duomo_di_San_Ciriaco",
-          "posizione": { "x": -7, "y": 3, "z": -6 },
+          "posizione": {
+            "x": -5.7,
+            "y": 7.7,
+            "z": 3.8
+          },
           "secondari": [
             {
-              "id": "info_leone_stiloforo",
-              "label": "Il Leone Stiloforo",
+              "id": "info_leoni_stilofori",
+              "label": "I Leoni Stilofori",
               "query": "leoni stilofori del protiro romanico del Duomo di San Ciriaco ad Ancona",
-              "posizione": { "x": -2, "y": -1, "z": -4 }
+              "posizione": {
+                "x": -5.8,
+                "y": -1.4,
+                "z": -0.1
+              }
             }
           ]
-        },
-        {
-          "id": "nav_portale_to_fac",
-          "tipo": "nav_locale",
-          "label": "Torna sul Sagrato",
-          "destinazione": "scena1_facciata",
-          "posizione": { "x": 7, "y": -3.5, "z": 3 }
-        },
-        {
-          "id": "nav_portale_to_arco",
-          "tipo": "nav",
-          "label": "Vai all'Arco di Traiano",
-          "destinazione": "Arco360",
-          "posizione": { "x": 9, "y": 1, "z": 4 }
         }
       ]
     },
-    "scena1_abside": {
+    "Duomo3": {
       "nome": "Duomo di San Ciriaco - Abside",
-      "panorama": "/pic360/Duomo1c360.jpg",
+      "panorama": "/pic360/Duomo3360.jpg",
       "luogo_id": "Duomo_di_San_Ciriaco",
       "hotspot": [
         {
-          "id": "info_duomo_abside",
+          "id": "nav_Duomo3_to_Duomo2",
+          "tipo": "nav_locale",
+          "label": "Torna al Portale",
+          "destinazione": "Duomo2",
+          "posizione": {
+            "x": -6.7,
+            "y": -4.9,
+            "z": 6.6
+          },
+          "rotazione": {
+            "x": -1.39,
+            "y": -3.02,
+            "z": -0.77
+          }
+        },
+        {
+          "id": "nav_Duomo3_to_Arco0",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -20.4,
+            "y": -0.8,
+            "z": 13.6
+          }
+        },
+        {
+          "id": "nav_Duomo3_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -25,
+            "y": -1.3,
+            "z": 22.2
+          }
+        },
+        {
+          "id": "info_Duomo3",
           "tipo": "info",
           "label": "L'Abside e la Cupola",
           "query": "Duomo_di_San_Ciriaco",
-          "posizione": { "x": -8, "y": 3, "z": -4 }
+          "posizione": {
+            "x": 2.39,
+            "y": 4.62,
+            "z": 7.87
+          }
+        }
+      ],
+      "rotazioneInizialeY": 3.0236
+    },
+    "Duomo4": {
+      "nome": "Duomo di San Ciriaco - Campanile",
+      "panorama": "/pic360/Duomo4360.jpg",
+      "luogo_id": "Duomo_di_San_Ciriaco",
+      "hotspot": [
+        {
+          "id": "nav_Duomo4_to_Duomo2",
+          "tipo": "nav_locale",
+          "label": "Torna al Portale",
+          "destinazione": "Duomo2",
+          "posizione": {
+            "x": -1.97,
+            "y": -4.9,
+            "z": -7.75
+          },
+          "rotazione": {
+            "x": -1.39,
+            "y": -0.21,
+            "z": 1.95
+          },
+          "yawArrivo": 1.7838
         },
         {
-          "id": "nav_abside_to_fac",
+          "id": "nav_Duomo4_to_Duomo5",
+          "tipo": "nav_locale",
+          "label": "Vai a Largo Giovanni Paolo II",
+          "destinazione": "Duomo5",
+          "posizione": {
+            "x": -6.6,
+            "y": -5.1,
+            "z": -4
+          },
+          "rotazione": {
+            "x": -1.63,
+            "y": -3.15,
+            "z": 0.26
+          },
+          "yawArrivo": -2.9683
+        },
+        {
+          "id": "nav_Duomo4_to_Arco0",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -19.6,
+            "y": 1.5,
+            "z": 14.1
+          }
+        },
+        {
+          "id": "nav_Duomo4_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -15.9,
+            "y": 1.1,
+            "z": 17
+          }
+        },
+        {
+          "id": "info_Duomo4",
+          "tipo": "info",
+          "label": "Il Campanile",
+          "query": "Duomo_di_San_Ciriaco",
+          "posizione": {
+            "x": -11.38,
+            "y": 4.88,
+            "z": 1
+          }
+        }
+      ],
+      "rotazioneInizialeY": -2.3188
+    },
+    "Duomo5": {
+      "nome": "Duomo di San Ciriaco - Largo Giovanni Paolo II",
+      "panorama": "/pic360/Duomo5360.jpg",
+      "luogo_id": "Duomo_di_San_Ciriaco",
+      "hotspot": [
+        {
+          "id": "nav_Duomo5_to_Duomo1",
           "tipo": "nav_locale",
           "label": "Torna sul Sagrato",
-          "destinazione": "scena1_facciata",
-          "posizione": { "x": -7, "y": -3.5, "z": 4 }
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": -1,
+            "y": -2.5,
+            "z": 5
+          },
+          "rotazione": {
+            "x": -1.41,
+            "y": -0.09,
+            "z": -2.07
+          }
         },
         {
-          "id": "nav_abside_to_vicolo",
-          "tipo": "nav_locale",
-          "label": "Esplora il Vicolo",
-          "destinazione": "scena1_vicolo",
-          "posizione": { "x": 7, "y": -3.5, "z": -3 }
-        },
-        {
-          "id": "nav_abside_to_arco",
-          "tipo": "nav",
-          "label": "Vai all'Arco di Traiano",
-          "destinazione": "Arco360",
-          "posizione": { "x": 5, "y": 2, "z": 8 }
-        }
-      ]
-    },
-    "scena1_vicolo": {
-      "nome": "Duomo di San Ciriaco - Vicolo del Campanile",
-      "panorama": "/pic360/Duomo1d360.jpg",
-      "luogo_id": "Duomo_di_San_Ciriaco",
-      "hotspot": [
-        {
-          "id": "info_duomo_vicolo",
-          "tipo": "info",
-          "label": "Scopri il Duomo",
-          "query": "Duomo_di_San_Ciriaco",
-          "posizione": { "x": 8, "y": 2, "z": -4 }
-        },
-        {
-          "id": "nav_vicolo_to_abside",
-          "tipo": "nav_locale",
-          "label": "Torna verso l'Abside",
-          "destinazione": "scena1_abside",
-          "posizione": { "x": -7, "y": -3.5, "z": 4 }
-        },
-        {
-          "id": "nav_vicolo_to_campanile",
+          "id": "nav_Duomo5_to_Duomo4",
           "tipo": "nav_locale",
           "label": "Vai al Campanile",
-          "destinazione": "scena1_campanile",
-          "posizione": { "x": 0, "y": -3.5, "z": -8 }
+          "destinazione": "Duomo4",
+          "posizione": {
+            "x": 0,
+            "y": -3.5,
+            "z": -10
+          },
+          "rotazione": {
+            "x": -1.53,
+            "y": -0.04,
+            "z": 0.31
+          }
         },
         {
-          "id": "nav_vicolo_to_arco",
+          "id": "nav_Duomo5_to_Arco0",
           "tipo": "nav",
           "label": "Vai all'Arco di Traiano",
-          "destinazione": "Arco360",
-          "posizione": { "x": 8, "y": 2, "z": 5 }
-        }
-      ]
-    },
-    "scena1_campanile": {
-      "nome": "Duomo di San Ciriaco - Campanile",
-      "panorama": "/pic360/Duomo1e360.jpg",
-      "luogo_id": "Duomo_di_San_Ciriaco",
-      "hotspot": [
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": 14.2,
+            "y": 1.5,
+            "z": 8.1
+          }
+        },
         {
-          "id": "info_duomo_campanile",
+          "id": "nav_Duomo5_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": 13.5,
+            "y": 1.5,
+            "z": 3.4
+          }
+        },
+        {
+          "id": "info_Duomo5",
           "tipo": "info",
           "label": "Scopri il Duomo",
           "query": "Duomo_di_San_Ciriaco",
-          "posizione": { "x": -4, "y": 4, "z": -8 },
-          "secondari": [
-            {
-              "id": "info_campanile_dettaglio",
-              "label": "Il Campanile",
-              "query": "campanile romanico isolato del Duomo di San Ciriaco ad Ancona",
-              "posizione": { "x": 1, "y": 5, "z": -7 }
-            }
-          ]
-        },
-        {
-          "id": "nav_campanile_to_vicolo",
-          "tipo": "nav_locale",
-          "label": "Torna verso il Duomo",
-          "destinazione": "scena1_vicolo",
-          "posizione": { "x": 8, "y": -3.5, "z": 0 }
-        },
-        {
-          "id": "nav_campanile_to_arco",
-          "tipo": "nav",
-          "label": "Vai all'Arco di Traiano",
-          "destinazione": "Arco360",
-          "posizione": { "x": 6, "y": 2, "z": 7 }
+          "posizione": {
+            "x": -18.9,
+            "y": 11.1,
+            "z": -1.5
+          }
         }
-      ]
+      ],
+      "rotazioneInizialeY": -1.7285
     },
-    "Arco360": {
+    "Arco0": {
       "nome": "Arco di Traiano - Vista dalla Strada",
-      "panorama": "/pic360/Arco360.jpg",
+      "panorama": "/pic360/Arco0360.jpg",
       "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 1.57,
       "hotspot": [
         {
-          "id": "nav_arco_to_duomo",
-          "tipo": "nav",
-          "label": "Torna al Duomo",
-          "destinazione": "scena1_facciata",
-          "posizione": { "x": -9.15, "y": 3.27, "z": 2.37 }
-        },
-        {
-          "id": "nav_arco0_to_arco1",
-          "tipo": "nav",
+          "id": "nav_Arco0_to_Arco1",
+          "tipo": "nav_locale",
           "label": "Avvicinati all'Arco",
-          "destinazione": "Arco1360",
-          "posizione": { "x": 1.0, "y": 0.0, "z": -10.0 }
+          "destinazione": "Arco1",
+          "posizione": {
+            "x": 5.9,
+            "y": -4,
+            "z": 3.59
+          },
+          "rotazione": {
+            "x": -1.53,
+            "y": 0.11,
+            "z": -0.53
+          }
         },
         {
-          "id": "info_arco_main",
+          "id": "nav_Arco0_to_Arco7",
+          "tipo": "nav_locale",
+          "label": "Vai alle Rovine del Bastione",
+          "destinazione": "Arco7",
+          "posizione": {
+            "x": 10.06,
+            "y": -3.8,
+            "z": -0.74
+          },
+          "rotazione": {
+            "x": -1.53,
+            "y": -0.05,
+            "z": 0.1
+          },
+          "yawArrivo": -2.0727
+        },
+        {
+          "id": "nav_Arco0_to_Duomo1",
+          "tipo": "nav",
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": -8.38,
+            "y": 2.82,
+            "z": 2.01
+          }
+        },
+        {
+          "id": "nav_Arco0_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": -3.3,
+            "y": 1.3,
+            "z": -20.7
+          }
+        },
+        {
+          "id": "info_Arco0",
           "tipo": "info",
           "label": "Storia dell'Arco",
           "query": "Arco_di_Traiano",
-          "posizione": { "x": 11.5, "y": 5, "z": 4 }
+          "posizione": {
+            "x": 14.02,
+            "y": 5.92,
+            "z": 4.92
+          }
         }
-      ]
+      ],
+      "rotazioneInizialeY": 1.4474
     },
-    "Arco1360": {
-      "nome": "Arco di Traiano - Ingresso Piazza",
+    "Arco1": {
+      "nome": "Arco di Traiano - Vicino all'Arco",
       "panorama": "/pic360/Arco1360.jpg",
       "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 0.0,
       "hotspot": [
         {
-          "id": "nav_arco1_to_arco0",
-          "tipo": "nav",
+          "id": "nav_Arco1_to_Arco0",
+          "tipo": "nav_locale",
           "label": "Torna alla strada",
-          "destinazione": "Arco360",
-          "posizione": { "x": -1.0, "y": 0.0, "z": 10.0 }
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": 0,
+            "y": -3.5,
+            "z": 10
+          }
         },
         {
-          "id": "nav_arco1_to_arco2",
-          "tipo": "nav",
-          "label": "Avanza nella piazza",
-          "destinazione": "Arco2360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
-        }
-      ]
-    },
-    "Arco2360": {
-      "nome": "Arco di Traiano - Piazza Superiore",
-      "panorama": "/pic360/Arco2360.jpg",
-      "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 0.0,
-      "hotspot": [
-        {
-          "id": "nav_arco2_to_arco1",
-          "tipo": "nav",
-          "label": "Torna indietro",
-          "destinazione": "Arco1360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_Arco1_to_Arco3",
+          "tipo": "nav_locale",
+          "label": "Vai verso i Cannoni",
+          "destinazione": "Arco3",
+          "posizione": {
+            "x": 5.9,
+            "y": -3.81,
+            "z": 1.9
+          },
+          "rotazione": {
+            "x": 1.5,
+            "y": 0.2,
+            "z": 0.38
+          },
+          "yawArrivo": -2.5915
         },
         {
-          "id": "nav_arco2_to_arco4",
-          "tipo": "nav",
-          "label": "Guarda i Cannoni",
-          "destinazione": "Arco4360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": 0.0 }
+          "id": "nav_Arco1_to_Arco4",
+          "tipo": "nav_locale",
+          "label": "Attraversa l'Arco",
+          "destinazione": "Arco4",
+          "posizione": {
+            "x": -0.91,
+            "y": -4.57,
+            "z": -11.25
+          },
+          "rotazione": {
+            "x": 1.82,
+            "y": -0.05,
+            "z": -1.72
+          }
         },
         {
-          "id": "nav_arco2_to_arco3",
+          "id": "nav_Arco1_to_Duomo1",
           "tipo": "nav",
-          "label": "Passa dietro l'Arco",
-          "destinazione": "Arco3360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
-        }
-      ]
-    },
-    "Arco4360": {
-      "nome": "Arco di Traiano - I Cannoni della Mole",
-      "panorama": "/pic360/Arco4360.jpg",
-      "luogo_id": "I Cannoni",
-      "rotazioneInizialeY": 0.0,
-      "hotspot": [
-        {
-          "id": "nav_arco4_to_arco2",
-          "tipo": "nav",
-          "label": "Torna alla piazza",
-          "destinazione": "Arco2360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 0.0 }
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": 6.7,
+            "y": 5.6,
+            "z": 12.7
+          }
         },
         {
-          "id": "nav_arco4_to_arco1",
-          "tipo": "nav",
-          "label": "Torna all'ingresso",
-          "destinazione": "Arco1360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
-        }
-      ]
-    },
-    "Arco3360": {
-      "nome": "Arco di Traiano - Vista Posteriore",
-      "panorama": "/pic360/Arco3360.jpg",
-      "luogo_id": "Arco_di_Traiano",
-      "rotazioneInizialeY": 0.0,
-      "hotspot": [
-        {
-          "id": "nav_arco3_to_arco2",
-          "tipo": "nav",
-          "label": "Torna davanti all'Arco",
-          "destinazione": "Arco2360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
-        },
-        {
-          "id": "nav_arco3_to_arco5",
-          "tipo": "nav",
-          "label": "Sali sul Bastione",
-          "destinazione": "Arco5360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
-        },
-        {
-          "id": "nav_arco3_to_mole",
+          "id": "nav_Arco1_to_Mole1",
           "tipo": "nav",
           "label": "Vai alla Mole Vanvitelliana",
-          "destinazione": "scena3",
-          "posizione": { "x": -0.04, "y": 0.10, "z": -10.00 }
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": -16.2,
+            "y": 0.25,
+            "z": 6.9
+          }
+        },
+        {
+          "id": "info_Arco1",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco_di_Traiano",
+          "posizione": {
+            "x": -3,
+            "y": 5.8,
+            "z": -7.71
+          }
         }
       ]
     },
-    "Arco5360": {
-      "nome": "Arco di Traiano - Sul Bastione",
-      "panorama": "/pic360/Arco5360.jpg",
-      "luogo_id": "Il Bastione",
-      "rotazioneInizialeY": 0.0,
+    "Arco3": {
+      "nome": "Arco di Traiano - I Cannoni",
+      "panorama": "/pic360/Arco3360.jpg",
+      "luogo_id": "Arco_di_Traiano",
       "hotspot": [
         {
-          "id": "nav_arco5_to_arco3",
-          "tipo": "nav",
-          "label": "Scendi dal Bastione",
-          "destinazione": "Arco3360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_Arco3_to_Arco1",
+          "tipo": "nav_locale",
+          "label": "Torna all'Arco",
+          "destinazione": "Arco1",
+          "posizione": {
+            "x": 5.51,
+            "y": -3.29,
+            "z": -8.44
+          },
+          "rotazione": {
+            "x": -1.26,
+            "y": 2.9,
+            "z": 2.47
+          }
         },
         {
-          "id": "nav_arco5_to_arco6",
-          "tipo": "nav",
+          "id": "nav_Arco3_to_Arco6",
+          "tipo": "nav_locale",
           "label": "Vista Panoramica",
-          "destinazione": "Arco6360",
-          "posizione": { "x": 0.0, "y": 0.0, "z": -10.0 }
+          "destinazione": "Arco6",
+          "posizione": {
+            "x": 3.7,
+            "y": -4.2,
+            "z": 3.23
+          },
+          "rotazione": {
+            "x": -1.7,
+            "y": -0.03,
+            "z": -0.94
+          },
+          "yawArrivo": -1.3874
         },
         {
-          "id": "nav_arco5_to_arco7",
+          "id": "nav_Arco3_to_Duomo1",
           "tipo": "nav",
-          "label": "Rovine del Bastione",
-          "destinazione": "Arco7360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": 0.0 }
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": -13.3,
+            "y": 5.6,
+            "z": 3.9
+          }
+        },
+        {
+          "id": "nav_Arco3_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": -8.8,
+            "y": 2.3,
+            "z": -20.8
+          }
+        },
+        {
+          "id": "info_Arco3",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco_di_Traiano",
+          "posizione": {
+            "x": 13,
+            "y": 10.3,
+            "z": -11.3
+          }
         }
       ]
     },
-    "Arco6360": {
-      "nome": "Arco di Traiano - Panoramica dal Bastione",
+    "Arco4": {
+      "nome": "Arco di Traiano - Appena Attraversato",
+      "panorama": "/pic360/Arco4360.jpg",
+      "luogo_id": "Arco_di_Traiano",
+      "hotspot": [
+        {
+          "id": "nav_Arco4_to_Arco1",
+          "tipo": "nav_locale",
+          "label": "Torna davanti all'Arco",
+          "destinazione": "Arco1",
+          "posizione": {
+            "x": 9.62,
+            "y": -4.4,
+            "z": -2.49
+          },
+          "rotazione": {
+            "x": -1.44,
+            "y": -0.19,
+            "z": 0.98
+          }
+        },
+        {
+          "id": "nav_Arco4_to_Arco5",
+          "tipo": "nav_locale",
+          "label": "Passeggia sul Bastione",
+          "destinazione": "Arco5",
+          "posizione": {
+            "x": -0.8,
+            "y": -4.1,
+            "z": 9.3
+          },
+          "rotazione": {
+            "x": 2.51,
+            "y": -3.15,
+            "z": -0.8
+          },
+          "yawArrivo": -1.6379
+        },
+        {
+          "id": "nav_Arco4_to_Duomo1",
+          "tipo": "nav",
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": 3.3,
+            "y": 4.7,
+            "z": -18.3
+          }
+        },
+        {
+          "id": "nav_Arco4_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 20,
+            "y": 3.3,
+            "z": 6.6
+          }
+        },
+        {
+          "id": "info_Arco4",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco_di_Traiano",
+          "posizione": {
+            "x": 5.23,
+            "y": 8.32,
+            "z": -2.15
+          }
+        }
+      ]
+    },
+    "Arco5": {
+      "nome": "Arco di Traiano - Passeggiata sul Bastione",
+      "panorama": "/pic360/Arco5360.jpg",
+      "luogo_id": "Arco_di_Traiano",
+      "hotspot": [
+        {
+          "id": "nav_Arco5_to_Arco4",
+          "tipo": "nav_locale",
+          "label": "Torna verso l'Arco",
+          "destinazione": "Arco4",
+          "posizione": {
+            "x": 6.9,
+            "y": -4,
+            "z": -1.1
+          },
+          "rotazione": {
+            "x": 1.5,
+            "y": 3.15,
+            "z": -3.15
+          },
+          "yawArrivo": 0.8169
+        },
+        {
+          "id": "nav_Arco5_to_Arco7",
+          "tipo": "nav_locale",
+          "label": "Vai alle Rovine",
+          "destinazione": "Arco7",
+          "posizione": {
+            "x": -6.79,
+            "y": -2.53,
+            "z": -0.39
+          },
+          "rotazione": {
+            "x": 1.73,
+            "y": 0.56,
+            "z": -0.2
+          },
+          "yawArrivo": -2.2615
+        },
+        {
+          "id": "nav_Arco5_to_Duomo1",
+          "tipo": "nav",
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": 15.9,
+            "y": 6.7,
+            "z": -7.5
+          }
+        },
+        {
+          "id": "nav_Arco5_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 8.4,
+            "y": 4,
+            "z": 12.7
+          }
+        },
+        {
+          "id": "info_Arco5",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco_di_Traiano",
+          "posizione": {
+            "x": 7.46,
+            "y": 6.3,
+            "z": -2.41
+          }
+        }
+      ]
+    },
+    "Arco6": {
+      "nome": "Arco di Traiano - Veduta Panoramica",
       "panorama": "/pic360/Arco6360.jpg",
-      "luogo_id": "Il Bastione",
-      "rotazioneInizialeY": 0.0,
+      "luogo_id": "Arco_di_Traiano",
       "hotspot": [
         {
-          "id": "nav_arco6_to_arco5",
-          "tipo": "nav",
-          "label": "Torna indietro",
-          "destinazione": "Arco5360",
-          "posizione": { "x": 0.0, "y": 0.0, "z": 10.0 }
+          "id": "nav_Arco6_to_Arco3",
+          "tipo": "nav_locale",
+          "label": "Torna verso i Cannoni",
+          "destinazione": "Arco3",
+          "posizione": {
+            "x": -3.28,
+            "y": -7.65,
+            "z": 6.35
+          },
+          "rotazione": {
+            "x": 1.35,
+            "y": 3.1416,
+            "z": 3.15
+          }
         },
         {
-          "id": "nav_arco6_to_arco7",
+          "id": "nav_Arco6_to_Duomo1",
           "tipo": "nav",
-          "label": "Spostati alle Rovine",
-          "destinazione": "Arco7360",
-          "posizione": { "x": 10.0, "y": 0.0, "z": -10.0 }
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": 11.78,
+            "y": 5.05,
+            "z": 7.08
+          }
+        },
+        {
+          "id": "nav_Arco6_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": -11,
+            "y": 0.16,
+            "z": 19
+          }
+        },
+        {
+          "id": "info_Arco6",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco_di_Traiano",
+          "posizione": {
+            "x": -15.9,
+            "y": 6.1,
+            "z": -2.5
+          }
         }
       ]
     },
-    "Arco7360": {
-      "nome": "Arco di Traiano - Rovine sul Bastione",
+    "Arco7": {
+      "nome": "Arco di Traiano - Rovine del Bastione",
       "panorama": "/pic360/Arco7360.jpg",
-      "luogo_id": "Rovine del Bastione",
-      "rotazioneInizialeY": 0.0,
+      "luogo_id": "Arco_di_Traiano",
       "hotspot": [
         {
-          "id": "nav_arco7_to_arco5",
-          "tipo": "nav",
-          "label": "Torna al centro del Bastione",
-          "destinazione": "Arco5360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 0.0 }
+          "id": "nav_Arco7_to_Arco0",
+          "tipo": "nav_locale",
+          "label": "Torna alla strada",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": 6.6,
+            "y": -3.63,
+            "z": -1.32
+          },
+          "rotazione": {
+            "x": -1.77,
+            "y": 3.1416,
+            "z": -2.8
+          }
         },
         {
-          "id": "nav_arco7_to_arco6",
+          "id": "nav_Arco7_to_Arco5",
+          "tipo": "nav_locale",
+          "label": "Torna sul Bastione",
+          "destinazione": "Arco5",
+          "posizione": {
+            "x": 1.3,
+            "y": -3.7,
+            "z": -10.08
+          },
+          "rotazione": {
+            "x": -1.32,
+            "y": -0.24,
+            "z": 0.66
+          },
+          "yawArrivo": 1.5442
+        },
+        {
+          "id": "nav_Arco7_to_Duomo1",
           "tipo": "nav",
-          "label": "Guarda la Vista Panoramica",
-          "destinazione": "Arco6360",
-          "posizione": { "x": -10.0, "y": 0.0, "z": 10.0 }
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": 16.1,
+            "y": 4.6,
+            "z": -4.4
+          }
+        },
+        {
+          "id": "nav_Arco7_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 13.3,
+            "y": 2.4,
+            "z": 15.5
+          }
+        },
+        {
+          "id": "info_Arco7",
+          "tipo": "info",
+          "label": "Storia dell'Arco",
+          "query": "Arco_di_Traiano",
+          "posizione": {
+            "x": -7.62,
+            "y": 4.44,
+            "z": 5.28
+          }
         }
       ]
     },
-    "scena3": {
-      "nome": "Mole Vanvitelliana",
+    "Mole1": {
+      "nome": "Mole Vanvitelliana - Sotto Porta Pia",
       "panorama": "/pic360/Mole1360.jpg",
       "luogo_id": "Mole_Vanvitelliana",
       "hotspot": [
         {
-          "id": "nav_3_to_2",
-          "tipo": "nav",
-          "label": "Torna all'Arco",
-          "destinazione": "Arco3360",
-          "posizione": { "x": 9.70, "y": 0.64, "z": -2.33 }
+          "id": "nav_Mole1_to_Mole3",
+          "tipo": "nav_locale",
+          "label": "Entra nel cortile",
+          "destinazione": "Mole3",
+          "posizione": {
+            "x": 7.32,
+            "y": -2.49,
+            "z": -2.94
+          },
+          "rotazione": {
+            "x": -1.51,
+            "y": 0.08,
+            "z": 0.16
+          }
         },
         {
-          "id": "nav_3_to_4",
+          "id": "nav_Mole1_to_Arco0",
           "tipo": "nav",
-          "label": "Sali in Piazza del Plebiscito",
-          "destinazione": "scena4",
-          "posizione": { "x": 8.96, "y": 1.32, "z": 4.23 }
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -16.9,
+            "y": 1.5,
+            "z": -2.6
+          }
         },
         {
-          "id": "info_mole",
+          "id": "nav_Mole1_to_Pdp0",
+          "tipo": "nav",
+          "label": "Vai in Piazza del Papa",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": 1.5,
+            "y": 4.1,
+            "z": -20.2
+          }
+        },
+        {
+          "id": "nav_Mole1_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -6.4,
+            "y": 4.4,
+            "z": -18.5
+          }
+        },
+        {
+          "id": "info_Mole1",
           "tipo": "info",
           "label": "L'Architettura della Mole",
           "query": "Mole_Vanvitelliana",
-          "posizione": { "x": 6.31, "y": -0.12, "z": -7.75 }
+          "posizione": {
+            "x": 16.3,
+            "y": 2.4,
+            "z": -0.2
+          },
+          "secondari": [
+            {
+              "id": "info_porta_pia",
+              "label": "Porta Pia",
+              "query": "Porta Pia, monumentale porta settecentesca di Ancona vicino alla Mole Vanvitelliana",
+              "posizione": {
+                "x": -6.5,
+                "y": 7.4,
+                "z": -3.6
+              }
+            }
+          ]
+        }
+      ],
+      "rotazioneInizialeY": -2.1989
+    },
+    "Mole2": {
+      "nome": "Mole Vanvitelliana - Colonnato Centrale",
+      "panorama": "/pic360/Mole2360.jpg",
+      "luogo_id": "Mole_Vanvitelliana",
+      "hotspot": [
+        {
+          "id": "nav_Mole2_to_Mole3",
+          "tipo": "nav_locale",
+          "label": "Torna nel cortile",
+          "destinazione": "Mole3",
+          "posizione": {
+            "x": 7.6,
+            "y": -5,
+            "z": 0.1
+          },
+          "rotazione": -0.03
+        },
+        {
+          "id": "nav_Mole2_to_Arco0",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -18.9,
+            "y": 1.5,
+            "z": 6.7
+          }
+        },
+        {
+          "id": "nav_Mole2_to_Pdp0",
+          "tipo": "nav",
+          "label": "Vai in Piazza del Papa",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": 16.7,
+            "y": 3.3,
+            "z": 4.4
+          }
+        },
+        {
+          "id": "nav_Mole2_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": 17.3,
+            "y": 3.6,
+            "z": -1.7
+          }
+        },
+        {
+          "id": "info_Mole2",
+          "tipo": "info",
+          "label": "L'Architettura della Mole",
+          "query": "Mole_Vanvitelliana",
+          "posizione": {
+            "x": 3.04,
+            "y": 2.54,
+            "z": -9.25
+          }
         }
       ]
     },
-    "scena4": {
-      "nome": "Piazza del Plebiscito",
+    "Mole3": {
+      "nome": "Mole Vanvitelliana - Cortile",
+      "panorama": "/pic360/Mole3360.jpg",
+      "luogo_id": "Mole_Vanvitelliana",
+      "hotspot": [
+        {
+          "id": "nav_Mole3_to_Mole1",
+          "tipo": "nav_locale",
+          "label": "Vai verso Porta Pia",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 0.29,
+            "y": -4.54,
+            "z": -9.66
+          },
+          "rotazione": {
+            "x": -1.309,
+            "y": -3.15,
+            "z": 1.36
+          }
+        },
+        {
+          "id": "nav_Mole3_to_Mole2",
+          "tipo": "nav_locale",
+          "label": "Vai sotto il colonnato",
+          "destinazione": "Mole2",
+          "posizione": {
+            "x": 4.49,
+            "y": -1.14,
+            "z": -8.19
+          },
+          "rotazione": {
+            "x": -1.309,
+            "y": -0.16,
+            "z": 1.13
+          }
+        },
+        {
+          "id": "nav_Mole3_to_Arco0",
+          "tipo": "nav",
+          "label": "Vai all'Arco di Traiano",
+          "destinazione": "Arco0",
+          "posizione": {
+            "x": -13.6,
+            "y": 2.1,
+            "z": -8.9
+          }
+        },
+        {
+          "id": "nav_Mole3_to_Pdp0",
+          "tipo": "nav",
+          "label": "Vai in Piazza del Papa",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": 17.9,
+            "y": 3.9,
+            "z": 1.3
+          }
+        },
+        {
+          "id": "nav_Mole3_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": 16.6,
+            "y": 3.5,
+            "z": -3.6
+          }
+        },
+        {
+          "id": "info_Mole3",
+          "tipo": "info",
+          "label": "L'Architettura della Mole",
+          "query": "Mole_Vanvitelliana",
+          "posizione": {
+            "x": 6,
+            "y": 5.8,
+            "z": -11.2
+          }
+        }
+      ]
+    },
+    "Pdp0": {
+      "nome": "Piazza del Papa - Centro",
       "panorama": "/pic360/Pdp360.jpg",
       "luogo_id": "Piazza_del_Plebiscito",
       "hotspot": [
         {
-          "id": "nav_4_to_3",
-          "tipo": "nav",
-          "label": "Torna alla Mole",
-          "destinazione": "scena3",
-          "posizione": { "x": -6.55, "y": 2.24, "z": 7.22 }
+          "id": "nav_Pdp0_to_Pdp3",
+          "tipo": "nav_locale",
+          "label": "Entra nella piazzetta",
+          "destinazione": "Pdp3",
+          "posizione": {
+            "x": 9.2,
+            "y": -4.19,
+            "z": -0.8
+          },
+          "rotazione": {
+            "x": -1.42,
+            "y": 0.94,
+            "z": 2.9
+          },
+          "yawArrivo": -1.6474
         },
         {
-          "id": "nav_4_to_5",
+          "id": "nav_Pdp0_to_Pdp1",
+          "tipo": "nav_locale",
+          "label": "Vai verso la Chiesa",
+          "destinazione": "Pdp1",
+          "posizione": {
+            "x": 9.84,
+            "y": -1.63,
+            "z": 6.21
+          },
+          "rotazione": {
+            "x": -1.97,
+            "y": -0.45,
+            "z": 0
+          }
+        },
+        {
+          "id": "nav_Pdp0_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": -15.1,
+            "y": 2,
+            "z": 11
+          }
+        },
+        {
+          "id": "nav_Pdp0_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -16.3,
+            "y": 1.5,
+            "z": 4.5
+          }
+        },
+        {
+          "id": "nav_Pdp0_to_Cavour",
           "tipo": "nav",
           "label": "Vai in Piazza Cavour",
-          "destinazione": "scena5",
-          "posizione": { "x": 8.63, "y": 2.62, "z": 4.32 }
+          "destinazione": "Cavour",
+          "posizione": {
+            "x": 17.8,
+            "y": 2.6,
+            "z": 4
+          }
         },
         {
-          "id": "info_piazza",
+          "id": "info_Pdp0",
           "tipo": "info",
           "label": "Piazza del Plebiscito",
           "query": "Piazza_del_Plebiscito",
-          "posizione": { "x": 0.70, "y": 3.41, "z": -7.36 },
+          "posizione": {
+            "x": 0.7,
+            "y": 3.41,
+            "z": -7.36
+          }
+        }
+      ],
+      "rotazioneInizialeY": 0.8908
+    },
+    "Pdp3": {
+      "nome": "Piazza del Papa - Piazzetta",
+      "panorama": "/pic360/Pdp3360.jpg",
+      "luogo_id": "Piazza_del_Plebiscito",
+      "hotspot": [
+        {
+          "id": "nav_Pdp3_to_Pdp0",
+          "tipo": "nav_locale",
+          "label": "Torna al centro",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": 6.1,
+            "y": -3.5,
+            "z": -0.8
+          },
+          "rotazione": {
+            "x": 1.64,
+            "y": 0.05,
+            "z": -0.06
+          }
+        },
+        {
+          "id": "nav_Pdp3_to_Pdp2",
+          "tipo": "nav_locale",
+          "label": "Vai alla scalinata",
+          "destinazione": "Pdp2",
+          "posizione": {
+            "x": -8.4,
+            "y": -2.5,
+            "z": -1.25
+          },
+          "rotazione": {
+            "x": -1.58,
+            "y": -0.58,
+            "z": -0.03
+          },
+          "yawArrivo": -1.6514
+        },
+        {
+          "id": "nav_Pdp3_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 21.1,
+            "y": 4.3,
+            "z": -14.3
+          }
+        },
+        {
+          "id": "nav_Pdp3_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": 21.8,
+            "y": 4.8,
+            "z": -10.3
+          }
+        },
+        {
+          "id": "nav_Pdp3_to_Cavour",
+          "tipo": "nav",
+          "label": "Vai in Piazza Cavour",
+          "destinazione": "Cavour",
+          "posizione": {
+            "x": -18.1,
+            "y": 6.1,
+            "z": -9.1
+          }
+        },
+        {
+          "id": "info_Pdp3",
+          "tipo": "info",
+          "label": "Piazza del Plebiscito",
+          "query": "Piazza_del_Plebiscito",
+          "posizione": {
+            "x": 12.41,
+            "y": 6.61,
+            "z": 5.1
+          }
+        }
+      ]
+    },
+    "Pdp2": {
+      "nome": "Piazza del Papa - Ai piedi della scalinata",
+      "panorama": "/pic360/Pdp2360.jpg",
+      "luogo_id": "Piazza_del_Plebiscito",
+      "hotspot": [
+        {
+          "id": "nav_Pdp2_to_Pdp3",
+          "tipo": "nav_locale",
+          "label": "Torna alla piazzetta",
+          "destinazione": "Pdp3",
+          "posizione": {
+            "x": 7.7,
+            "y": -2.9,
+            "z": -1.9
+          },
+          "rotazione": {
+            "x": 1.52,
+            "y": 0.12,
+            "z": 0
+          },
+          "yawArrivo": 1.5532
+        },
+        {
+          "id": "nav_Pdp2_to_Pdp1",
+          "tipo": "nav_locale",
+          "label": "Vai alla facciata",
+          "destinazione": "Pdp1",
+          "posizione": {
+            "x": -8.69,
+            "y": -0.6,
+            "z": -4.67
+          },
+          "rotazione": {
+            "x": -1.42,
+            "y": -2.86,
+            "z": 0.17
+          },
+          "yawArrivo": -1.6784
+        },
+        {
+          "id": "nav_Pdp2_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 23.1,
+            "y": 5.3,
+            "z": -13.9
+          }
+        },
+        {
+          "id": "nav_Pdp2_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": 20.7,
+            "y": 4.6,
+            "z": -8.4
+          }
+        },
+        {
+          "id": "nav_Pdp2_to_Cavour",
+          "tipo": "nav",
+          "label": "Vai in Piazza Cavour",
+          "destinazione": "Cavour",
+          "posizione": {
+            "x": -17.5,
+            "y": 5.8,
+            "z": -9.6
+          }
+        },
+        {
+          "id": "info_Pdp2",
+          "tipo": "info",
+          "label": "Piazza del Plebiscito",
+          "query": "Piazza_del_Plebiscito",
+          "posizione": {
+            "x": 20.6,
+            "y": 4,
+            "z": 0.82
+          },
           "secondari": [
             {
-              "id": "info_piazza_papa",
+              "id": "info_papa_clemente",
               "label": "Statua di Papa Clemente XII",
               "query": "Statua di Papa Clemente XII in Piazza del Plebiscito ad Ancona",
-              "posizione": { "x": 18.5, "y": 2.41, "z": 1.36 }
+              "posizione": {
+                "x": -9.6,
+                "y": 7.5,
+                "z": 0.7
+              }
             }
           ]
         }
       ]
     },
-    "scena5": {
+    "Pdp1": {
+      "nome": "Piazza del Papa - Davanti alla Chiesa",
+      "panorama": "/pic360/Pdp1360.jpg",
+      "luogo_id": "Piazza_del_Plebiscito",
+      "hotspot": [
+        {
+          "id": "nav_Pdp1_to_Pdp2",
+          "tipo": "nav_locale",
+          "label": "Torna alla scalinata",
+          "destinazione": "Pdp2",
+          "posizione": {
+            "x": 4,
+            "y": -3.1,
+            "z": -1.5
+          },
+          "rotazione": {
+            "x": -1.51,
+            "y": -3.15,
+            "z": 3.03
+          },
+          "yawArrivo": 1.574
+        },
+        {
+          "id": "nav_Pdp1_to_Pdp0",
+          "tipo": "nav_locale",
+          "label": "Torna al centro",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": -0.8,
+            "y": -2.74,
+            "z": -11
+          },
+          "rotazione": {
+            "x": -1.309,
+            "y": -0.0961,
+            "z": 0
+          },
+          "yawArrivo": -1.5785
+        },
+        {
+          "id": "nav_Pdp1_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": 20.1,
+            "y": 1.5,
+            "z": -8.5
+          }
+        },
+        {
+          "id": "nav_Pdp1_to_SMP5",
+          "tipo": "nav",
+          "label": "Vai a Santa Maria della Piazza",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": 20.1,
+            "y": 2.7,
+            "z": -11.7
+          }
+        },
+        {
+          "id": "nav_Pdp1_to_Cavour",
+          "tipo": "nav",
+          "label": "Vai in Piazza Cavour",
+          "destinazione": "Cavour",
+          "posizione": {
+            "x": -10.4,
+            "y": 4.2,
+            "z": -12.2
+          }
+        },
+        {
+          "id": "info_Pdp1",
+          "tipo": "info",
+          "label": "Piazza del Plebiscito",
+          "query": "Piazza_del_Plebiscito",
+          "posizione": {
+            "x": 18.3,
+            "y": 1.62,
+            "z": 1.9
+          },
+          "secondari": [
+            {
+              "id": "info_san_domenico",
+              "label": "Chiesa di San Domenico",
+              "query": "Chiesa di San Domenico in Piazza del Plebiscito (Piazza del Papa) ad Ancona",
+              "posizione": {
+                "x": -7.6,
+                "y": 6.2,
+                "z": -0.9
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "SMP5": {
+      "nome": "Santa Maria della Piazza - Facciata",
+      "panorama": "/pic360/Pdp5360.jpg",
+      "luogo_id": "Santa_Maria_della_Piazza",
+      "hotspot": [
+        {
+          "id": "nav_SMP5_to_SMP4",
+          "tipo": "nav_locale",
+          "label": "Scendi nei Sotterranei",
+          "destinazione": "SMP4",
+          "posizione": {
+            "x": -2.89,
+            "y": -2.12,
+            "z": 6.25
+          },
+          "rotazione": {
+            "x": -0.01,
+            "y": -3.15,
+            "z": -1.68
+          }
+        },
+        {
+          "id": "nav_SMP5_to_Duomo1",
+          "tipo": "nav",
+          "label": "Vai al Duomo di San Ciriaco",
+          "destinazione": "Duomo1",
+          "posizione": {
+            "x": 17.9,
+            "y": 10.4,
+            "z": -6.4
+          }
+        },
+        {
+          "id": "nav_SMP5_to_Mole1",
+          "tipo": "nav",
+          "label": "Vai alla Mole Vanvitelliana",
+          "destinazione": "Mole1",
+          "posizione": {
+            "x": -15.7,
+            "y": 4,
+            "z": -4.8
+          }
+        },
+        {
+          "id": "nav_SMP5_to_Pdp0",
+          "tipo": "nav",
+          "label": "Vai in Piazza del Papa",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": -10.6,
+            "y": 2.8,
+            "z": 9.9
+          }
+        },
+        {
+          "id": "info_SMP5",
+          "tipo": "info_secondario",
+          "label": "Santa Maria della Piazza",
+          "query": "Chiesa di Santa Maria della Piazza ad Ancona, storia e architettura",
+          "posizione": {
+            "x": -0.8,
+            "y": 7.5,
+            "z": 11.6
+          },
+          "secondari": []
+        }
+      ],
+      "rotazioneInizialeY": -2.9857
+    },
+    "SMP4": {
+      "nome": "Santa Maria della Piazza - Sotterranei",
+      "panorama": "/pic360/Pdp4360.jpg",
+      "luogo_id": "Santa_Maria_della_Piazza",
+      "hotspot": [
+        {
+          "id": "nav_SMP4_to_SMP5",
+          "tipo": "nav_locale",
+          "label": "Risali alla facciata",
+          "destinazione": "SMP5",
+          "posizione": {
+            "x": -4.75,
+            "y": -2.61,
+            "z": 3.77
+          },
+          "rotazione": {
+            "x": -1.309,
+            "y": -1.87,
+            "z": 0
+          }
+        },
+        {
+          "id": "info_mosaici",
+          "tipo": "info_secondario",
+          "label": "I Mosaici Paleocristiani",
+          "query": "mosaici paleocristiani nei sotterranei della chiesa di Santa Maria della Piazza ad Ancona",
+          "posizione": {
+            "x": -1.08,
+            "y": -1.02,
+            "z": 9.7
+          }
+        }
+      ],
+      "rotazioneInizialeY": -3.0582
+    },
+    "Cavour": {
       "nome": "Piazza Cavour",
       "panorama": "/pic360/Cavour360.jpg",
       "luogo_id": "Piazza_Cavour",
       "hotspot": [
         {
-          "id": "nav_5_to_4",
+          "id": "nav_Cavour_to_Pdp0",
           "tipo": "nav",
-          "label": "Torna in Piazza del Plebiscito",
-          "destinazione": "scena4",
-          "posizione": { "x": -9.92, "y": 0.73, "z": -1.07 }
+          "label": "Vai in Piazza del Papa",
+          "destinazione": "Pdp0",
+          "posizione": {
+            "x": -15,
+            "y": 1.8,
+            "z": -3.5
+          },
+          "yawArrivo": -1.8558
         },
         {
-          "id": "nav_5_to_6",
+          "id": "nav_Cavour_to_Passetto",
           "tipo": "nav",
           "label": "Raggiungi il Passetto",
-          "destinazione": "scena6",
-          "posizione": { "x": 9.88, "y": 1.10, "z": -1.05 }
+          "destinazione": "Passetto",
+          "posizione": {
+            "x": 14.31,
+            "y": 1.94,
+            "z": 4.3
+          }
         },
         {
-          "id": "info_cavour",
+          "id": "info_Cavour",
           "tipo": "info",
           "label": "Statua di Cavour",
           "query": "Piazza_Cavour",
-          "posizione": { "x": 9.71, "y": -2.03, "z": 1.29 }
+          "posizione": {
+            "x": 16.46,
+            "y": 6.62,
+            "z": 0.46
+          }
         }
-      ]
+      ],
+      "rotazioneInizialeY": 1.6512
     },
-    "scena6": {
+    "Passetto": {
       "nome": "Il Passetto",
       "panorama": "/pic360/Passetto360.jpg",
       "luogo_id": "Il_Passetto",
       "hotspot": [
         {
-          "id": "nav_6_to_5",
+          "id": "nav_Passetto_to_Cavour",
           "tipo": "nav",
-          "label": "Torna in Piazza Cavour",
-          "destinazione": "scena5",
-          "posizione": { "x": 7.57, "y": 3.32, "z": 5.63 }
+          "label": "Vai in Piazza Cavour",
+          "destinazione": "Cavour",
+          "posizione": {
+            "x": 14.8,
+            "y": 4.3,
+            "z": 5.63
+          },
+          "yawArrivo": -1.5771
         },
         {
-          "id": "info_passetto",
+          "id": "info_Passetto",
           "tipo": "info",
           "label": "Monumento ai Caduti",
           "query": "Il_Passetto",
-          "posizione": { "x": 9.97, "y": 0.21, "z": 0.79 }
+          "posizione": {
+            "x": 15.7,
+            "y": 9.7,
+            "z": 0.87
+          }
         }
-      ]
+      ],
+      "rotazioneInizialeY": 1.5728
     }
   }
 }
