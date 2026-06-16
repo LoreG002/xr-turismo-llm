@@ -77,9 +77,9 @@ const modelli = {
 // =====================================================
 // PANNELLO GUIDA AI — 3D, FISSO NELLO SPAZIO
 // =====================================================
-const PANNELLO_W = 5.2;          
-const PANNELLO_OFFSET_LAT = 4.6; 
-const PANNELLO_RAGGIO = 9;       
+const PANNELLO_W = 5.2;
+const PANNELLO_OFFSET_LAT = 4.6;
+const PANNELLO_RAGGIO = 9;
 
 const CANVAS_W = 1024;
 
@@ -92,10 +92,10 @@ const SCHEDA_SOVRAPP = 0.06;
 // =====================================================
 // PANNELLO FOTO — accanto al pannello testo
 // =====================================================
-const PANNELLO_FOTO_W = 4.4;     
-const PANNELLO_FOTO_H = 4.4;     
-const PANNELLO_FOTO_GAP = 0.5;   
-const FOTO_BASE_PATH = '/pic/';  
+const PANNELLO_FOTO_W = 4.4;
+const PANNELLO_FOTO_H = 4.4;
+const PANNELLO_FOTO_GAP = 0.5;
+const FOTO_BASE_PATH = '/pic/';
 
 const pannello3D = {
   group: null,
@@ -423,7 +423,7 @@ function clearApprofondimenti() {
 
 function posizionaPannelloAccantoA(posizioneHotspot) {
   const group = pannello3D.group;
-  const lato = -1; 
+  const lato = -1;
   const dir = new THREE.Vector3(posizioneHotspot.x, 0, posizioneHotspot.z);
   if (dir.lengthSq() < 0.0001) dir.set(0, 0, -1);
   dir.normalize();
@@ -502,7 +502,7 @@ function creaPannelloFoto() {
   sfondoMesh.position.z = -0.002;
   group.add(sfondoMesh);
 
-  const PAD = 0.15; 
+  const PAD = 0.15;
   const pianoGeo = new THREE.PlaneGeometry(PANNELLO_FOTO_W - PAD * 2, PANNELLO_FOTO_H - PAD * 2);
   const pianoMat = new THREE.MeshBasicMaterial({
     color: 0x111111,
@@ -645,7 +645,7 @@ async function inizializza() {
   await caricaModelliGLB();
   const res = await fetch('/tour.json');
   tourData = await res.json();
-  caricaScena('Duomo1');   
+  caricaScena('Duomo1');
 }
 
 function disegnaLabelHotspot(testo, isInfo, isInfoSec = false) {
@@ -739,15 +739,15 @@ function disegnaLabelChevron(testo) {
 // =====================================================
 // CHEVRON NAVIGAZIONE LOCALE
 // =====================================================
-const CHEVRON_DIM = 0.9;        
-const CHEVRON_SPESSORE = 0.32;  
-const CHEVRON_PITCH_DEFAULT = -Math.PI / 2.4;  
+const CHEVRON_DIM = 0.9;
+const CHEVRON_SPESSORE = 0.32;
+const CHEVRON_PITCH_DEFAULT = -Math.PI / 2.4;
 
 function creaChevronMesh(opacityBase) {
   const s = CHEVRON_DIM; const k = CHEVRON_SPESSORE;
   const shape = new THREE.Shape();
   shape.moveTo(-s, -s); shape.lineTo(0, -s); shape.lineTo(s, 0); shape.lineTo(0, s); shape.lineTo(-s, s); shape.lineTo(-s + k, 0); shape.lineTo(-s, -s);
-  
+
   const geo = new THREE.ShapeGeometry(shape);
   const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: opacityBase, side: THREE.DoubleSide, depthTest: false });
   const mesh = new THREE.Mesh(geo, mat);
@@ -764,7 +764,7 @@ function creaHotspot(dati, _src = null, _container = null) {
     const gruppoChevrons = new THREE.Group();
     const chevPrim = creaChevronMesh(0.85);
     const chevEco = creaChevronMesh(0.45);
-    chevEco.position.x = 0.55;        
+    chevEco.position.x = 0.55;
     chevEco.scale.setScalar(0.85);
     gruppoChevrons.add(chevPrim);
     gruppoChevrons.add(chevEco);
@@ -772,7 +772,7 @@ function creaHotspot(dati, _src = null, _container = null) {
     const yawAuto = Math.atan2(dati.posizione.x, -dati.posizione.z);
     let rotX = CHEVRON_PITCH_DEFAULT; let rotY = yawAuto; let rotZ = 0;
     const rot = dati.rotazione;
-    if (typeof rot === 'number') { rotY = rot; } 
+    if (typeof rot === 'number') { rotY = rot; }
     else if (rot && typeof rot === 'object') {
       if (typeof rot.x === 'number') rotX = rot.x;
       if (typeof rot.y === 'number') rotY = rot.y;
@@ -875,7 +875,7 @@ const textureLoader = new THREE.TextureLoader();
 function caricaScena(idScena, yawOverride) {
   const scena = tourData.scene[idScena];
   scenaCorrente = scena;
-  idScenaCorrente = idScena;   
+  idScenaCorrente = idScena;
   overlay.style.opacity = 1;
 
   setTimeout(() => {
@@ -905,15 +905,15 @@ function caricaScena(idScena, yawOverride) {
 
 // Chiamate backend API
 async function fetchDescrizione(luogo_id) {
-  try { const res = await fetch(`http://localhost:8000/spiegazione/${encodeURIComponent(luogo_id)}`); return await res.json(); } 
+  try { const res = await fetch(`http://localhost:8000/spiegazione/${encodeURIComponent(luogo_id)}`); return await res.json(); }
   catch { return { descrizione: "Errore di connessione con il backend.", approfondimenti: [] }; }
 }
 async function fetchApprofondimento(argomento) {
-  try { const res = await fetch(`http://localhost:8000/approfondimento/${encodeURIComponent(argomento)}`); return await res.json(); } 
+  try { const res = await fetch(`http://localhost:8000/approfondimento/${encodeURIComponent(argomento)}`); return await res.json(); }
   catch { return { descrizione: "Errore di connessione." }; }
 }
 async function fetchInfoRapida(argomento) {
-  try { const res = await fetch(`http://localhost:8000/info_rapida/${encodeURIComponent(argomento)}`); return await res.json(); } 
+  try { const res = await fetch(`http://localhost:8000/info_rapida/${encodeURIComponent(argomento)}`); return await res.json(); }
   catch { return { descrizione: "Errore di connessione." }; }
 }
 
@@ -943,7 +943,7 @@ window.addEventListener('click', async (e) => {
   }
   const dati = obj.userData;
 
-  // EDITOR TRACKING
+  // EDITOR: in modalità editor il click seleziona l'elemento invece di attivarlo
   if (typeof editorAttivo === 'function' && editorAttivo()) {
     if (typeof editorSelezionaGruppo === 'function') editorSelezionaGruppo(obj);
     return;
@@ -974,7 +974,7 @@ window.addEventListener('click', async (e) => {
     if (risposta.approfondimenti?.length > 0) {
       risposta.approfondimenti.forEach((app) => { creaBottoneApprofondimento(app.label, app.query); });
     }
-    disegnaPannello(dati.label, respuesta.descrizione || risposta.descrizione);
+    disegnaPannello(dati.label, risposta.descrizione || risposta.descrizione);
     return;
   }
 
@@ -1174,7 +1174,7 @@ function creaEditorUI() {
         ${editorRigaAsse('X', 'x')}
         ${editorRigaAsse('Y', 'y')}
         ${editorRigaAsse('Z', 'z')}
-        
+
         <div id="ed-sezione-frecce" style="display:none">
           <div class="ed-divider">Rotazione Freccia (rad)</div>
           ${editorRigaRot('Pitch', 'rx')}
@@ -1237,12 +1237,12 @@ function creaEditorUI() {
 }
 
 function editorToggle(forza) {
-  editorState.attivo = (typeof fuerza === 'boolean') ? forza : !editorState.attivo;
+  editorState.attivo = (typeof forza === 'boolean') ? forza : !editorState.attivo;
   if (!editorUI) return;
   editorUI.panel.style.display = editorState.attivo ? 'block' : 'none';
   editorUI.btn.classList.toggle('attivo', editorState.attivo);
   editorUI.btn.textContent = editorState.attivo ? '✕ Chiudi editor' : '✏️ Editor Unificato';
-  if (editorState.attivo) { nascondiPannello(); editorScenaCostruita(); } 
+  if (editorState.attivo) { nascondiPannello(); editorScenaCostruita(); }
   else { editorDeseleziona(); }
   editorAggiornaMarker();
 }
@@ -1289,7 +1289,7 @@ function editorAggiornaUI() {
   if (!g) { editorUI.sel.style.display = 'none'; return; }
   editorUI.sel.style.display = 'block';
   const ud = g.userData;
-  
+
   editorUI.info.textContent = `${ud.id}  ·  ${ud.tipo}`;
   editorUI.label.textContent = `${ud.label || '(senza label)'} ${ud.destinazione ? '→ ' + ud.destinazione : ''}`;
 
@@ -1416,7 +1416,7 @@ function editorScenaCostruita() {
   let count = 0;
   hotspotGroup.children.forEach(g => {
     const ud = g.userData; if (!ud || !ud.id) return;
-    let tag = ud.isNavLocale ? '➡️' : (ud.tipo === 'info_secondario' ? '🟠' : '🟡');
+    let tag = ud.isNavLocale ? '➡️' : (ud.tipo === 'info_secondario' ? '🟠' : (ud.tipo === 'nav' ? '🔵' : '🟡'));
     const o = document.createElement('option');
     o.value = ud.id; o.textContent = `${tag} ${ud.label || ud.id}`;
     editorUI.lista.appendChild(o);
@@ -1430,7 +1430,7 @@ function editorScenaCostruita() {
 
   if (editorState.selId) {
     const g = editorTrovaGruppo(editorState.selId);
-    if (g) { editorState.sel = g; editorUI.lista.value = g.userData.id; } 
+    if (g) { editorState.sel = g; editorUI.lista.value = g.userData.id; }
     else { editorState.sel = null; editorState.selId = null; }
   }
   editorAggiornaUI();
@@ -1470,7 +1470,13 @@ function salvaAngoloVista() {
   visteSalvate.push(voce);
 
   console.log(`%c📐 VISTA SALVATA #${visteSalvate.length}`, 'color:#34d399;font-weight:bold;font-size:13px');
+  console.log(`   nome  : ${voce.nome}`);
+  console.log(`   scena : ${voce.scena}`);
+  console.log(`   yaw   : ${voce.yaw} rad   (pitch: ${voce.pitch} rad)`);
+  console.log(`   → per l'hotspot di navigazione:   "yawArrivo": ${voce.yaw}`);
+  console.log(`   → per lo spawn della scena:       "rotazioneInizialeY": ${voce.yaw}`);
   console.table(visteSalvate);
+  console.log('   JSON completo:\n' + JSON.stringify(visteSalvate, null, 2));
 }
 
 const btnVista = document.createElement('button');
