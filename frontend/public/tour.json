@@ -1478,7 +1478,7 @@
     },
     "SMP5": {
       "nome": "Santa Maria della Piazza - Facciata",
-      "panorama": "/pic360/Pdp5360.jpg",
+      "panorama": "/pic360/Smp1360.jpg",
       "luogo_id": "Santa_Maria_della_Piazza",
       "hotspot": [
         {
@@ -1547,7 +1547,7 @@
     },
     "SMP4": {
       "nome": "Santa Maria della Piazza - Sotterranei",
-      "panorama": "/pic360/Pdp4360.jpg",
+      "panorama": "/pic360/Smp2360.jpg",
       "luogo_id": "Santa_Maria_della_Piazza",
       "hotspot": [
         {

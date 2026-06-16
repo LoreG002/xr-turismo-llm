@@ -25,13 +25,19 @@ MODEL = "llama-3.3-70b-versatile"
 # Convenzione: luogo_concetto.jpg (lowercase con underscore)
 # =====================================================
 FOTO_DISPONIBILI = [
+    "arco_prospetto.jpg",
+    "arco_veduta.jpg",
     "cavour_statua.jpg",
+    "cavour_statua_dettaglio.jpg",
     "duomo_leoni_stilofori.jpg",
     "duomo_leoni.jpg",
     "duomo_portale_romanico.jpg",
     "duomo_veduta.jpg",
+    "mole_vanvitelliana_veduta.jpg",
+    "mole_vanvitelliana_drone.jpg",
+    "mole_vanvitelliana_interno.jpg",
     "plebiscito_statua_papa.jpg",
-    "plebiscito_veduta.jpg",
+    "plebiscito_veduta.jpg"
 ]
 
 # Set per lookup O(1) in validazione
