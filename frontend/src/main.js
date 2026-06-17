@@ -2,9 +2,6 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-// =====================================================
-// SETUP SCENA
-// =====================================================
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -23,9 +20,6 @@ const material = new THREE.MeshBasicMaterial();
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
-// =====================================================
-// LUCI
-// =====================================================
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.6);
 scene.add(ambientLight);
 
@@ -37,13 +31,10 @@ const dirLightFill = new THREE.DirectionalLight(0xffffff, 0.9);
 dirLightFill.position.set(-6, -3, -8);
 scene.add(dirLightFill);
 
-// Gruppi
 const hotspotGroup = new THREE.Group();
 scene.add(hotspotGroup);
 
-// =====================================================
-// OVERLAY FADE per cambio scena
-// =====================================================
+// Overlay nero per il fade tra una scena e l'altra
 const overlay = document.createElement('div');
 overlay.style.cssText = `
   position: fixed; top: 0; left: 0;
@@ -55,7 +46,6 @@ overlay.style.cssText = `
 `;
 document.body.appendChild(overlay);
 
-// Dimensioni e parametri Hotspot
 const HOTSPOT_ALTEZZA_INFO = 0.8;
 const HOTSPOT_ALTEZZA_INFO_SEC = 0.6;
 const HOTSPOT_ALTEZZA_NAV = 1.05;
@@ -64,34 +54,28 @@ const HOTSPOT_ANELLO_OUTER = 0.65;
 const HOTSPOT_ANELLO_INNER_SEC = 0.38;
 const HOTSPOT_ANELLO_OUTER_SEC = 0.50;
 let scenaCorrente = null;
-let idScenaCorrente = null;       // EDITOR: id della scena attualmente caricata
+let idScenaCorrente = null;
 let tourData = null;
 
-// Modelli GLB
 const modelli = {
   infoSign: null,
   infoSignSecondario: null,
   mapPointer: null,
 };
 
-// =====================================================
-// PANNELLO GUIDA AI — 3D, FISSO NELLO SPAZIO
-// =====================================================
+// Pannello guida AI: pannello 3D fisso nello spazio, affiancato alla camera
 const PANNELLO_W = 5.2;
 const PANNELLO_OFFSET_LAT = 4.6;
 const PANNELLO_RAGGIO = 9;
 
 const CANVAS_W = 1024;
 
-// Schede di approfondimento
 const SCHEDA_GAP = 0.04;
 const SCHEDA_H = 0.82;
 const SCHEDA_SPORGENZA = 0.62;
 const SCHEDA_SOVRAPP = 0.06;
 
-// =====================================================
-// PANNELLO FOTO — accanto al pannello testo
-// =====================================================
+// Pannello foto, mostrato accanto al pannello testo
 const PANNELLO_FOTO_W = 4.4;
 const PANNELLO_FOTO_H = 4.4;
 const PANNELLO_FOTO_GAP = 0.5;
@@ -445,9 +429,6 @@ function nascondiPannello() {
   nascondiFoto();
 }
 
-// =====================================================
-// PANNELLO FOTO — logica di rendering e gestione
-// =====================================================
 function creaAlphaMapArrotondato() {
   const canvas = document.createElement('canvas');
   canvas.width = 1024;
@@ -602,9 +583,6 @@ function posizionaPannelloFotoAccantoAlTesto() {
   );
 }
 
-// =====================================================
-// INIZIALIZZAZIONE & GLB LOADING
-// =====================================================
 function ricoloraModello(modello, { colore, emissivo, emissiveIntensity, opacita }) {
   modello.traverse((nodo) => {
     if (!nodo.isMesh) return;
@@ -736,9 +714,7 @@ function disegnaLabelChevron(testo) {
   return tex;
 }
 
-// =====================================================
-// CHEVRON NAVIGAZIONE LOCALE
-// =====================================================
+// Frecce chevron per la navigazione locale (stesso monumento, foto diverse)
 const CHEVRON_DIM = 0.9;
 const CHEVRON_SPESSORE = 0.32;
 const CHEVRON_PITCH_DEFAULT = -Math.PI / 2.4;
@@ -755,9 +731,7 @@ function creaChevronMesh(opacityBase) {
   return mesh;
 }
 
-// =====================================================
-// CREAZIONE HOTSPOT (UNIFICATA PER TUTTI I TIPI)
-// =====================================================
+// Crea un hotspot di qualsiasi tipo (nav_locale, nav, info, info_secondario)
 function creaHotspot(dati, _src = null, _container = null) {
   if (dati.tipo === 'nav_locale') {
     const group = new THREE.Group();
@@ -867,9 +841,6 @@ function costruisciHotspotScena(scena) {
   });
 }
 
-// =====================================================
-// CARICAMENTO SCENA
-// =====================================================
 const textureLoader = new THREE.TextureLoader();
 
 function caricaScena(idScena, yawOverride) {
@@ -896,8 +867,6 @@ function caricaScena(idScena, yawOverride) {
 
       costruisciHotspotScena(scena);
 
-      if (typeof editorScenaCostruita === 'function') editorScenaCostruita();
-
       overlay.style.opacity = 0;
     });
   }, 500);
@@ -917,9 +886,6 @@ async function fetchInfoRapida(argomento) {
   catch { return { descrizione: "Errore di connessione." }; }
 }
 
-// =====================================================
-// RAYCASTING + INTERAZIONE
-// =====================================================
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 
@@ -942,12 +908,6 @@ window.addEventListener('click', async (e) => {
     obj = obj.parent;
   }
   const dati = obj.userData;
-
-  // EDITOR: in modalità editor il click seleziona l'elemento invece di attivarlo
-  if (typeof editorAttivo === 'function' && editorAttivo()) {
-    if (typeof editorSelezionaGruppo === 'function') editorSelezionaGruppo(obj);
-    return;
-  }
 
   if (dati.tipo === 'chiudi_pannello') { nascondiPannello(); return; }
 
@@ -994,9 +954,6 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// =====================================================
-// ANIMATION LOOP
-// =====================================================
 const clock = new THREE.Clock();
 
 function animate() {
@@ -1056,7 +1013,8 @@ animate();
 
 inizializza();
 
-// Doppio click per riposizionamento rapido
+// Doppio click per riposizionamento rapido: stampa in console le coordinate del punto
+// puntato dal raggio, da copiare a mano in tour.json
 window.addEventListener('dblclick', (e) => {
   const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
   const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
@@ -1066,10 +1024,6 @@ window.addEventListener('dblclick', (e) => {
   const distanza = 10;
   const posizione = new THREE.Vector3().copy(tempRaycaster.ray.direction).multiplyScalar(distanza);
 
-  if (typeof editorAttivo === 'function' && editorAttivo() && typeof editorSpostaSelezionatoSuRaggio === 'function') {
-    editorSpostaSelezionatoSuRaggio(tempRaycaster.ray.direction);
-    return;
-  }
   console.log(`"posizione": { "x": ${posizione.x.toFixed(2)}, "y": ${posizione.y.toFixed(2)}, "z": ${posizione.z.toFixed(2)} }`);
 });
 
@@ -1082,411 +1036,6 @@ window.addEventListener('keydown', (e) => {
     const direzione = new THREE.Vector3();
     camera.getWorldDirection(direzione);
     let angoloRadianti = Math.atan2(direzione.x, -direzione.z);
-    console.log(`%c[DEV TOOL] Inquadratura perfetta trovata!`, "color: #a78bfa; font-weight: bold;");
     console.log(`"rotazioneInizialeY": ${angoloRadianti.toFixed(2)}`);
   }
-
-  if ((e.key === 'e' || e.key === 'E') && typeof editorToggle === 'function') {
-    editorToggle();
-  }
-});
-
-// ======================================================================
-// ========  EDITOR UNIFICATO INFO POINT + FRECCE  ===============
-// ======================================================================
-const editorState = { attivo: false, sel: null, selId: null };
-let editorUI = null;
-
-function editorAttivo() { return editorState.attivo; }
-
-function creaEditorMarkerTex() {
-  const c = document.createElement('canvas');
-  c.width = c.height = 256; const x = c.getContext('2d');
-  x.clearRect(0, 0, 256, 256); x.strokeStyle = '#39ff7a'; x.lineWidth = 16;
-  x.beginPath(); x.arc(128, 128, 92, 0, Math.PI * 2); x.stroke(); x.lineWidth = 9;
-  x.beginPath(); x.moveTo(128, 6); x.lineTo(128, 46); x.moveTo(128, 210); x.lineTo(128, 250); x.moveTo(6, 128); x.lineTo(46, 128); x.moveTo(210, 128); x.lineTo(250, 128); x.stroke();
-  const t = new THREE.CanvasTexture(c);
-  t.minFilter = THREE.LinearFilter; t.magFilter = THREE.LinearFilter;
-  return t;
-}
-
-const editorMarker = new THREE.Sprite(new THREE.SpriteMaterial({ map: creaEditorMarkerTex(), transparent: true, depthTest: false }));
-editorMarker.scale.set(2.2, 2.2, 1);
-editorMarker.renderOrder = 50;
-editorMarker.visible = false;
-scene.add(editorMarker);
-
-function editorRigaAsse(etichetta, asse) {
-  return `
-    <div class="ed-axis">
-      <span class="ed-axlab">${etichetta}</span>
-      <input type="range"  id="ed-${asse}"  min="-25" max="25" step="0.1">
-      <input type="number" id="ed-${asse}n" step="0.1" class="ed-num">
-    </div>`;
-}
-
-function editorRigaRot(etichetta, id) {
-  return `
-    <div class="ed-axis">
-      <span class="ed-axlab">${etichetta}</span>
-      <input type="range"  id="ed-${id}"  min="-3.15" max="3.15" step="0.01">
-      <input type="number" id="ed-${id}n" step="0.01" class="ed-num">
-    </div>`;
-}
-
-function creaEditorUI() {
-  const wrap = document.createElement('div');
-  wrap.id = 'editor-tour';
-  wrap.innerHTML = `
-    <style>
-      #editor-tour { position: fixed; top: 12px; right: 12px; z-index: 1000; font-family: system-ui, sans-serif; color: #eee; }
-      #ed-btn { background: #6d28d9; color: #fff; border: none; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
-      #ed-btn.attivo { background: #b91c1c; }
-      #ed-panel { margin-top: 8px; width: 290px; background: rgba(24,18,38,.96); border: 1px solid rgba(167,139,250,.45); border-radius: 12px; padding: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.5); backdrop-filter: blur(4px); }
-      #ed-panel .ed-h { font-size: 12px; letter-spacing: .08em; color: #c4b5fd; text-transform: uppercase; margin-bottom: 10px; }
-      #ed-panel .ed-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-      #ed-panel .ed-row > span { font-size: 12px; width: 56px; color: #b8a8d8; }
-      #ed-panel select { flex: 1; background: #2a2140; color: #eee; border: 1px solid #4c3f6b; border-radius: 6px; padding: 5px; font-size: 12px; }
-      #ed-meta { background: #2a2140; border-radius: 8px; padding: 8px; margin: 6px 0 10px; }
-      #ed-info { font-size: 11px; color: #9d8fc0; font-family: monospace; word-break: break-all; }
-      #ed-label { font-size: 13px; color: #fde68a; font-weight: 600; margin-top: 2px; }
-      .ed-axis { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
-      .ed-axlab { width: 30px; font-size: 12px; font-weight: 700; color: #c4b5fd; }
-      .ed-axis input[type=range] { flex: 1; accent-color: #a78bfa; }
-      .ed-num { width: 62px; background: #2a2140; color: #eee; border: 1px solid #4c3f6b; border-radius: 6px; padding: 4px; font-size: 12px; }
-      .ed-mini { background: #4c3f6b; color: #eee; border: none; border-radius: 6px; padding: 4px 8px; font-size: 11px; cursor: pointer; }
-      .ed-del { width: 100%; margin-top: 6px; background: #7f1d1d; color: #fff; border: none; border-radius: 8px; padding: 8px; font-size: 13px; cursor: pointer; }
-      .ed-save { width: 100%; margin-top: 10px; background: #047857; color: #fff; border: none; border-radius: 8px; padding: 9px; font-size: 13px; font-weight: 600; cursor: pointer; }
-      .ed-status { font-size: 11px; color: #6ee7b7; text-align: center; min-height: 14px; margin-top: 6px; }
-      .ed-divider { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #9d8fc0; margin: 10px 0 7px; border-top: 1px solid #3a2f55; padding-top: 8px; }
-      .ed-hint { font-size: 10px; color: #8b7fb0; line-height: 1.4; margin-top: 8px; }
-    </style>
-    <button id="ed-btn">✏️ Editor Unificato</button>
-    <div id="ed-panel" style="display:none">
-      <div class="ed-h">Configuratore Hotspot</div>
-      <div class="ed-row"><span>Scena</span><select id="ed-scene"></select></div>
-      <div class="ed-row"><span>Elemento</span><select id="ed-lista"></select></div>
-      <div id="ed-sel" style="display:none">
-        <div id="ed-meta">
-          <div id="ed-info">—</div>
-          <div id="ed-label">—</div>
-        </div>
-        ${editorRigaAsse('X', 'x')}
-        ${editorRigaAsse('Y', 'y')}
-        ${editorRigaAsse('Z', 'z')}
-
-        <div id="ed-sezione-frecce" style="display:none">
-          <div class="ed-divider">Rotazione Freccia (rad)</div>
-          ${editorRigaRot('Pitch', 'rx')}
-          ${editorRigaRot('Yaw', 'ry')}
-          ${editorRigaRot('Roll', 'rz')}
-          <button id="ed-rotauto" class="ed-mini" style="width:100%;margin-top:4px">↺ Rotazione automatica</button>
-          <div class="ed-divider">Orientamento arrivo (yawArrivo)</div>
-          <div class="ed-axis">
-            <span class="ed-axlab">Yaw</span>
-            <input type="range" id="ed-ya" min="-3.15" max="3.15" step="0.01">
-            <input type="number" id="ed-yan" step="0.01" class="ed-num">
-          </div>
-          <div style="display:flex;gap:6px">
-            <button id="ed-yacap" class="ed-mini" style="flex:1">📷 Cattura vista</button>
-            <button id="ed-yadel" class="ed-mini" style="flex:1">✕ Rimuovi</button>
-          </div>
-          <div id="ed-yastatus" style="font-size:10px;color:#9d8fc0;min-height:14px;margin-top:4px"></div>
-        </div>
-        <button id="ed-del" class="ed-del">🗑 Elimina elemento</button>
-      </div>
-      <button id="ed-save" class="ed-save">💾 Salva tour.json</button>
-      <div id="ed-status" class="ed-status"></div>
-      <div class="ed-hint">Click su un elemento per selezionarlo · doppio-click per riposizionarlo.<br>Per le frecce sono disponibili anche i controlli di orientamento tridimensionale.</div>
-    </div>`;
-  document.body.appendChild(wrap);
-
-  const $ = (id) => wrap.querySelector(id);
-  editorUI = {
-    wrap, btn: $('#ed-btn'), panel: $('#ed-panel'), scene: $('#ed-scene'), lista: $('#ed-lista'), sel: $('#ed-sel'), info: $('#ed-info'), label: $('#ed-label'), status: $('#ed-status'), rotAuto: $('#ed-rotauto'), del: $('#ed-del'), save: $('#ed-save'),
-    sezFrecce: $('#ed-sezione-frecce'), ya: { r: $('#ed-ya'), n: $('#ed-yan') }, yaCap: $('#ed-yacap'), yaDel: $('#ed-yadel'), yaStatus: $('#ed-yastatus'),
-    axes: {
-      x: { r: $('#ed-x'), n: $('#ed-xn') }, y: { r: $('#ed-y'), n: $('#ed-yn') }, z: { r: $('#ed-z'), n: $('#ed-zn') },
-      rx: { r: $('#ed-rx'), n: $('#ed-rxn') }, ry: { r: $('#ed-ry'), n: $('#ed-ryn') }, rz: { r: $('#ed-rz'), n: $('#ed-rzn') },
-    },
-  };
-
-  editorUI.btn.addEventListener('click', () => editorToggle());
-  editorUI.scene.addEventListener('change', () => caricaScena(editorUI.scene.value));
-  editorUI.lista.addEventListener('change', () => editorSelezionaPerId(editorUI.lista.value));
-  editorUI.del.addEventListener('click', () => editorElimina());
-  editorUI.save.addEventListener('click', () => editorEsporta());
-  editorUI.rotAuto.addEventListener('click', () => editorRotazioneAuto());
-
-  editorUI.ya.r.addEventListener('input', () => { const v = +editorUI.ya.r.value; editorUI.ya.n.value = v.toFixed(2); editorImpostaYawArrivo(v); });
-  editorUI.ya.n.addEventListener('input', () => { const v = +editorUI.ya.n.value; if (!Number.isNaN(v)) { editorUI.ya.r.value = v; editorImpostaYawArrivo(v); } });
-  editorUI.yaCap.addEventListener('click', () => editorCatturaVistaYawArrivo());
-  editorUI.yaDel.addEventListener('click', () => editorRimuoviYawArrivo());
-
-  for (const asse of ['x', 'y', 'z']) {
-    const { r, n } = editorUI.axes[asse];
-    r.addEventListener('input', () => { n.value = (+r.value).toFixed(2); editorImpostaAsse(asse, +r.value); });
-    n.addEventListener('input', () => { const v = +n.value; if (!Number.isNaN(v)) { r.value = v; editorImpostaAsse(asse, v); } });
-  }
-  const mapRot = { rx: 'x', ry: 'y', rz: 'z' };
-  for (const key of ['rx', 'ry', 'rz']) {
-    const { r, n } = editorUI.axes[key]; const ax = mapRot[key];
-    r.addEventListener('input', () => { n.value = (+r.value).toFixed(2); editorImpostaRot(ax, +r.value); });
-    n.addEventListener('input', () => { const v = +n.value; if (!Number.isNaN(v)) { r.value = v; editorImpostaRot(ax, v); } });
-  }
-}
-
-function editorToggle(forza) {
-  editorState.attivo = (typeof forza === 'boolean') ? forza : !editorState.attivo;
-  if (!editorUI) return;
-  editorUI.panel.style.display = editorState.attivo ? 'block' : 'none';
-  editorUI.btn.classList.toggle('attivo', editorState.attivo);
-  editorUI.btn.textContent = editorState.attivo ? '✕ Chiudi editor' : '✏️ Editor Unificato';
-  if (editorState.attivo) { nascondiPannello(); editorScenaCostruita(); }
-  else { editorDeseleziona(); }
-  editorAggiornaMarker();
-}
-
-function editorTrovaGruppo(id) {
-  return hotspotGroup.children.find(g => g.userData && g.userData.id === id) || null;
-}
-
-function editorSelezionaGruppo(group) {
-  if (!group || !group.userData || !group.userData.id) return;
-  editorState.sel = group;
-  editorState.selId = group.userData.id;
-  if (editorUI && editorUI.lista) editorUI.lista.value = group.userData.id;
-  editorAggiornaUI();
-  editorAggiornaMarker();
-}
-
-function editorSelezionaPerId(id) {
-  const g = editorTrovaGruppo(id);
-  if (g) editorSelezionaGruppo(g);
-}
-
-function editorDeseleziona() {
-  editorState.sel = null; editorState.selId = null;
-  if (editorUI) editorUI.sel.style.display = 'none';
-  editorAggiornaMarker();
-}
-
-function editorAggiornaMarker() {
-  if (!editorState.sel || !editorState.attivo) { editorMarker.visible = false; return; }
-  editorMarker.visible = true;
-  editorMarker.position.copy(editorState.sel.position);
-}
-
-function editorSetCampo(key, val) {
-  if (!editorUI || !editorUI.axes[key]) return;
-  const { r, n } = editorUI.axes[key];
-  r.value = val; n.value = (+val).toFixed(2);
-}
-
-function editorAggiornaUI() {
-  if (!editorUI) return;
-  const g = editorState.sel;
-  if (!g) { editorUI.sel.style.display = 'none'; return; }
-  editorUI.sel.style.display = 'block';
-  const ud = g.userData;
-
-  editorUI.info.textContent = `${ud.id}  ·  ${ud.tipo}`;
-  editorUI.label.textContent = `${ud.label || '(senza label)'} ${ud.destinazione ? '→ ' + ud.destinazione : ''}`;
-
-  const p = ud._src.posizione;
-  editorSetCampo('x', p.x); editorSetCampo('y', p.y); editorSetCampo('z', p.z);
-
-  if (ud.isNavLocale) {
-    editorUI.sezFrecce.style.display = 'block';
-    const rot = ud.chevronGroup.rotation;
-    editorSetCampo('rx', +rot.x.toFixed(3)); editorSetCampo('ry', +rot.y.toFixed(3)); editorSetCampo('rz', +rot.z.toFixed(3));
-
-    const ya = ud._src.yawArrivo;
-    if (typeof ya === 'number') {
-      editorUI.ya.r.value = ya; editorUI.ya.n.value = (+ya).toFixed(2);
-      editorUI.yaStatus.textContent = `yawArrivo = ${(+ya).toFixed(2)} rad`;
-      editorUI.yaStatus.style.color = '#6ee7b7';
-    } else {
-      editorUI.ya.r.value = 0; editorUI.ya.n.value = '';
-      editorUI.yaStatus.textContent = 'Usa default della scena';
-      editorUI.yaStatus.style.color = '#9d8fc0';
-    }
-  } else {
-    editorUI.sezFrecce.style.display = 'none';
-  }
-}
-
-function editorPinRotazione(g) {
-  const src = g.userData._src;
-  if (!g.userData.isNavLocale) return;
-  const rot = g.userData.chevronGroup.rotation;
-  src.rotazione = { x: +rot.x.toFixed(4), y: +rot.y.toFixed(4), z: +rot.z.toFixed(4) };
-}
-
-function editorImpostaAsse(asse, val) {
-  const g = editorState.sel; if (!g) return;
-  const src = g.userData._src; if (!src || !src.posizione) return;
-  val = Number(val); if (Number.isNaN(val)) return;
-  src.posizione[asse] = val; g.position[asse] = val;
-  if (g.userData.isNavLocale) editorPinRotazione(g);
-  editorAggiornaMarker();
-}
-
-function editorImpostaRot(axisChar, val) {
-  const g = editorState.sel; if (!g || !g.userData.isNavLocale) return;
-  val = Number(val); if (Number.isNaN(val)) return;
-  g.userData.chevronGroup.rotation[axisChar] = val;
-  editorPinRotazione(g);
-}
-
-function editorRotazioneAuto() {
-  const g = editorState.sel; if (!g || !g.userData.isNavLocale) return;
-  const src = g.userData._src; delete src.rotazione;
-  const yawAuto = Math.atan2(src.posizione.x, -src.posizione.z);
-  g.userData.chevronGroup.rotation.set(CHEVRON_PITCH_DEFAULT, yawAuto, 0);
-  editorAggiornaUI(); editorStatus('Rotazione ripristinata (auto)');
-}
-
-function editorImpostaYawArrivo(val) {
-  const g = editorState.sel; if (!g) return;
-  val = Number(val); if (Number.isNaN(val)) return;
-  g.userData._src.yawArrivo = +val.toFixed(4); g.userData.yawArrivo = g.userData._src.yawArrivo;
-  editorUI.yaStatus.textContent = `yawArrivo = ${val.toFixed(2)} rad`;
-  editorUI.yaStatus.style.color = '#6ee7b7';
-}
-
-function editorCatturaVistaYawArrivo() {
-  if (!editorState.sel) { editorStatus('Seleziona prima un elemento'); return; }
-  const direzione = new THREE.Vector3(); camera.getWorldDirection(direzione);
-  const yaw = Math.atan2(direzione.x, -direzione.z);
-  editorImpostaYawArrivo(yaw);
-  editorUI.ya.r.value = yaw; editorUI.ya.n.value = yaw.toFixed(2);
-  editorStatus(`Vista catturata: ${yaw.toFixed(2)} rad`);
-}
-
-function editorRimuoviYawArrivo() {
-  const g = editorState.sel; if (!g) return;
-  delete g.userData._src.yawArrivo; delete g.userData.yawArrivo;
-  editorUI.ya.r.value = 0; editorUI.ya.n.value = '';
-  editorUI.yaStatus.textContent = 'Usa default della scena';
-  editorUI.yaStatus.style.color = '#9d8fc0'; editorStatus('yawArrivo rimosso');
-}
-
-function editorSpostaSelezionatoSuRaggio(dir) {
-  const g = editorState.sel; if (!g) return;
-  const src = g.userData._src; if (!src || !src.posizione) return;
-  const p = src.posizione;
-  let r = Math.sqrt(p.x * p.x + p.y * p.y + p.z * p.z);
-  if (r < 1) r = 10;
-  const np = dir.clone().multiplyScalar(r);
-  src.posizione.x = +np.x.toFixed(2); src.posizione.y = +np.y.toFixed(2); src.posizione.z = +np.z.toFixed(2);
-  g.position.set(src.posizione.x, src.posizione.y, src.posizione.z);
-  if (g.userData.isNavLocale) editorPinRotazione(g);
-  editorAggiornaUI(); editorAggiornaMarker();
-}
-
-function editorElimina() {
-  const g = editorState.sel; if (!g) return;
-  const { _src, _container } = g.userData;
-  if (_container && _src) {
-    const i = _container.indexOf(_src);
-    if (i >= 0) _container.splice(i, 1);
-  }
-  editorState.sel = null; editorState.selId = null;
-  hotspotGroup.clear(); nascondiPannello();
-  costruisciHotspotScena(scenaCorrente);
-  editorScenaCostruita(); editorAggiornaMarker();
-  editorStatus('Elemento eliminato');
-}
-
-function editorScenaCostruita() {
-  if (!editorUI || !tourData) return;
-
-  const chiavi = Object.keys(tourData.scene);
-  if (editorUI.scene.options.length !== chiavi.length) {
-    editorUI.scene.innerHTML = '';
-    chiavi.forEach(k => {
-      const o = document.createElement('option');
-      o.value = k; o.textContent = k; editorUI.scene.appendChild(o);
-    });
-  }
-  if (idScenaCorrente) editorUI.scene.value = idScenaCorrente;
-
-  editorUI.lista.innerHTML = '';
-  let count = 0;
-  hotspotGroup.children.forEach(g => {
-    const ud = g.userData; if (!ud || !ud.id) return;
-    let tag = ud.isNavLocale ? '➡️' : (ud.tipo === 'info_secondario' ? '🟠' : (ud.tipo === 'nav' ? '🔵' : '🟡'));
-    const o = document.createElement('option');
-    o.value = ud.id; o.textContent = `${tag} ${ud.label || ud.id}`;
-    editorUI.lista.appendChild(o);
-    count++;
-  });
-  if (count === 0) {
-    const o = document.createElement('option');
-    o.value = ''; o.textContent = '(Nessun elemento presente)';
-    editorUI.lista.appendChild(o);
-  }
-
-  if (editorState.selId) {
-    const g = editorTrovaGruppo(editorState.selId);
-    if (g) { editorState.sel = g; editorUI.lista.value = g.userData.id; }
-    else { editorState.sel = null; editorState.selId = null; }
-  }
-  editorAggiornaUI();
-}
-
-function editorStatus(msg) {
-  if (!editorUI) return;
-  editorUI.status.textContent = msg; clearTimeout(editorUI._st);
-  editorUI._st = setTimeout(() => { editorUI.status.textContent = ''; }, 2500);
-}
-
-function editorEsporta() {
-  if (!tourData) return;
-  const json = JSON.stringify(tourData, null, 2);
-  const blob = new Blob([json], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'tour.json';
-  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-  editorStatus('tour.json salvato ✓');
-}
-
-creaEditorUI();
-
-// ======================================================================
-// ====  SALVA ANGOLO VISTA — STRUMENTO SEPARATO, RIMOVIBILE  =====
-// ======================================================================
-const visteSalvate = [];
-function salvaAngoloVista() {
-  const dir = new THREE.Vector3(); camera.getWorldDirection(dir);
-  const yaw = Math.atan2(dir.x, -dir.z); const pitch = Math.asin(THREE.MathUtils.clamp(dir.y, -1, 1));
-  const nomeDefault = idScenaCorrente ? `${idScenaCorrente} - ` : '';
-  const nome = window.prompt('Nome della vista:', nomeDefault);
-  if (nome === null) return;
-
-  const voce = { nome: nome.trim() || '(senza nome)', scena: idScenaCorrente || '(?)', yaw: +yaw.toFixed(4), pitch: +pitch.toFixed(4) };
-  visteSalvate.push(voce);
-
-  console.log(`%c📐 VISTA SALVATA #${visteSalvate.length}`, 'color:#34d399;font-weight:bold;font-size:13px');
-  console.log(`   nome  : ${voce.nome}`);
-  console.log(`   scena : ${voce.scena}`);
-  console.log(`   yaw   : ${voce.yaw} rad   (pitch: ${voce.pitch} rad)`);
-  console.log(`   → per l'hotspot di navigazione:   "yawArrivo": ${voce.yaw}`);
-  console.log(`   → per lo spawn della scena:       "rotazioneInizialeY": ${voce.yaw}`);
-  console.table(visteSalvate);
-  console.log('   JSON completo:\n' + JSON.stringify(visteSalvate, null, 2));
-}
-
-const btnVista = document.createElement('button');
-btnVista.id = 'btn-salva-vista'; btnVista.textContent = '📐 Salva vista';
-btnVista.style.cssText = `position: fixed; top: 12px; left: 12px; z-index: 1000; background: #0e7490; color: #fff; border: none; border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: system-ui, sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,.4);`;
-btnVista.addEventListener('click', salvaAngoloVista);
-document.body.appendChild(btnVista);
-
-window.addEventListener('keydown', (e) => {
-  const tag = (document.activeElement && document.activeElement.tagName) || '';
-  if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-  if (e.key === 'v' || e.key === 'V') salvaAngoloVista();
 });

@@ -21,8 +21,6 @@ MODEL = "llama-3.3-70b-versatile"
 
 # =====================================================
 # FOTO DISPONIBILI PER GLI APPROFONDIMENTI
-# Aggiungi qui i nomi dei file man mano che li carichi in public/pic/
-# Convenzione: luogo_concetto.jpg (lowercase con underscore)
 # =====================================================
 FOTO_DISPONIBILI = [
     "arco_prospetto.jpg",
