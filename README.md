@@ -124,6 +124,7 @@ xr-turismo-llm/
 │   ├── backend.py             # Server FastAPI con i tre endpoint AI
 │   ├── rag.py                 # Modulo RAG: chunking, embedding, FAISS, retrieval MMR
 │   ├── diagnostica_rag.py     # Script di analisi e debug dell'indice RAG
+│   ├── ottimizza_foto_360.py  # Utility di pre-processing dei panorami 360°
 │   ├── corpus/                # Testi sorgente strutturati con marker Markdown
 │   │   ├── Duomo_di_San_Ciriaco.txt
 │   │   ├── Arco_di_Traiano.txt
@@ -158,7 +159,6 @@ xr-turismo-llm/
 │   │   ├── main.js            # Rendering Three.js, gestione scene, hotspot e pannelli
 │   │   └── style.css
 │   └── package.json
-├── ottimizza_foto_360.py      # Utility di pre-processing dei panorami 360°
 └── README.md
 ```
 
