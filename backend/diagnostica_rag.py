@@ -19,8 +19,7 @@ from pathlib import Path
 
 from rag import (
     _load_index,
-    embed_query,
-    _normalizza_luogo_id,
+    embed_query
 )
 
 
