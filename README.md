@@ -142,7 +142,7 @@ xr-turismo-llm/
 │   │   ├── tour.json          # Configurazione scene, hotspot e grafo di navigazione
 │   │   ├── pic360/            # Panorami equirettangolari (Git LFS, ~30 MB ciascuno)
 │   │   │   ├── Duomo1360.jpg … Duomo5360.jpg
-│   │   │   ├── Arco0360.jpg … Arco7360.jpg
+│   │   │   ├── Arco0360.jpg, Arco1360.jpg, Arco3360.jpg … Arco7360.jpg
 │   │   │   ├── Mole1360.jpg … Mole3360.jpg
 │   │   │   ├── Pdp360.jpg … Pdp3360.jpg
 │   │   │   ├── Smp1360.jpg, Smp2360.jpg
