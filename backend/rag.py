@@ -33,51 +33,30 @@ import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
 
-# =====================================================
-# CONFIG
-# =====================================================
 BASE_DIR = Path(__file__).parent
 CORPUS_DIR = BASE_DIR / "corpus"
 INDEX_PATH = BASE_DIR / "rag_index.faiss"
 META_PATH = BASE_DIR / "rag_chunks.pkl"
 
-# Modello multilingua forte sull'italiano, ~280MB, gira su CPU
 EMBED_MODEL_NAME = "intfloat/multilingual-e5-base"
 
-# Filtri e limiti chunk
-MIN_CHARS = 280            # soglia base (orfanelle, frammenti)
-MIN_CHARS_SOTTOSEZ = 150   # soglia ridotta per chunk derivati da ### titolate
-                           # (non vogliamo perdere sottosezioni vere ma brevi)
-MAX_CHARS = 2600           # oltre questa soglia spezziamo per paragrafo
+MIN_CHARS = 280            
+MIN_CHARS_SOTTOSEZ = 150                         
+MAX_CHARS = 2600           
 
-# Malus applicato ai chunk spezzati: i frammenti "(N/M)" tendono a essere
-# "code" senza intro tematica, finiscono in cima ai ranking come chunk-tappo
-# e fuorviano il primo pivot di MMR. Un piccolo malus li ridimensiona.
 MALUS_CHUNK_SPEZZATO = 0.03
 
-# MMR default
-MMR_LAMBDA = 0.7    # 0 = solo diversità, 1 = solo rilevanza
-MMR_FETCH_MULT = 5  # candidati = k * mult prima della selezione MMR
+MMR_LAMBDA = 0.7    
+MMR_FETCH_MULT = 5  
 
-# Sampling con temperatura — varietà a chiamate ripetute.
-# 0 = deterministico (top-k MMR sempre uguali).
-# 0.3-0.5 = varietà controllata (chunk forti escono quasi sempre, ogni tanto altri salgono).
-# 0.7-1.0 = varietà ampia, anche chunk a metà classifica emergono.
 TEMPERATURE_DEFAULT = 0.4
-POOL_MULT = 4       # pool MMR da cui campionare = k * POOL_MULT
-                    # Con k=3 → pool di 12 chunk diversificati da MMR.
+POOL_MULT = 4       
 
-# Cache singleton del modello e dell'indice
 _model = None
 _index = None
 _chunks_meta = None
 
-
-# =====================================================
-# PARSING MARKDOWN-LIKE: ## / ### / ####
-# =====================================================
 _HEADER_RE = re.compile(r'^(#{2,4})\s+(.+?)\s*$', re.MULTILINE)
-
 
 def _parse_struttura(testo: str):
     """
@@ -89,15 +68,14 @@ def _parse_struttura(testo: str):
     matches = list(_HEADER_RE.finditer(testo))
     blocchi = []
 
-    # Preambolo (prima del primo header)
     primo_inizio = matches[0].start() if matches else len(testo)
     preambolo = testo[:primo_inizio].strip()
     if preambolo:
         blocchi.append({'livello': 0, 'titolo': 'Introduzione', 'corpo': preambolo})
 
-    # Tutti i blocchi con header
+
     for i, m in enumerate(matches):
-        livello = len(m.group(1))  # 2, 3, o 4
+        livello = len(m.group(1))
         titolo = m.group(2).strip()
         inizio_corpo = m.end()
         fine_corpo = matches[i + 1].start() if (i + 1) < len(matches) else len(testo)
@@ -122,7 +100,6 @@ def _split_paragrafi_lunghi(testo: str, max_chars: int):
         p = p.strip()
         if not p:
             continue
-        # se aggiungerlo sforerebbe, chiudi buffer
         if buffer and len(buffer) + len(p) + 2 > max_chars:
             pezzi.append(buffer)
             buffer = p
@@ -150,8 +127,8 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
     blocchi = _parse_struttura(testo)
     chunks = []
 
-    sezione_padre_corrente = None   # nome dell'ultima ## vista
-    chunk_corrente = None           # dict in costruzione (per ### o ## standalone)
+    sezione_padre_corrente = None  
+    chunk_corrente = None           
 
     def flush(c):
         """Chiude un chunk in costruzione: lo prefissa col titolo, lo splitta se troppo lungo,
@@ -161,16 +138,13 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
         contenuto = c['corpo'].strip()
         if not contenuto:
             return
-        # Titolo come prefisso (aiuta sia embedding che lettura dell'LLM)
         testo_chunk = f"{c['titolo']}\n\n{contenuto}"
         pezzi = _split_paragrafi_lunghi(testo_chunk, MAX_CHARS)
-        # Soglia minima: meno severa per sottosezioni titolate (livello 3)
-        # perché Wikipedia ha sottosezioni "ponte" brevi ma meritevoli.
+
         soglia = MIN_CHARS_SOTTOSEZ if c['livello'] == 3 else MIN_CHARS
         for i, pezzo in enumerate(pezzi):
             if len(pezzo) < soglia:
                 continue
-            # Se splittato, aggiungo un suffisso (1/N) per debug
             titolo_finale = c['titolo']
             if len(pezzi) > 1:
                 titolo_finale = f"{c['titolo']} ({i + 1}/{len(pezzi)})"
@@ -188,7 +162,6 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
         corpo = b['corpo']
 
         if liv == 0:
-            # Preambolo
             flush({
                 'titolo': titolo,
                 'corpo': corpo,
@@ -199,12 +172,10 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
             continue
 
         if liv == 2:
-            # Chiudi eventuale chunk in corso
             flush(chunk_corrente)
             chunk_corrente = None
             sezione_padre_corrente = titolo
 
-            # Verifica se questa ## ha ### figlie prima della prossima ##
             ha_figlie_terzo_livello = False
             for j in range(i + 1, len(blocchi)):
                 if blocchi[j]['livello'] == 2:
@@ -214,8 +185,6 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
                     break
 
             if not ha_figlie_terzo_livello:
-                # ## senza ###: diventa lei stessa il chunk.
-                # Includo nel corpo anche eventuali #### (sotto-sotto orfane).
                 corpo_esteso = corpo
                 for j in range(i + 1, len(blocchi)):
                     if blocchi[j]['livello'] == 2:
@@ -225,18 +194,14 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
                 flush({
                     'titolo': titolo,
                     'corpo': corpo_esteso,
-                    'sezione_padre': None,  # è lei stessa la sezione
+                    'sezione_padre': None, 
                     'livello': 2,
                 })
-                # NB: il loop continuerà a vedere le #### ma non avranno effetto
-                # perché abbiamo già flushato. Sarebbe più pulito con un cursore,
-                # ma ci pensa la logica sotto: gestiamo le #### solo se c'è ### aperta.
-            # Altrimenti: aspettiamo le ### figlie
+
 
         elif liv == 3:
-            # Chiudi eventuale chunk precedente
             flush(chunk_corrente)
-            # Apri nuovo chunk per questa ###. Includi il corpo della ###.
+
             chunk_corrente = {
                 'titolo': titolo,
                 'corpo': corpo,
@@ -245,20 +210,14 @@ def chunk_per_sottosezione(testo: str, luogo_id: str):
             }
 
         elif liv == 4:
-            # Se c'è una ### aperta, aggrega lì dentro
             if chunk_corrente is not None and chunk_corrente['livello'] == 3:
                 chunk_corrente['corpo'] += f"\n\n{titolo}\n\n{corpo}"
-            # else: la #### è sotto una ## senza ### → già gestita nel branch ##
 
-    # Flush finale
     flush(chunk_corrente)
 
     return chunks
 
-
-# =====================================================
-# MODELLO (lazy load)
-# =====================================================
+#Modello
 def get_model():
     global _model
     if _model is None:
@@ -280,9 +239,6 @@ def embed_query(query: str):
     return np.asarray(emb, dtype="float32")
 
 
-# =====================================================
-# BUILD INDEX
-# =====================================================
 def build_index():
     if not CORPUS_DIR.exists():
         raise FileNotFoundError(
@@ -296,11 +252,11 @@ def build_index():
 
     print(f"[RAG] Trovati {len(files)} file in {CORPUS_DIR}")
 
-    all_chunks = []   # lista di stringhe (testo da embeddare)
-    all_meta = []     # parallela: metadati
+    all_chunks = []  
+    all_meta = []     
 
     for path in files:
-        nome_file = Path(path).stem  # es: "Duomo_di_San_Ciriaco"
+        nome_file = Path(path).stem  
         with open(path, "r", encoding="utf-8") as f:
             testo = f.read()
 
@@ -338,10 +294,6 @@ def build_index():
     print(f"[RAG] Metadati salvati in {META_PATH}")
     print(f"[RAG] Pronto. {len(all_chunks)} chunk indicizzati su {len(files)} monumenti.")
 
-
-# =====================================================
-# RETRIEVE con MMR
-# =====================================================
 def _load_index():
     """Carica indice e metadati in memoria (singleton)."""
     global _index, _chunks_meta
@@ -378,19 +330,16 @@ def _mmr_select(query_vec, cand_vecs, cand_indices, k, lam, sim_query_override=N
     if len(cand_indices) == 0:
         return []
 
-    # Similarity di ogni candidato verso la query
     if sim_query_override is not None:
         sim_query = np.asarray(sim_query_override, dtype="float32")
     else:
         sim_query = (cand_vecs @ query_vec.T).flatten()
 
-    # Pre-calcolo similarity tra tutti i candidati (matrice NxN)
     sim_cand = cand_vecs @ cand_vecs.T
 
-    selezionati_local = []  # indici locali (0..N-1) nei cand_*
+    selezionati_local = [] 
     rimanenti = set(range(len(cand_indices)))
 
-    # Primo passo: il candidato con sim_query massima
     primo = int(np.argmax(sim_query))
     selezionati_local.append(primo)
     rimanenti.discard(primo)
@@ -399,7 +348,6 @@ def _mmr_select(query_vec, cand_vecs, cand_indices, k, lam, sim_query_override=N
         best_score = -1e9
         best_idx = None
         for j in rimanenti:
-            # max similarity di j verso i già selezionati
             max_sim_sel = max(sim_cand[j, s] for s in selezionati_local)
             mmr_score = lam * sim_query[j] - (1 - lam) * max_sim_sel
             if mmr_score > best_score:
@@ -434,27 +382,19 @@ def _sample_temperatura(indici, scores, k, temperature):
     if n == 0:
         return []
     if k >= n or temperature <= 0:
-        # Deterministico: i primi k (o tutti se k >= n)
         return list(indici[:k])
 
-    # Normalizzo gli score in [0, 1] per rendere la temperatura interpretabile
-    # indipendentemente dal range originale. Senza normalizzazione, su un
-    # corpus saturo (range stretto, es. 0.77-0.84) il softmax restituirebbe
-    # probabilità quasi uniformi a qualunque temperatura.
     scores_arr = np.asarray(scores, dtype="float32")
     s_min, s_max = float(scores_arr.min()), float(scores_arr.max())
     if s_max - s_min < 1e-6:
-        # Tutti uguali → uniforme
         probs = np.ones(n, dtype="float32") / n
     else:
-        scores_norm = (scores_arr - s_min) / (s_max - s_min)  # in [0,1]
-        # Softmax con temperatura sui valori normalizzati
+        scores_norm = (scores_arr - s_min) / (s_max - s_min) 
         logits = scores_norm / max(temperature, 1e-6)
-        logits = logits - np.max(logits)  # stabilità numerica
+        logits = logits - np.max(logits)  
         probs = np.exp(logits)
         probs = probs / np.sum(probs)
 
-    # Sampling senza ripetizione
     pos_selezionate = np.random.choice(n, size=k, replace=False, p=probs)
     return [indici[int(i)] for i in pos_selezionate]
 
@@ -495,9 +435,7 @@ def retrieve(query: str,
 
     luogo_target = _normalizza_luogo_id(luogo_id) if luogo_id else None
 
-    # Pesco molti più candidati del solito, poi filtro per luogo e applico MMR.
-    # Se filtriamo per luogo, ampliamo ancora la finestra perché molti
-    # candidati verranno scartati nel filtro.
+
     n_search = k * fetch_mult
     if luogo_target:
         n_search *= 4
@@ -505,10 +443,6 @@ def retrieve(query: str,
 
     scores, idxs = index.search(q_emb, n_search)
 
-    # Raccogli candidati: indici globali, vettori, score.
-    # Ai chunk spezzati in (N/M) applichiamo un piccolo malus, perché tendono
-    # a essere frammenti "coda" senza intro tematica e finiscono in cima
-    # facendo da chunk-tappo nei pivot MMR.
     cand_indices = []
     cand_scores = []
     for score, idx in zip(scores[0], idxs[0]):
@@ -525,7 +459,6 @@ def retrieve(query: str,
         cand_indices.append(int(idx))
         cand_scores.append(score_aggiustato)
 
-    # Riordino per score aggiustato (il search FAISS era ordinato per score grezzo)
     if cand_indices:
         ordine = sorted(range(len(cand_indices)), key=lambda i: -cand_scores[i])
         cand_indices = [cand_indices[i] for i in ordine]
@@ -534,20 +467,13 @@ def retrieve(query: str,
     if not cand_indices:
         return []
 
-    # Ricostruisco i vettori dei candidati dall'indice FAISS
-    # (IndexFlat supporta reconstruct(i) per recuperare il vettore originale)
     cand_vecs = np.array([index.reconstruct(i) for i in cand_indices], dtype="float32")
 
-    # Limito i candidati a un tetto sensato (es. 30) per controllare il costo MMR
     if len(cand_indices) > 30:
         cand_indices = cand_indices[:30]
         cand_vecs = cand_vecs[:30]
         cand_scores = cand_scores[:30]
 
-    # MMR — usa gli score aggiustati come similarity verso la query,
-    # così il malus sui chunk spezzati influenza anche il pivot iniziale.
-    # Generiamo un POOL più grande del necessario (k * POOL_MULT), così il
-    # sampling temperato successivo ha materiale variato fra cui scegliere.
     pool_size = max(k, min(k * POOL_MULT, len(cand_indices)))
     mmr_pool = _mmr_select(
         query_vec=q_emb,
@@ -558,8 +484,6 @@ def retrieve(query: str,
         sim_query_override=cand_scores,
     )
 
-    # Sampling con temperatura sul pool MMR.
-    # Lo score di ogni elemento del pool è quello aggiustato (malus incluso).
     idx_to_score = dict(zip(cand_indices, cand_scores))
     pool_scores = [idx_to_score.get(g, 0.0) for g in mmr_pool]
     selected_global = _sample_temperatura(
@@ -569,7 +493,6 @@ def retrieve(query: str,
         temperature=temperature,
     )
 
-    # Costruisci il risultato finale.
     risultati = []
     for g in selected_global:
         chunk = meta[g]
@@ -613,10 +536,6 @@ def format_contesto_per_prompt(chunks):
         "ma NON contraddire i fatti negli estratti e NON inventare dati verificabili che non siano lì."
     )
 
-
-# =====================================================
-# CLI
-# =====================================================
 if __name__ == "__main__":
     import sys
     if len(sys.argv) < 2 or sys.argv[1] not in ("build", "test"):
@@ -632,7 +551,6 @@ if __name__ == "__main__":
         if len(sys.argv) < 3:
             print("Manca la query. Es: python rag.py test 'leoni del Duomo'")
             sys.exit(1)
-        # Parser semplice per --luogo
         argv = sys.argv[2:]
         luogo = None
         if "--luogo" in argv:

@@ -47,14 +47,12 @@ def stampa_panoramica(per_luogo):
     print(header)
     print("-" * 78)
 
-    # Ordino per numero chunk decrescente
     for luogo, lunghezze in sorted(per_luogo.items(), key=lambda kv: -len(kv[1])):
         n = len(lunghezze)
         avg = sum(lunghezze) // n
         mn = min(lunghezze)
         mx = max(lunghezze)
         perc = (n / totale_chunk) * 100
-        # Tronco il nome se troppo lungo
         nome = luogo if len(luogo) <= 38 else luogo[:35] + "..."
         print(f"{nome:<40} {n:>7} {avg:>8} {mn:>5} {mx:>5} {perc:>9.1f}%")
     print()
@@ -95,7 +93,6 @@ def ranking_per_query(meta, luogo_target, query, index):
     print(f"per la query: '{query}'")
     print("=" * 78)
 
-    # Recupero gli indici globali dei chunk di questo luogo
     chunk_idx_globali = [
         i for i, c in enumerate(meta) if c["luogo_id"] == luogo_target
     ]
@@ -103,18 +100,13 @@ def ranking_per_query(meta, luogo_target, query, index):
         print(f"\n⚠ Nessun chunk per luogo '{luogo_target}'")
         return
 
-    # Embed della query
     q_emb = embed_query(query)
 
-    # Ricostruisco i vettori dei chunk dal FAISS index
-    # IndexFlat permette reconstruct(i) per recuperare il vettore originale
     import numpy as np
     chunk_vecs = np.array([index.reconstruct(i) for i in chunk_idx_globali])
 
-    # Similarity = prodotto interno (vettori normalizzati → cosine)
     scores = (chunk_vecs @ q_emb.T).flatten()
 
-    # Ordino per score decrescente
     coppie = sorted(zip(scores, chunk_idx_globali), key=lambda x: -x[0])
 
     print(f"\nChunk totali: {len(coppie)}\n")
@@ -124,7 +116,7 @@ def ranking_per_query(meta, luogo_target, query, index):
         chunk = meta[idx_glob]
         testo = chunk["testo"].replace("\n", " ")
         anteprima = testo[:80] + ("..." if len(testo) > 80 else "")
-        marker = " ←" if rank <= 2 else "  "  # marker per i top-2 che vincerebbero con k=2
+        marker = " ←" if rank <= 2 else "  " 
         print(f"{rank:<5} {score:<7.3f} {len(chunk['testo']):<10} {anteprima}{marker}")
 
     print()
@@ -138,14 +130,12 @@ def main():
     query_custom = None
 
     if args:
-        # Parser semplice: primo arg = focus, --query "..." = query custom
         focus = args[0]
         if "--query" in args:
             q_idx = args.index("--query")
             if q_idx + 1 < len(args):
                 query_custom = args[q_idx + 1]
 
-    # Carico indice + metadati
     index, meta = _load_index()
     per_luogo = stats_per_file(meta)
 
@@ -157,7 +147,6 @@ def main():
         print("  python diagnostica_rag.py Duomo --query 'rito dei bambini'")
         return
 
-    # Trovo il luogo che inizia con il prefisso fornito
     luoghi_match = [l for l in per_luogo if l.lower().startswith(focus.lower())]
     if not luoghi_match:
         print(f"⚠ Nessun luogo che inizia con '{focus}'.")
@@ -171,8 +160,6 @@ def main():
     lunghezze = per_luogo[luogo_target]
     istogramma_lunghezze(lunghezze)
 
-    # Query default = il luogo stesso (è quella che usa /spiegazione)
-    # Sostituisco gli underscore con spazi per essere fedele a come arriva
     query = query_custom or luogo_target.replace("_", " ")
     ranking_per_query(meta, luogo_target, query, index)
 

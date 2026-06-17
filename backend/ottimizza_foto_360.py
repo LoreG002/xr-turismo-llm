@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 Ottimizza le foto 360 (equirettangolari) in frontend/public/pic360.
 - Ridimensiona a max 6000px di larghezza mantenendo il rapporto 2:1
@@ -21,13 +21,13 @@ except ImportError:
     print("❌  Pillow non trovato. Installa con:  pip install Pillow")
     sys.exit(1)
 
-# ── Configurazione di default ────────────────────────────────────────────────
+
 CARTELLA_INPUT   = Path("frontend/public/pic360")
 CARTELLA_OUTPUT  = CARTELLA_INPUT / "ottimizzate"
-LARGHEZZA_MAX    = 6000   # px — per 360° su WebGL, sopra i 6K non si guadagna nulla
-QUALITA_JPEG     = 85     # 80-90 è il punto dolce qualità/peso per JPEG
+LARGHEZZA_MAX    = 6000  
+QUALITA_JPEG     = 85    
 ESTENSIONI       = {".jpg", ".jpeg", ".png", ".webp"}
-# ─────────────────────────────────────────────────────────────────────────────
+
 
 
 def formatta_bytes(n: int) -> str:
@@ -51,13 +51,11 @@ def ottimizza_immagine(
     Restituisce (peso_originale, peso_output, dim_originale, dim_output).
     """
     with Image.open(percorso_in) as img:
-        # Converte in RGB (rimuove canale alpha se presente)
         if img.mode in ("RGBA", "P", "LA"):
             img = img.convert("RGB")
 
-        dim_originale = img.size  # (larghezza, altezza)
+        dim_originale = img.size 
 
-        # Ridimensiona solo se l'immagine è più larga del limite
         if img.width > larghezza_max:
             rapporto = larghezza_max / img.width
             nuova_h  = int(img.height * rapporto)
@@ -71,8 +69,8 @@ def ottimizza_immagine(
             "JPEG",
             quality=qualita,
             optimize=True,
-            progressive=True,   # JPEG progressivo: migliore per il web
-            subsampling=2,      # 4:2:0 — standard per fotografie
+            progressive=True, 
+            subsampling=2,      
         )
 
     peso_orig = percorso_in.stat().st_size
@@ -162,7 +160,7 @@ def main():
         except Exception as e:
             print(f"❌  Errore: {e}")
 
-    # ── Report finale ─────────────────────────────────────────────────────────
+
     risparmio_tot = (1 - totale_out / totale_orig) * 100 if totale_orig > 0 else 0
     print(f"\n{'─' * 60}")
     print(f"  Spazio originale  : {formatta_bytes(totale_orig)}")
@@ -173,7 +171,6 @@ def main():
     print(f"✅  File ottimizzati salvati in: {cartella_out}/")
     print(f"    Gli originali in '{cartella}/' sono intatti.\n")
 
-    # ── Sovrascrittura opzionale ──────────────────────────────────────────────
     if args.sovrascrivi:
         conferma = input("⚠️   Vuoi sovrascrivere gli originali? [s/N] ").strip().lower()
         if conferma == "s":

@@ -19,9 +19,6 @@ app.add_middleware(
 
 MODEL = "llama-3.3-70b-versatile"
 
-# =====================================================
-# FOTO DISPONIBILI PER GLI APPROFONDIMENTI
-# =====================================================
 FOTO_DISPONIBILI = [
     "arco_prospetto.jpg",
     "arco_veduta.jpg",
@@ -38,14 +35,9 @@ FOTO_DISPONIBILI = [
     "plebiscito_veduta.jpg"
 ]
 
-# Set per lookup O(1) in validazione
 _FOTO_SET = set(FOTO_DISPONIBILI)
 
-
-# =====================================================
-# STARTUP: pre-carica modello e indice RAG
-# Così al primo click non c'è nessun ritardo
-# =====================================================
+#Startup
 @app.on_event("startup")
 async def startup_event():
     print("[Startup] Pre-carico modello RAG e indice FAISS...")
@@ -54,9 +46,6 @@ async def startup_event():
     print("[Startup] Pronti. Nessun ritardo al primo click.")
 
 
-# =====================================================
-# SYSTEM PROMPT PERSISTENTE
-# =====================================================
 SYSTEM_GUIDA = """Sei Marco, una guida culturale italiana con 25 anni di esperienza
 specializzata in storia dell'arte e architettura delle Marche e di Ancona.
 Il tuo stile è coinvolgente, narrativo, ricco di dettagli sensoriali e aneddoti storici.
@@ -65,13 +54,9 @@ costruendo un racconto che mescola fatti storici, descrizioni visive e curiosit�
 Il tuo lavoro è far rivivere i luoghi attraverso parole dense e immersive ma senza dilungarti troppo.
 Non usi mai elenchi puntati, titoli o formattazione markdown. Solo prosa scorrevole."""
 
-
-# =====================================================
-# ENDPOINT 1: SPIEGAZIONE PRINCIPALE
-# =====================================================
+#Endpoint 1
 @app.get("/spiegazione/{luogo}")
 async def get_spiegazione(luogo: str):
-    # k=6: più chunk → più varietà di argomenti per gli approfondimenti
     chunks = retrieve(query=luogo, luogo_id=luogo, k=6)
     contesto_rag = format_contesto_per_prompt(chunks)
     print(f"[/spiegazione] {luogo} → {len(chunks)} chunk recuperati")
@@ -110,7 +95,7 @@ non concetti generici. Nessun testo fuori dal JSON, nessun markdown."""
             {"role": "user", "content": prompt},
         ],
         max_tokens=3000,
-        temperature=0.85,  # più alta → più varietà negli approfondimenti
+        temperature=0.85, 
         response_format={"type": "json_object"},
     )
     data = json.loads(response.choices[0].message.content)
@@ -136,10 +121,7 @@ non concetti generici. Nessun testo fuori dal JSON, nessun markdown."""
         "approfondimenti": approfondimenti_ricchi,
     }
 
-
-# =====================================================
-# ENDPOINT 2: APPROFONDIMENTO (con retry intelligente)
-# =====================================================
+#Endpoint 2
 FEW_SHOT_APPROFONDIMENTO = [
     {
         "role": "user",
@@ -239,18 +221,15 @@ async def genera_approfondimento_con_retry(payload_str: str, tentativi_max: int 
         )
         raw = response.choices[0].message.content.strip()
 
-        # Parse JSON con fallback robusto
         try:
             data = json.loads(raw)
             testo = (data.get("descrizione") or "").strip()
             img_raw = data.get("immagine")
         except (json.JSONDecodeError, TypeError):
-            # Fallback estremo: se il modello non rispetta il JSON,
-            # usiamo il raw come testo e nessuna immagine.
+
             testo = raw
             img_raw = None
 
-        # Validazione anti-hallucination dell'immagine
         if isinstance(img_raw, str) and img_raw.strip() and img_raw.strip().lower() != "null":
             nome = img_raw.strip()
             if nome in _FOTO_SET:
@@ -277,11 +256,7 @@ async def get_approfondimento(argomento: str):
     return {"descrizione": testo, "immagine": immagine}
 
 
-# =====================================================
-# ENDPOINT 3: INFO RAPIDA (hotspot secondari)
-# Nessun RAG, nessun JSON parsing, nessun few-shot lungo.
-# Solo Groq diretto con prompt secco. ~80 parole.
-# =====================================================
+#Endpoint 3
 @app.get("/info_rapida/{argomento}")
 async def get_info_rapida(argomento: str):
     print(f"[/info_rapida] '{argomento[:100]}...'")
